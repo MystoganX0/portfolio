@@ -62,13 +62,6 @@
             animation: blink 1s step-end infinite;
         }
 
-        /* ===== Floating nav fix =====
-           #floating-nav sits in normal flow (relative) until its sentinel
-           scrolls out of view, at which point JS toggles .is-fixed so it
-           pins to the viewport at the SAME top offset (top-4 / sm:top-6).
-           This works even if an ancestor has overflow-x/-y hidden, which is
-           what silently breaks plain `position: sticky`.
-        */
         #floating-nav.is-fixed {
             position: fixed !important;
             top: 1rem;
@@ -98,14 +91,14 @@
 <body class="text-white relative bg-transparent">
 
     <div class="w-full max-w-7xl mx-auto px-8 py-6 flex justify-between items-center">
-        <a href="#" class="text-sm text-white font-bold tracking-tight flex items-center">
-            <i class="bi bi-caret-right-fill mr-1.5 animate-blink"></i> Khairul Hakimi
+        <a href="#" class="text-sm text-white font-bold font-fairplay tracking-tight flex items-center">
+            Khairul Hakimi
         </a>
     </div>
 
     <!-- Hero Section (Applied Design) -->
     <main id="home"
-        class="w-full relative flex flex-col justify-start md:justify-center pb-32 md:py-40 overflow-hidden bg-transparent">
+        class="w-full relative flex flex-col justify-start md:justify-center pb-32 md:py-32 overflow-hidden bg-transparent">
 
         <!-- Minimalist Celestial Star Field -->
         <div class="stars-container" aria-hidden="true">
@@ -181,11 +174,6 @@
             <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center pt-6 md:pt-0">
                 <!-- Text Content -->
                 <div class="md:col-span-7 lg:col-span-8 order-2 md:order-1">
-                    <!-- Overline -->
-                    <p class="text-white text-xs md:text-sm font-tungsten tracking-[0.1em] mb-2">
-                        Portfolio
-                    </p>
-
                     <!-- Headline -->
                     <h1 class="text-4xl md:text-5xl lg:text-7xl text-[#60a5fa]  mb-4 lg:mb-4"
                         style="font-family: 'Playfair Display', serif;">
@@ -194,14 +182,14 @@
 
                     <!-- Avatar and Bio -->
                     <div class="flex items-center space-x-4 max-w-md">
-                        <p class="text-white text-sm md:text-base font-tungsten lowercase leading-normal tracking-wide">
+                        <p class="text-white text-sm md:text-base leading-normal tracking-wide">
                             Fresh graduate in Information Systems Engineering, seeking opportunities in software
                             development.
                         </p>
                     </div>
 
                     <div>
-                        <a href="#projects"
+                        <a href="#contact"
                             class="inline-block bg-[#0078d6] mt-6 text-white text-sm sm:text-base px-8 py-3.5 hover:bg-[#005bb5] transition-colors shadow-lg shadow-black/50 text-center">
                             Get in touch
                         </a>
@@ -285,11 +273,12 @@
                                 ABOUT // 01
                             </span>
                         </div>
-                        <h2 class="text-3xl sm:text-[2.5rem] text-black mb-5 leading-tight"
+                        <h2 class="text-3xl sm:text-[2.5rem] text-black mb-6 md:mb-8 leading-tight"
                             style="font-family: 'Playfair Display', serif;">
                             Introduction
                         </h2>
-                        <p class="text-neutral-700 text-sm md:text-sm leading-relaxed font-normal tracking-wide" style="font-family: 'Playfair Display', serif;">
+                        <p class="text-black text-sm md:text-sm leading-relaxed font-normal tracking-wide"
+                            style="font-family: 'Playfair Display', serif;">
                             I’m am fresh graduate in Information Systems Engineering, with a passion for building
                             functional and user-focused digital solutions.
                             With experience in front-end and back-end web development, and hands-on experience across
@@ -302,32 +291,25 @@
                     <!-- PS5 Style Monochrome Spec Sheet Grid -->
                     <div class="grid grid-cols-3 gap-3 py-3 border-y-2 border-gray-100 bg-neutral-50/50 px-2">
                         <div>
-                            <span
-                                class="block text-xl sm:text-2xl font-medium font-tungsten text-black tracking-widest">Software
+                            <span class="text-[14px] text-neutral-500 font-bold tracking-[0.15em]">Junior</span>
+                            <span class="block text-xl sm:text-2xl text-black tracking-wide">Software
                                 Engineering</span>
-                            <span
-                                class="text-[10px] text-neutral-500 font-bold uppercase tracking-[0.15em]">Junior</span>
                         </div>
                         <div class="border-x border-neutral-200 px-2 sm:px-4">
-                            <span
-                                class="block text-xl sm:text-2xl font-medium font-tungsten text-black tracking-widest">Programmer</span>
-                            <span
-                                class="text-[10px] text-neutral-500 font-bold uppercase tracking-[0.15em]">Junior</span>
+                            <span class="text-[14px] text-neutral-500 font-bold tracking-[0.15em]">Junior</span>
+                            <span class="block text-xl sm:text-2xl text-black tracking-wide">Programmer</span>
                         </div>
                         <div class="pl-1 sm:pl-2">
-                            <span
-                                class="block text-xl sm:text-2xl font-medium font-tungsten text-black tracking-widest">Front-End</span>
-                            <span
-                                class="text-[10px] text-neutral-500 font-bold uppercase tracking-[0.15em]">Junior</span>
+                            <span class="text-[14px] text-neutral-500 font-bold tracking-[0.15em]">Junior</span>
+                            <span class="block text-xl sm:text-2xl text-black tracking-wide">Front-End</span>
                         </div>
                     </div>
 
                     <!-- Education Cards (PS5 Monochrome UI) -->
                     <div>
                         <div class="flex items-center justify-between mb-4">
-                            <h3
-                                class="text-xs uppercase tracking-[0.25em] text-neutral-900 font-bold flex items-center gap-2">
-                                <span class="w-1.5 h-3 bg-black inline-block"></span> ACADEMIC BACKGROUND
+                            <h3 class="text-sm tracking-[0.15em] text-neutral-900 font-bold flex items-center gap-2">
+                                <span class="w-1.5 h-3 bg-black inline-block"></span> Academic Background
                             </h3>
                         </div>
 
@@ -346,7 +328,7 @@
                                         <div
                                             class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 sm:gap-2">
                                             <h4
-                                                class="text-black text-sm sm:text-base font-bold leading-snug tracking-tight">
+                                                class="text-black text-sm sm:text-base font-bold leading-snug tracking-wide">
                                                 Bachelor of Information Systems (Hons.) Information Systems Engineering
                                             </h4>
                                             <span
@@ -356,12 +338,12 @@
                                         </div>
                                         <div class="flex items-center justify-between mt-2 md:mt-4">
                                             <span
-                                                class="text-neutral-600 text-xs flex items-center gap-1.5 font-bold uppercase tracking-wider">
+                                                class="text-neutral-600 text-xs flex items-center gap-1.5 font-bold tracking-wider">
                                                 <i class="bi bi-geo-alt-fill text-black"></i> UiTM Campus Shah Alam
                                             </span>
                                             <span
-                                                class="text-[11px] text-black font-bold flex items-center gap-1 uppercase tracking-widest">
-                                                COURSES <i
+                                                class="text-xs text-black font-bold flex items-center gap-1 tracking-widest">
+                                                Courses <i
                                                     class="bi bi-chevron-down text-xs transition-transform duration-300 chevron-icon"></i>
                                             </span>
                                         </div>
@@ -370,13 +352,16 @@
                                         <div
                                             class="courses-content hidden flex-wrap items-center gap-1.5 mt-3 pt-3 border-t-2 border-black transition-all">
                                             <span
-                                                class="text-[10px] uppercase tracking-widest font-bold text-neutral-400 mr-1">Modules:</span>
+                                                class="text-[12px] tracking-widest font-bold text-neutral-400 mr-1">Modules:</span>
                                             <span
-                                                class="inline-flex items-center px-3 py-1 text-xs font-bold bg-neutral-200 text-black border border-black uppercase tracking-widest shrink-0 w-fit">System Requirements</span>
+                                                class="inline-flex items-center px-3 py-1 text-xs font-bold bg-neutral-200 text-black border border-black tracking-widest shrink-0 w-fit">System
+                                                Requirements</span>
                                             <span
-                                                class="inline-flex items-center px-3 py-1 text-xs font-bold bg-neutral-200 text-black border border-black uppercase tracking-widest shrink-0 w-fit">System Design</span>
+                                                class="inline-flex items-center px-3 py-1 text-xs font-bold bg-neutral-200 text-black border border-black tracking-widest shrink-0 w-fit">System
+                                                Design</span>
                                             <span
-                                                class="inline-flex items-center px-3 py-1 text-xs font-bold bg-neutral-200 text-black border border-black uppercase tracking-widest shrink-0 w-fit">System Testing</span>
+                                                class="inline-flex items-center px-3 py-1 text-xs font-bold bg-neutral-200 text-black border border-black tracking-widest shrink-0 w-fit">System
+                                                Testing</span>
                                         </div>
                                     </div>
                                 </div>
@@ -394,7 +379,7 @@
                                         <div
                                             class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 sm:gap-2">
                                             <h4
-                                                class="text-black text-sm sm:text-base font-bold leading-snug tracking-tight">
+                                                class="text-black text-sm sm:text-base font-bold leading-snug tracking-wide">
                                                 Diploma in Computer Science
                                             </h4>
                                             <span
@@ -404,12 +389,12 @@
                                         </div>
                                         <div class="flex items-center justify-between mt-2 md:mt-4">
                                             <span
-                                                class="text-neutral-600 text-xs flex items-center gap-1.5 font-bold uppercase tracking-wider">
+                                                class="text-neutral-600 text-xs flex items-center gap-1.5 font-bold tracking-wider">
                                                 <i class="bi bi-geo-alt-fill text-black"></i> UiTM Campus Segamat
                                             </span>
                                             <span
-                                                class="text-[11px] text-black font-bold flex items-center gap-1 uppercase tracking-widest">
-                                                COURSES <i
+                                                class="text-xs text-black font-bold flex items-center gap-1 tracking-widest">
+                                                Courses <i
                                                     class="bi bi-chevron-down text-xs transition-transform duration-300 chevron-icon"></i>
                                             </span>
                                         </div>
@@ -418,13 +403,16 @@
                                         <div
                                             class="courses-content hidden flex-wrap items-center gap-1.5 mt-3 pt-3 border-t-2 border-black transition-all">
                                             <span
-                                                class="text-[10px] uppercase tracking-widest font-bold text-neutral-400 mr-1">Modules:</span>
+                                                class="text-[12px] tracking-widest font-bold text-neutral-400 mr-1">Modules:</span>
                                             <span
-                                                class="inline-flex items-center px-3 py-1 text-xs font-bold bg-neutral-200 text-black border border-black uppercase tracking-widest shrink-0 w-fit">Object-Oriented Programming</span>
+                                                class="inline-flex items-center px-3 py-1 text-xs font-bold bg-neutral-200 text-black border border-black tracking-widest shrink-0 w-fit">Object-Oriented
+                                                Programming</span>
                                             <span
-                                                class="inline-flex items-center px-3 py-1 text-xs font-bold bg-neutral-200 text-black border border-black uppercase tracking-widest shrink-0 w-fit">Data Structure</span>
+                                                class="inline-flex items-center px-3 py-1 text-xs font-bold bg-neutral-200 text-black border border-black tracking-widest shrink-0 w-fit">Data
+                                                Structure</span>
                                             <span
-                                                class="inline-flex items-center px-3 py-1 text-xs font-bold bg-neutral-200 text-black border border-black uppercase tracking-widest shrink-0 w-fit">Web Development</span>
+                                                class="inline-flex items-center px-3 py-1 text-xs font-bold bg-neutral-200 text-black border border-black tracking-widest shrink-0 w-fit">Web
+                                                Development</span>
                                         </div>
                                     </div>
                                 </div>
@@ -516,21 +504,19 @@
                 <div
                     class="group bg-white border-2 border-gray-200 p-5 sm:p-6 hover:shadow-xl hover:border-black hover:shadow-blue-200 transition-all duration-300 relative overflow-hidden flex flex-col justify-between w-full min-w-full md:min-w-0 snap-center shrink-0 md:shrink box-border">
                     <div>
-                        <h3 class="text-xl sm:text-2xl font-tungsten text-black uppercase tracking-wider mb-2">
+                        <h3 class="text-xl sm:text-2xl text-black tracking-wider mb-4">
                             Languages
                         </h3>
                         <!-- Skill Badges -->
                         <div class="flex flex-wrap gap-2">
                             <span
-                                class="inline-flex items-center px-3 py-1 text-xs font-bold bg-neutral-200 text-black border border-black uppercase tracking-widest shrink-0 w-fit">PHP</span>
+                                class="inline-flex items-center px-3 py-1 text-xs font-bold bg-neutral-200 text-black border border-black tracking-widest shrink-0 w-fit">PHP</span>
                             <span
-                                class="inline-flex items-center px-3 py-1 text-xs font-bold bg-neutral-200 text-black border border-black uppercase tracking-widest shrink-0 w-fit">Java</span>
+                                class="inline-flex items-center px-3 py-1 text-xs font-bold bg-neutral-200 text-black border border-black tracking-widest shrink-0 w-fit">JAVA</span>
                             <span
-                                class="inline-flex items-center px-3 py-1 text-xs font-bold bg-neutral-200 text-black border border-black uppercase tracking-widest shrink-0 w-fit">JavaScript</span>
+                                class="inline-flex items-center px-3 py-1 text-xs font-bold bg-neutral-200 text-black border border-black tracking-widest shrink-0 w-fit">C++</span>
                             <span
-                                class="inline-flex items-center px-3 py-1 text-xs font-bold bg-neutral-200 text-black border border-black uppercase tracking-widest shrink-0 w-fit">HTML5 / CSS3</span>
-                            <span
-                                class="inline-flex items-center px-3 py-1 text-xs font-bold bg-neutral-200 text-black border border-black uppercase tracking-widest shrink-0 w-fit">C++</span>
+                                class="inline-flex items-center px-3 py-1 text-xs font-bold bg-neutral-200 text-black border border-black tracking-widest shrink-0 w-fit">Python</span>
                         </div>
                     </div>
                 </div>
@@ -545,17 +531,24 @@
                         <!-- Skill Badges -->
                         <div class="flex flex-wrap gap-2">
                             <span
-                                class="inline-flex items-center px-3 py-1 text-xs font-bold bg-neutral-200 text-black border border-black uppercase tracking-widest shrink-0 w-fit">Laravel</span>
+                                class="inline-flex items-center px-3 py-1 text-xs font-bold bg-neutral-200 text-black border border-black tracking-widest shrink-0 w-fit">Laravel
+                                / MVC</span>
                             <span
-                                class="inline-flex items-center px-3 py-1 text-xs font-bold bg-neutral-200 text-black border border-black uppercase tracking-widest shrink-0 w-fit">CodeIgniter</span>
+                                class="inline-flex items-center px-3 py-1 text-xs font-bold bg-neutral-200 text-black border border-black tracking-widest shrink-0 w-fit">CodeIgniter
+                                / MVC</span>
                             <span
-                                class="inline-flex items-center px-3 py-1 text-xs font-bold bg-neutral-200 text-black border border-black uppercase tracking-widest shrink-0 w-fit">Node.js</span>
+                                class="inline-flex items-center px-3 py-1 text-xs font-bold bg-neutral-200 text-black border border-black tracking-widest shrink-0 w-fit">HTML5
+                                / CSS3</span>
                             <span
-                                class="inline-flex items-center px-3 py-1 text-xs font-bold bg-neutral-200 text-black border border-black uppercase tracking-widest shrink-0 w-fit">Tailwind CSS</span>
+                                class="inline-flex items-center px-3 py-1 text-xs font-bold bg-neutral-200 text-black border border-black tracking-widest shrink-0 w-fit">Tailwind
+                                CSS</span>
                             <span
-                                class="inline-flex items-center px-3 py-1 text-xs font-bold bg-neutral-200 text-black border border-black uppercase tracking-widest shrink-0 w-fit">Bootstrap</span>
+                                class="inline-flex items-center px-3 py-1 text-xs font-bold bg-neutral-200 text-black border border-black tracking-widest shrink-0 w-fit">JavaScript</span>
                             <span
-                                class="inline-flex items-center px-3 py-1 text-xs font-bold bg-neutral-200 text-black border border-black uppercase tracking-widest shrink-0 w-fit">RESTful APIs</span>
+                                class="inline-flex items-center px-3 py-1 text-xs font-bold bg-neutral-200 text-black border border-black tracking-widest shrink-0 w-fit">Bootstrap</span>
+                            <span
+                                class="inline-flex items-center px-3 py-1 text-xs font-bold bg-neutral-200 text-black border border-black tracking-widest shrink-0 w-fit">RESTful
+                                APIs</span>
                         </div>
                     </div>
                 </div>
@@ -565,45 +558,50 @@
                     class="group bg-white border-2 border-gray-200 p-5 sm:p-6 hover:shadow-xl hover:shadow-blue-200 hover:border-black transition-all duration-300 relative overflow-hidden flex flex-col justify-between w-full min-w-full md:min-w-0 snap-center shrink-0 md:shrink box-border">
                     <div>
                         <h3 class="text-xl sm:text-2xl font-tungsten text-black uppercase tracking-wider mb-2">
-                            Database & SDLC
+                            Database
                         </h3>
                         <!-- Skill Badges -->
                         <div class="flex flex-wrap gap-2">
                             <span
-                                class="inline-flex items-center px-3 py-1 text-xs font-bold bg-neutral-200 text-black border border-black uppercase tracking-widest shrink-0 w-fit">MySQL</span>
+                                class="inline-flex items-center px-3 py-1 text-xs font-bold bg-neutral-200 text-black border border-black tracking-widest shrink-0 w-fit">MySQL</span>
                             <span
-                                class="inline-flex items-center px-3 py-1 text-xs font-bold bg-neutral-200 text-black border border-black uppercase tracking-widest shrink-0 w-fit">Oracle</span>
+                                class="inline-flex items-center px-3 py-1 text-xs font-bold bg-neutral-200 text-black border border-black tracking-widest shrink-0 w-fit">Oracle</span>
                             <span
-                                class="inline-flex items-center px-3 py-1 text-xs font-bold bg-neutral-200 text-black border border-black uppercase tracking-widest shrink-0 w-fit">Firebase</span>
-                            <span
-                                class="inline-flex items-center px-3 py-1 text-xs font-bold bg-neutral-200 text-black border border-black uppercase tracking-widest shrink-0 w-fit">System Requirements</span>
-                            <span
-                                class="inline-flex items-center px-3 py-1 text-xs font-bold bg-neutral-200 text-black border border-black uppercase tracking-widest shrink-0 w-fit">System Design</span>
-                            <span
-                                class="inline-flex items-center px-3 py-1 text-xs font-bold bg-neutral-200 text-black border border-black uppercase tracking-widest shrink-0 w-fit">System Testing</span>
+                                class="inline-flex items-center px-3 py-1 text-xs font-bold bg-neutral-200 text-black border border-black tracking-widest shrink-0 w-fit">Firebase</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Skill Category 4: Tools & Workflow -->
+                <!-- Skill Category 4: Tools & Practices -->
                 <div
                     class="group bg-white border-2 border-gray-200 p-5 sm:p-6 hover:shadow-xl hover:shadow-blue-200 hover:border-black transition-all duration-300 relative overflow-hidden flex flex-col justify-between w-full min-w-full md:min-w-0 snap-center shrink-0 md:shrink box-border">
                     <div>
                         <h3 class="text-xl sm:text-2xl font-tungsten text-black uppercase tracking-wider mb-2">
-                            Developer Tools
+                            Tools & Practices
                         </h3>
                         <!-- Skill Badges -->
                         <div class="flex flex-wrap gap-2">
                             <span
-                                class="inline-flex items-center px-3 py-1 text-xs font-bold bg-neutral-200 text-black border border-black uppercase tracking-widest shrink-0 w-fit">Git & GitHub</span>
+                                class="inline-flex items-center px-3 py-1 text-xs font-bold bg-neutral-200 text-black border border-black tracking-widest shrink-0 w-fit">Git
+                                & GitHub</span>
                             <span
-                                class="inline-flex items-center px-3 py-1 text-xs font-bold bg-neutral-200 text-black border border-black uppercase tracking-widest shrink-0 w-fit">VS Code</span>
+                                class="inline-flex items-center px-3 py-1 text-xs font-bold bg-neutral-200 text-black border border-black tracking-widest shrink-0 w-fit">VS
+                                Code</span>
                             <span
-                                class="inline-flex items-center px-3 py-1 text-xs font-bold bg-neutral-200 text-black border border-black uppercase tracking-widest shrink-0 w-fit">Laragon / XAMPP</span>
+                                class="inline-flex items-center px-3 py-1 text-xs font-bold bg-neutral-200 text-black border border-black tracking-widest shrink-0 w-fit">Laragon
+                                / XAMPP</span>
                             <span
-                                class="inline-flex items-center px-3 py-1 text-xs font-bold bg-neutral-200 text-black border border-black uppercase tracking-widest shrink-0 w-fit">cPanel</span>
+                                class="inline-flex items-center px-3 py-1 text-xs font-bold bg-neutral-200 text-black border border-black tracking-widest shrink-0 w-fit">Figma</span>
                             <span
-                                class="inline-flex items-center px-3 py-1 text-xs font-bold bg-neutral-200 text-black border border-black uppercase tracking-widest shrink-0 w-fit">Wordpress</span>
+                                class="inline-flex items-center px-3 py-1 text-xs font-bold bg-neutral-200 text-black border border-black tracking-widest shrink-0 w-fit">WordPress</span>
+                            <span
+                                class="inline-flex items-center px-3 py-1 text-xs font-bold bg-neutral-200 text-black border border-black tracking-widest shrink-0 w-fit">cPanel</span>
+                            <span
+                                class="inline-flex items-center px-3 py-1 text-xs font-bold bg-neutral-200 text-black border border-black tracking-widest shrink-0 w-fit">RAD
+                                / Agile Methodology</span>
+                            <span
+                                class="inline-flex items-center px-3 py-1 text-xs font-bold bg-neutral-200 text-black border border-black tracking-widest shrink-0 w-fit">Android
+                                Studio</span>
                         </div>
                     </div>
                 </div>
@@ -640,7 +638,8 @@
             </div>
 
             <!-- Experience Cards Container -->
-            <div id="experience-slider" class="relative w-full sm:p-6 rounded-lg bg-white" style="font-family: 'Times New Roman', Times, serif;">
+            <div id="experience-slider" class="relative w-full sm:p-6 rounded-lg bg-white"
+                style="font-family: 'Times New Roman', Times, serif;">
 
                 <!-- Timeline Container -->
                 <div class="relative border-l border-black ml-2 md:ml-4 py-2 space-y-12">
@@ -653,7 +652,7 @@
                         <!-- Date -->
                         <p class="text-black text-sm sm:text-base font-bold tracking-wide mb-1"
                             style="font-family: 'Playfair Display', serif;">
-                            Mar 2026 – Jul 2026 <span class="text-black font-semibold">(5 Months)</span>
+                            Apr 2026 – Jul 2026 <span class="text-black font-semibold">(4 Months)</span>
                         </p>
 
                         <!-- Title -->
@@ -663,7 +662,7 @@
                         </h3>
 
                         <!-- Company -->
-                        <p class="text-black text-sm sm:text-base font-semibold tracking-wide mb-4"
+                        <p class="text-gray-700 text-sm sm:text-base font-semibold tracking-wide mb-4"
                             style="font-family: 'Playfair Display', serif;">
                             JustSimple (M) Sdn Bhd, Petaling Jaya, Selangor
                         </p>
@@ -673,19 +672,26 @@
                             style="font-family: 'Playfair Display', serif;">
                             <p class="flex items-start gap-3">
                                 <span class="w-2 h-2 bg-black rounded-full mt-2.5 shrink-0"></span>
-                                <span>Built and shipped an Influencer Management admin dashboard (CodeIgniter, PHP, MySQL, Tailwind CSS) that integrated the TikTok API to auto-pull creator profile data, removing a fully manual data-collection process for team.</span>
+                                <span>Built and shipped an Influencer Management admin dashboard (CodeIgniter, PHP,
+                                    MySQL, Tailwind CSS) that integrated the TikTok API to auto-pull creator profile
+                                    data, removing a fully manual data-collection process for team.</span>
                             </p>
                             <p class="flex items-start gap-3">
                                 <span class="w-2 h-2 bg-black rounded-full mt-2.5 shrink-0"></span>
-                                <span>Developed a Property Management System (CodeIgniter, PHP, HTML5, CSS3, MySQL, cPanel) used to list and manage real-estate sales, translating UI/UX mockups into functional, responsive pages.</span>
+                                <span>Developed a Property Management System (CodeIgniter, PHP, HTML5, CSS3, MySQL,
+                                    cPanel) used to list and manage real-estate sales, translating UI/UX mockups into
+                                    functional, responsive pages.</span>
                             </p>
                             <p class="flex items-start gap-3">
                                 <span class="w-2 h-2 bg-black rounded-full mt-2.5 shrink-0"></span>
-                                <span>Maintained and extended 5+ live company and client websites, shipping new features and fixing responsive-layout, routing, and email-delivery defects across several weeks with zero rollback incidents.</span>
+                                <span>Maintained and extended 5+ live company and client websites, shipping new features
+                                    and fixing responsive-layout, routing, and email-delivery defects across several
+                                    weeks with zero rollback incidents.</span>
                             </p>
                             <p class="flex items-start gap-3">
                                 <span class="w-2 h-2 bg-black rounded-full mt-2.5 shrink-0"></span>
-                                <span>Triaged and resolved 10+ production bugs for email delivery, URL routing, responsive layout, and workflow logic.</span>
+                                <span>Triaged and resolved 10+ production bugs for email delivery, URL routing,
+                                    responsive layout, and workflow logic.</span>
                             </p>
                             <p class="flex items-start gap-3">
                                 <span class="w-2 h-2 bg-black rounded-full mt-2.5 shrink-0"></span>
@@ -706,13 +712,13 @@
                         </p>
 
                         <!-- Title -->
-                        <h3 class="text-xl sm:text-2xl font-bold text-black leading-snug"
+                        <h3 class="text-lg sm:text-xl font-bold text-black leading-snug"
                             style="font-family: 'Playfair Display', serif;">
                             Graphic Design Intern
                         </h3>
 
                         <!-- Company -->
-                        <p class="text-black text-sm sm:text-base font-bold tracking-wide mb-4"
+                        <p class="text-gray-700 text-sm sm:text-base font-semibold tracking-wide mb-4"
                             style="font-family: 'Playfair Display', serif;">
                             Bits and Bytes Technology Sdn Bhd, Johor Bahru, Johor
                         </p>
@@ -722,11 +728,13 @@
                             style="font-family: 'Playfair Display', serif;">
                             <p class="flex items-start gap-3">
                                 <span class="w-2 h-2 bg-black rounded-full mt-2.5 shrink-0"></span>
-                                <span>Designed marketing posters and social media graphics (Adobe Photoshop) used across 4 campaigns/channels.</span>
+                                <span>Designed marketing posters and social media graphics (Adobe Photoshop) used across
+                                    4 campaigns/channels.</span>
                             </p>
                             <p class="flex items-start gap-3">
                                 <span class="w-2 h-2 bg-black rounded-full mt-2.5 shrink-0"></span>
-                                <span>Produced and edited promotional videos (Adobe Premiere Pro) supporting company ads and social media output.</span>
+                                <span>Produced and edited promotional videos (Adobe Premiere Pro) supporting company ads
+                                    and social media output.</span>
                             </p>
                         </div>
                     </div>
@@ -759,20 +767,20 @@
             <!-- Project Category Filter Buttons (PS5 Tab Menu) -->
             <div class="flex flex-wrap items-center gap-2 mb-10 pb-4">
                 <button onclick="filterProjects('all', this)"
-                    class="project-filter-btn px-5 py-3.5 rounded-none text-xs font-bold uppercase tracking-widest bg-[#0078d6] text-white border-2border-transparent hover:border-[#0078d6] transition-all duration-300 hover:scale-105">
+                    class="project-filter-btn px-5 py-5 rounded-none text-xs font-bold uppercase tracking-widest bg-[#0078d6] text-white border-2border-transparent hover:border-[#0078d6] transition-all duration-300 hover:scale-105">
                     ALL PROJECTS
                 </button>
                 <button onclick="filterProjects('fyp', this)"
-                    class="project-filter-btn px-5 py-3.5 rounded-none text-xs font-bold uppercase tracking-widest bg-slate-100 text-slate-600 border-2 border-transparent hover:border-[#0078d6] transition-all duration-300 hover:scale-105">
-                    FEATURED FYP
+                    class="project-filter-btn px-5 py-5 rounded-none text-xs font-bold uppercase tracking-widest bg-slate-100 text-slate-600 border-2 border-transparent hover:border-[#0078d6] transition-all duration-300 hover:scale-105">
+                    WEB APPLICATIONS
                 </button>
                 <button onclick="filterProjects('integration', this)"
-                    class="project-filter-btn px-5 py-3.5 rounded-none text-xs font-bold uppercase tracking-widest bg-slate-100 text-slate-600 border-2 border-transparent hover:border-[#0078d6] transition-all duration-300 hover:scale-105">
-                    SYSTEM INTEGRATION
+                    class="project-filter-btn px-5 py-5 rounded-none text-xs font-bold uppercase tracking-widest bg-slate-100 text-slate-600 border-2 border-transparent hover:border-[#0078d6] transition-all duration-300 hover:scale-105">
+                    FINAL YEAR PROJECT
                 </button>
                 <button onclick="filterProjects('webapp', this)"
-                    class="project-filter-btn px-5 py-3.5 rounded-none text-xs font-bold uppercase tracking-widest bg-slate-100 text-slate-600 border-2 border-transparent hover:border-[#0078d6] transition-all duration-300 hover:scale-105">
-                    WEB APPLICATIONS
+                    class="project-filter-btn px-5 py-5 rounded-none text-xs font-bold uppercase tracking-widest bg-slate-100 text-slate-600 border-2 border-transparent hover:border-[#0078d6] transition-all duration-300 hover:scale-105">
+                    MOBILE APPLICATIONS
                 </button>
             </div>
 
@@ -781,20 +789,19 @@
 
                 <!-- Project Card 1 -->
                 <div data-category="fyp webapp"
-                    class="project-card group bg-white rounded-none border-2 border-black transition-all duration-300 flex flex-col overflow-hidden hover:shadow-2xl hover:shadow-black/20">
+                    class="project-card group bg-white rounded-none border-2 border-black transition-all duration-300 flex flex-col overflow-hidden hover:shadow-2xl hover:shadow-blue-200">
                     <!-- Banner Frame -->
                     <div class="relative h-48 sm:h-52 overflow-hidden bg-neutral-900 border-b-2 border-black">
-                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80"
-                            alt="Final Year Project System"
-                            class="w-full h-full object-cover filter grayscale contrast-125 group-hover:scale-105 transition-transform duration-500" />
+                        <img src="assets/system1.png" alt="Final Year Project System"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                     </div>
                     <div class="p-5 sm:p-6 flex flex-col flex-1 justify-between gap-5">
                         <div>
                             <h3
-                                class="text-lg sm:text-xl font-bold font-tungsten tracking-wide text-black uppercase leading-tight group-hover:text-neutral-600 transition-colors">
-                                INTELLIGENT SYSTEM PROTOTYPING PLATFORM
+                                class="text-lg sm:text-xl font-semibold  tracking-wide text-black leading-tight group-hover:text-neutral-600 transition-colors">
+                                Property Management System
                             </h3>
-                            <p class="text-neutral-600 text-xs leading-relaxed mt-2 font-normal">
+                            <p class="text-black text-sm font-fairplay leading-relaxed mt-2 font-normal">
                                 Comprehensive web platform designed to streamline system prototyping, database migration
                                 tracking, and data flow modeling.
                             </p>
@@ -803,7 +810,7 @@
                             <div class="flex flex-wrap gap-1.5 mb-4">
                                 <span
                                     class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">PHP
-                                    / LARAVEL</span>
+                                    / CodeIgniter</span>
                                 <span
                                     class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">MYSQL</span>
                                 <span
@@ -827,64 +834,138 @@
 
                 <!-- Project Card 2 -->
                 <div data-category="integration"
-                    class="project-card group bg-white rounded-none border-2 border-black transition-all duration-300 flex flex-col overflow-hidden hover:shadow-2xl hover:shadow-black/20">
+                    class="project-card group bg-white rounded-none border-2 border-black transition-all duration-300 flex flex-col overflow-hidden hover:shadow-2xl hover:shadow-blue-200">
                     <!-- Banner Frame -->
                     <div class="relative h-48 sm:h-52 overflow-hidden bg-neutral-900 border-b-2 border-black">
-                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80"
-                            alt="Database Integration Tool"
-                            class="w-full h-full object-cover filter grayscale contrast-125 group-hover:scale-105 transition-transform duration-500" />
+                        <img src="assets/system2.png" alt="Final Year Project System"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                     </div>
                     <div class="p-5 sm:p-6 flex flex-col flex-1 justify-between gap-5">
                         <div>
-                            <h3
-                                class="text-lg sm:text-xl font-bold font-tungsten tracking-wide text-black uppercase leading-tight group-hover:text-neutral-600 transition-colors">
-                                SEAMLESS DATABASE MIGRATION SUITE
+                            <h3 class="text-lg sm:text-xl font-semibold tracking-wide text-black leading-tight">
+                                Influencer Management System
                             </h3>
-                            <p class="text-neutral-600 text-xs leading-relaxed mt-2 font-normal">
+                            <p class="text-black text-sm font-fairplay mt-2 font-normal">
                                 Automated database integration tool resolving schema sync conflicts and legacy table
                                 migrations with live logging.
                             </p>
                         </div>
                         <div>
-                            <div class="flex flex-wrap gap-1.5 mb-4">
-                                <span
-                                    class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">NODE.JS</span>
-                                <span
-                                    class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">POSTGRESQL</span>
-                                <span
-                                    class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">REST
-                                    API</span>
-                            </div>
-                            <div class="flex items-center justify-between pt-3 border-t-2 border-black text-xs">
-                                <a href="#"
-                                    class="text-black font-bold uppercase tracking-widest flex items-center gap-1.5 hover:underline transition-all">
-                                    VIEW DETAILS <i class="bi bi-arrow-right text-xs"></i>
-                                </a>
-                                <a href="#" class="text-black hover:text-neutral-600 transition-colors"
-                                    title="Source Code">
-                                    <i class="bi bi-github text-base"></i>
-                                </a>
-                            </div>
-                        </div>
+                <div class="flex flex-wrap gap-1.5 mb-4">
+                    <span
+                        class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">
+                        CODEIGNITER
+                    </span>
+                    <span
+                        class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">
+                        PHP
+                    </span>
+                    <span
+                        class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">
+                        MYSQL
+                    </span>
+                    <span
+                        class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">
+                        TIKTOK API
+                    </span>
+                    <span
+                        class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">
+                        TAILWIND CSS
+                    </span>
+                </div>
+
+                <div class="flex items-center justify-between pt-3 border-t-2 border-black text-xs">
+                    <a href="#"
+                        class="text-black font-bold uppercase tracking-widest flex items-center gap-1.5 hover:underline transition-all">
+                        VIEW PROJECT <i class="bi bi-arrow-right text-xs"></i>
+                    </a>
+
+                    <a href="#" class="text-black hover:text-neutral-600 transition-colors"
+                        title="Source Code">
+                        <i class="bi bi-github text-base"></i>
+                    </a>
+                </div>
+            </div>
                     </div>
                 </div>
 
                 <!-- Project Card 3 -->
                 <div data-category="webapp"
-                    class="project-card group bg-white rounded-none border-2 border-black transition-all duration-300 flex flex-col overflow-hidden hover:shadow-2xl hover:shadow-black/20">
+                    class="project-card group bg-white rounded-none border-2 border-black transition-all duration-300 flex flex-col overflow-hidden hover:shadow-2xl hover:shadow-blue-200">
                     <!-- Banner Frame -->
                     <div class="relative h-48 sm:h-52 overflow-hidden bg-neutral-900 border-b-2 border-black">
-                        <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=800&q=80"
-                            alt="Portfolio Web Application"
-                            class="w-full h-full object-cover filter grayscale contrast-125 group-hover:scale-105 transition-transform duration-500" />
+                        <img src="assets/system3.png" alt="Final Year Project System"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                     </div>
                     <div class="p-5 sm:p-6 flex flex-col flex-1 justify-between gap-5">
                         <div>
                             <h3
-                                class="text-lg sm:text-xl font-bold font-tungsten tracking-wide text-black uppercase leading-tight group-hover:text-neutral-600 transition-colors">
-                                INTERACTIVE DEVELOPER PORTFOLIO
+                                class="text-lg sm:text-xl font-semibold tracking-wide text-black leading-tight group-hover:text-neutral-600 transition-colors">
+                                Driving License Application System
                             </h3>
-                            <p class="text-neutral-600 text-xs leading-relaxed mt-2 font-normal">
+
+                            <p class="text-black text-sm font-fairplay mt-2 font-normal">
+                                A web-based system to streamline driving license applications and training
+                                processes by converting manual workflows into a structured digital process.
+                            </p>
+                        </div>
+                        <div>
+                <div class="flex flex-wrap gap-1.5 mb-4">
+                    <span
+                        class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">
+                        LARAVEL
+                    </span>
+                    <span
+                        class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">
+                        PHP
+                    </span>
+                    <span
+                        class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">
+                        TAILWIND CSS
+                    </span>
+                    <span
+                        class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">
+                        MYSQL
+                    </span>
+                    <span
+                        class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">
+                        OCR
+                    </span>
+                    <span
+                        class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">
+                        RAD Methodology
+                    </span>
+                </div>
+
+                <div class="flex items-center justify-between pt-3 border-t-2 border-black text-xs">
+                    <a href="#"
+                        class="text-black font-bold uppercase tracking-widest flex items-center gap-1.5 hover:underline transition-all">
+                        VIEW PROJECT <i class="bi bi-arrow-right text-xs"></i>
+                    </a>
+
+                    <a href="#" class="text-black hover:text-neutral-600 transition-colors"
+                        title="Source Code">
+                        <i class="bi bi-github text-base"></i>
+                    </a>
+                </div>
+            </div>
+                    </div>
+                </div>
+
+                <!-- Project Card 4 -->
+                <div data-category="webapp"
+                    class="project-card group bg-white rounded-none border-2 border-black transition-all duration-300 flex flex-col overflow-hidden hover:shadow-2xl hover:shadow-blue-200">
+                    <!-- Banner Frame -->
+                    <div class="relative h-48 sm:h-52 overflow-hidden bg-neutral-900 border-b-2 border-black">
+                        <img src="assets/system4.png" alt="Final Year Project System"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                    </div>
+                    <div class="p-5 sm:p-6 flex flex-col flex-1 justify-between gap-5">
+                        <div>
+                            <h3 class="text-lg sm:text-xl font-semibold tracking-wide text-black leading-tight">
+                                Qurban Management System
+                            </h3>
+                            <p class="text-black text-sm font-fairplay leading-relaxed mt-2 font-normal">
                                 Modern portfolio website featuring interactive binary rain ambient visualizer, split
                                 screen design, and fluid responsiveness.
                             </p>
@@ -913,6 +994,163 @@
                     </div>
                 </div>
 
+                <!-- Project Card 4 -->
+                <div data-category="webapp"
+                    class="project-card group bg-white rounded-none border-2 border-black transition-all duration-300 flex flex-col overflow-hidden hover:shadow-2xl hover:shadow-blue-200">
+                    <!-- Banner Frame -->
+                    <div class="relative h-48 sm:h-52 overflow-hidden bg-neutral-900 border-b-2 border-black">
+                        <img src="assets/system5.png" alt="Final Year Project System"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                    </div>
+                    <div class="p-5 sm:p-6 flex flex-col flex-1 justify-between gap-5">
+                        <div>
+                            <h3 class="text-lg sm:text-xl font-semibold tracking-wide text-black leading-tight">
+                                E-Commerce Hardware Mobile Apps
+                            </h3>
+                            <p class="text-black text-sm font-fairplay leading-relaxed mt-2 font-normal">
+                                Modern portfolio website featuring interactive binary rain ambient visualizer, split
+                                screen design, and fluid responsiveness.
+                            </p>
+                        </div>
+                        <div>
+                            <div class="flex flex-wrap gap-1.5 mb-4">
+                                <span
+                                    class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">HTML5
+                                    / CSS3</span>
+                                <span
+                                    class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">TAILWINDCSS</span>
+                                <span
+                                    class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">JAVASCRIPT</span>
+                            </div>
+                            <div class="flex items-center justify-between pt-3 border-t-2 border-black text-xs">
+                                <a href="#"
+                                    class="text-black font-bold uppercase tracking-widest flex items-center gap-1.5 hover:underline transition-all">
+                                    LIVE DEMO <i class="bi bi-arrow-right text-xs"></i>
+                                </a>
+                                <a href="#" class="text-black hover:text-neutral-600 transition-colors"
+                                    title="Source Code">
+                                    <i class="bi bi-github text-base"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="w-full py-16 sm:py-24 bg-white text-black relative z-10">
+        <div class="max-w-7xl mx-auto px-6 sm:px-8 w-full">
+
+            <!-- Section Header -->
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+                <div>
+                    <div class="inline-flex items-center gap-2 px-3 py-1 bg-black text-white border border-black mb-3">
+                        <span class="text-[10px] font-bold tracking-[0.25em] uppercase flex items-center gap-1.5">
+                            CONTACT // 05
+                        </span>
+                    </div>
+                    <h2 class="text-3xl sm:text-[2.5rem] text-black leading-tight"
+                        style="font-family: 'Playfair Display', serif;">
+                        Get In Touch
+                    </h2>
+                </div>
+            </div>
+
+            <!-- Personal Contact Card (Black HUD Theme) -->
+            <div class="max-w-2xl w-full">
+                <div class="bg-black text-white border-2 border-black p-6 sm:p-8 relative overflow-hidden shadow-2xl">
+
+                    <!-- Top HUD / Header Bar -->
+                    <div class="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-neutral-800">
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 bg-neutral-900 border border-neutral-700 flex items-center justify-center font-bold text-lg text-[#60a5fa]">
+                                <i class="bi bi-person-fill text-2xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl sm:text-2xl font-bold tracking-wide text-white uppercase" style="font-family: 'Playfair Display', serif;">
+                                    Khairul
+                                </h3>
+                                <p class="text-xs font-mono uppercase tracking-widest text-[#60a5fa]">
+                                    Software Engineering // Information Systems Engineer
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Live Status Badge -->
+                        <div class="inline-flex items-center gap-2 px-3 py-1.5 bg-neutral-900 border border-neutral-700">
+                            <span class="relative flex h-2.5 w-2.5">
+                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                                <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+                            </span>
+                            <span class="text-[10px] font-mono uppercase tracking-wider text-emerald-400 font-semibold">Available for hire</span>
+                        </div>
+                    </div>
+
+                    <!-- Direct Channels Details -->
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 py-6 border-b border-neutral-800">
+
+                        <!-- Email -->
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 bg-neutral-900 border border-neutral-700 flex items-center justify-center text-[#60a5fa] shrink-0">
+                                <i class="bi bi-envelope-fill text-base"></i>
+                            </div>
+                            <div>
+                                <span class="text-[10px] font-mono uppercase tracking-wider text-neutral-500 block mb-1">Email Address</span>
+                                <a href="mailto:khairul@example.com" class="text-sm font-medium text-white hover:text-[#60a5fa] transition-colors break-all">
+                                    khairul@example.com
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Phone -->
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 bg-neutral-900 border border-neutral-700 flex items-center justify-center text-[#60a5fa] shrink-0">
+                                <i class="bi bi-telephone-fill text-base"></i>
+                            </div>
+                            <div>
+                                <span class="text-[10px] font-mono uppercase tracking-wider text-neutral-500 block mb-1">Phone / WhatsApp</span>
+                                <a href="tel:+60123456789" class="text-sm font-medium text-white hover:text-[#60a5fa] transition-colors">
+                                    +60 12-345 6789
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Location -->
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 bg-neutral-900 border border-neutral-700 flex items-center justify-center text-[#60a5fa] shrink-0">
+                                <i class="bi bi-geo-alt-fill text-base"></i>
+                            </div>
+                            <div>
+                                <span class="text-[10px] font-mono uppercase tracking-wider text-neutral-500 block mb-1">Location</span>
+                                <span class="text-sm font-medium text-white">Malaysia (Remote / On-site)</span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Card Footer: Socials & Quick Action -->
+                    <div class="flex flex-wrap items-center justify-between gap-4 pt-6">
+                        <div class="flex items-center gap-3">
+                            <span class="text-[10px] font-mono uppercase tracking-wider text-neutral-500">Socials:</span>
+                            <a href="#" class="w-9 h-9 bg-neutral-900 border border-neutral-700 flex items-center justify-center text-white hover:bg-[#0078d6] hover:border-[#0078d6] transition-all" title="GitHub">
+                                <i class="bi bi-github text-base"></i>
+                            </a>
+                            <a href="#" class="w-9 h-9 bg-neutral-900 border border-neutral-700 flex items-center justify-center text-white hover:bg-[#0078d6] hover:border-[#0078d6] transition-all" title="LinkedIn">
+                                <i class="bi bi-linkedin text-base"></i>
+                            </a>
+                        </div>
+
+                        <a href="mailto:khairul@example.com"
+                            class="inline-flex items-center gap-2 bg-[#0078d6] text-white text-xs font-bold uppercase tracking-widest px-6 py-3 hover:bg-[#005bb5] transition-colors shadow-lg">
+                            Send Email <i class="bi bi-arrow-right text-xs"></i>
+                        </a>
+                    </div>
+
+                </div>
             </div>
 
         </div>

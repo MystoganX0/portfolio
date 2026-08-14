@@ -7,6 +7,7 @@
     <title>Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="css/animation.css">
+    <link rel="stylesheet" href="css/stars.css">
     <link rel="stylesheet" href="css/raindrop.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,6 +18,10 @@
     <style>
         .font-tungsten {
             font-family: 'Tungsten', 'Bebas Neue', 'Oswald', sans-serif;
+        }
+
+        .font-fairplay {
+            font-family: 'Playfair Display', serif;
         }
 
         body {
@@ -78,10 +83,19 @@
                 /* matches sm:top-6 */
             }
         }
+
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
     </style>
 </head>
 
-<body class="text-white relative bg-[#04001b]">
+<body class="text-white relative bg-transparent">
 
     <div class="w-full max-w-7xl mx-auto px-8 py-6 flex justify-between items-center">
         <a href="#" class="text-sm text-white font-bold tracking-tight flex items-center">
@@ -91,74 +105,75 @@
 
     <!-- Hero Section (Applied Design) -->
     <main id="home"
-        class="w-full relative flex flex-col justify-start md:justify-center pt-32 pb-28 md:py-40 overflow-hidden bg-[#04001b]">
+        class="w-full relative flex flex-col justify-start md:justify-center pb-32 md:py-40 overflow-hidden bg-transparent">
 
-        <div class="code-rain-container">
-            <!-- Foreground (Fast, Large, Sharp, Bright) -->
-            <div class="drop"
-                style="--x: 5vw;  --delay: 0.1s; --duration: 6s; --size: 1.5rem; --blur: 0px; --opacity: 0.9;">1010110
+        <!-- Minimalist Celestial Star Field -->
+        <div class="stars-container" aria-hidden="true">
+            <!-- Background Layer (Tiny Twinkling Dots) -->
+            <div class="star star-dot"
+                style="--top: 15%; --left: 10%; --size: 1.5px; --delay: 0.2s; --duration: 3s; --opacity: 0.4;"></div>
+            <div class="star star-dot"
+                style="--top: 25%; --left: 85%; --size: 1px;   --delay: 1.5s; --duration: 4s; --opacity: 0.3;"></div>
+            <div class="star star-dot"
+                style="--top: 40%; --left: 20%; --size: 2px;   --delay: 0.8s; --duration: 3.5s; --opacity: 0.5;"></div>
+            <div class="star star-dot"
+                style="--top: 60%; --left: 75%; --size: 1.5px; --delay: 2.1s; --duration: 4.2s; --opacity: 0.35;"></div>
+            <div class="star star-dot"
+                style="--top: 70%; --left: 15%; --size: 1px;   --delay: 0.5s; --duration: 3.8s; --opacity: 0.4;"></div>
+            <div class="star star-dot"
+                style="--top: 85%; --left: 90%; --size: 2px;   --delay: 1.8s; --duration: 3.2s; --opacity: 0.45;"></div>
+            <div class="star star-dot"
+                style="--top: 10%; --left: 60%; --size: 1px;   --delay: 2.7s; --duration: 4.5s; --opacity: 0.3;"></div>
+            <div class="star star-dot"
+                style="--top: 30%; --left: 45%; --size: 1.5px; --delay: 1.1s; --duration: 3.6s; --opacity: 0.5;"></div>
+            <div class="star star-dot"
+                style="--top: 50%; --left: 95%; --size: 1px;   --delay: 0.3s; --duration: 4.0s; --opacity: 0.35;"></div>
+            <div class="star star-dot"
+                style="--top: 80%; --left: 35%; --size: 2px;   --delay: 2.4s; --duration: 3.4s; --opacity: 0.4;"></div>
+
+            <!-- Midground Layer (Soft Glowing Stars) -->
+            <div class="star star-glow"
+                style="--top: 18%; --left: 30%; --size: 3px; --delay: 0.4s; --duration: 4.5s; --opacity: 0.7;"></div>
+            <div class="star star-glow"
+                style="--top: 35%; --left: 70%; --size: 2.5px; --delay: 1.9s; --duration: 3.8s; --opacity: 0.65;"></div>
+            <div class="star star-glow"
+                style="--top: 55%; --left: 12%; --size: 3px; --delay: 1.2s; --duration: 4.2s; --opacity: 0.75;"></div>
+            <div class="star star-glow"
+                style="--top: 65%; --left: 82%; --size: 2.5px; --delay: 2.5s; --duration: 5.0s; --opacity: 0.6;"></div>
+            <div class="star star-glow"
+                style="--top: 22%; --left: 92%; --size: 3px; --delay: 0.9s; --duration: 3.9s; --opacity: 0.7;"></div>
+            <div class="star star-glow"
+                style="--top: 78%; --left: 55%; --size: 2.5px; --delay: 1.7s; --duration: 4.6s; --opacity: 0.65;"></div>
+
+            <!-- Foreground Layer (Minimalist 4-Point Sparkle Cross Stars) -->
+            <div class="star star-sparkle"
+                style="--top: 12%; --left: 78%; --size: 12px; --delay: 0.6s; --duration: 5s; --opacity: 0.85;">
+                <svg viewBox="0 0 24 24" fill="currentColor" class="w-full h-full text-blue-300/80">
+                    <path d="M12 0L14.5 9.5L24 12L14.5 14.5L12 24L9.5 14.5L0 12L9.5 9.5L12 0Z" />
+                </svg>
             </div>
-            <div class="drop"
-                style="--x: 25vw; --delay: 2.3s; --duration: 6.5s; --size: 1.4rem; --blur: 0px; --opacity: 0.8;">01001
+            <div class="star star-sparkle"
+                style="--top: 45%; --left: 8%; --size: 10px; --delay: 2.2s; --duration: 4.8s; --opacity: 0.75;">
+                <svg viewBox="0 0 24 24" fill="currentColor" class="w-full h-full text-sky-200/80">
+                    <path d="M12 0L14.5 9.5L24 12L14.5 14.5L12 24L9.5 14.5L0 12L9.5 9.5L12 0Z" />
+                </svg>
             </div>
-            <div class="drop"
-                style="--x: 45vw; --delay: 1.2s; --duration: 5.8s; --size: 1.6rem; --blur: 0px; --opacity: 0.85;">110101
+            <div class="star star-sparkle"
+                style="--top: 68%; --left: 40%; --size: 14px; --delay: 1.4s; --duration: 5.4s; --opacity: 0.9;">
+                <svg viewBox="0 0 24 24" fill="currentColor" class="w-full h-full text-white/90">
+                    <path d="M12 0L14.5 9.5L24 12L14.5 14.5L12 24L9.5 14.5L0 12L9.5 9.5L12 0Z" />
+                </svg>
             </div>
-            <div class="drop"
-                style="--x: 65vw; --delay: 0.5s; --duration: 6.2s; --size: 1.5rem; --blur: 0px; --opacity: 0.9;">1001001
-            </div>
-            <div class="drop"
-                style="--x: 85vw; --delay: 3.1s; --duration: 5.5s; --size: 1.4rem; --blur: 0px; --opacity: 0.8;">01110
-            </div>
-            <div class="drop"
-                style="--x: 95vw; --delay: 1.8s; --duration: 6s; --size: 1.5rem; --blur: 0px; --opacity: 0.85;">1010
+            <div class="star star-sparkle"
+                style="--top: 28%; --left: 52%; --size: 9px; --delay: 3.1s; --duration: 4.2s; --opacity: 0.7;">
+                <svg viewBox="0 0 24 24" fill="currentColor" class="w-full h-full text-blue-200/70">
+                    <path d="M12 0L14.5 9.5L24 12L14.5 14.5L12 24L9.5 14.5L0 12L9.5 9.5L12 0Z" />
+                </svg>
             </div>
 
-            <!-- Midground (Medium Speed, Medium Size, Slight Blur) -->
-            <div class="drop"
-                style="--x: 12vw; --delay: 0.8s; --duration: 8s; --size: 1.1rem; --blur: 1px; --opacity: 0.5;">0110010
-            </div>
-            <div class="drop"
-                style="--x: 32vw; --delay: 4.2s; --duration: 8.5s; --size: 1rem; --blur: 1.5px; --opacity: 0.4;">10101
-            </div>
-            <div class="drop"
-                style="--x: 52vw; --delay: 0.3s; --duration: 7.5s; --size: 1.2rem; --blur: 1px; --opacity: 0.6;">0011
-            </div>
-            <div class="drop"
-                style="--x: 72vw; --delay: 2.5s; --duration: 8s; --size: 1.1rem; --blur: 1px; --opacity: 0.5;">1100110
-            </div>
-            <div class="drop"
-                style="--x: 90vw; --delay: 1.1s; --duration: 7.8s; --size: 1.2rem; --blur: 1.5px; --opacity: 0.45;">0101
-            </div>
-            <div class="drop"
-                style="--x: 18vw; --delay: 3.6s; --duration: 8.2s; --size: 1rem; --blur: 1px; --opacity: 0.55;">100100
-            </div>
-            <div class="drop"
-                style="--x: 78vw; --delay: 0.9s; --duration: 7.9s; --size: 1.1rem; --blur: 1.5px; --opacity: 0.4;">01101
-            </div>
-
-            <!-- Background (Slow, Small, Heavy Blur, Faded) -->
-            <div class="drop"
-                style="--x: 8vw;  --delay: 1.5s; --duration: 12s; --size: 0.8rem; --blur: 3px; --opacity: 0.2;">
-                101001010</div>
-            <div class="drop"
-                style="--x: 28vw; --delay: 5.1s; --duration: 11.5s; --size: 0.7rem; --blur: 4px; --opacity: 0.15;">
-                011010</div>
-            <div class="drop"
-                style="--x: 48vw; --delay: 2.7s; --duration: 13s; --size: 0.9rem; --blur: 3px; --opacity: 0.25;">
-                10011011</div>
-            <div class="drop"
-                style="--x: 68vw; --delay: 0.2s; --duration: 12.5s; --size: 0.8rem; --blur: 4px; --opacity: 0.15;">
-                0101001</div>
-            <div class="drop"
-                style="--x: 88vw; --delay: 4.8s; --duration: 11s; --size: 0.7rem; --blur: 3px; --opacity: 0.2;">1101
-            </div>
-            <div class="drop"
-                style="--x: 38vw; --delay: 1.9s; --duration: 12.2s; --size: 0.8rem; --blur: 3.5px; --opacity: 0.2;">
-                010010</div>
-            <div class="drop"
-                style="--x: 58vw; --delay: 3.4s; --duration: 11.8s; --size: 0.75rem; --blur: 4px; --opacity: 0.15;">
-                10110101</div>
+            <!-- Subtle Shooting Star Streaks -->
+            <div class="shooting-star" style="--top: 15%; --left: 60%; --delay: 1s; --duration: 7s;"></div>
+            <div class="shooting-star" style="--top: 40%; --left: 30%; --delay: 5s; --duration: 9s;"></div>
         </div>
 
         <!-- Main Content Area -->
@@ -172,15 +187,13 @@
                     </p>
 
                     <!-- Headline -->
-                    <h1
-                        class="text-4xl md:text-5xl lg:text-7xl text-[#60a5fa] font-tungsten tracking-wide leading-[0.85] mb-2 lg:mb-4">
-                        KHAIRUL HAKIMI <br>BIN ROSLI
+                    <h1 class="text-4xl md:text-5xl lg:text-7xl text-[#60a5fa]  mb-4 lg:mb-4"
+                        style="font-family: 'Playfair Display', serif;">
+                        Designing, Developing and Delivering.
                     </h1>
 
                     <!-- Avatar and Bio -->
                     <div class="flex items-center space-x-4 max-w-md">
-                        <!-- <img src="assets/profile.jpg" alt="Profile Picture"
-                            class="w-12 h-12 md:w-14 md:h-14 object-cover rounded-full border border-white shadow-[0_0_15px_rgba(37,99,235,0.3)] shrink-0"> -->
                         <p class="text-white text-sm md:text-base font-tungsten lowercase leading-normal tracking-wide">
                             Fresh graduate in Information Systems Engineering, seeking opportunities in software
                             development.
@@ -189,14 +202,14 @@
 
                     <div>
                         <a href="#projects"
-                            class="inline-block bg-[#0078d6] mt-6 text-white font-bold text-sm sm:text-base px-8 py-3.5 hover:bg-[#005bb5] transition-colors shadow-lg shadow-black/50 text-center">
+                            class="inline-block bg-[#0078d6] mt-6 text-white text-sm sm:text-base px-8 py-3.5 hover:bg-[#005bb5] transition-colors shadow-lg shadow-black/50 text-center">
                             Get in touch
                         </a>
                     </div>
                 </div>
 
                 <!-- 3D Cube (Appears at top on mobile, beside on desktop) -->
-                <!-- <div
+                <div
                     class="md:col-span-5 lg:col-span-4 flex justify-center md:justify-end items-center order-1 md:order-2">
                     <div class="lottie-replacement-container">
                         <div class="cube-scene">
@@ -208,7 +221,7 @@
                             <div class="face bottom"></div>
                         </div>
                     </div>
-                </div> -->
+                </div>
             </div>
         </div>
     </main>
@@ -220,18 +233,25 @@
         <div
             class="flex border border-gray-300 bg-white/95 backdrop-blur-sm shadow-2xl shadow-black/10 cursor-pointer h-12 sm:h-16 pointer-events-auto max-w-full overflow-x-auto">
 
-            <!-- Home -->
-            <a href="#home" onclick="setActiveNav(this)"
-                class="nav-tab-btn bg-black text-white hover:bg-gray-900 px-6 sm:px-10 flex items-center justify-center min-w-[90px] sm:min-w-[140px] transition-colors group">
-                <span
-                    class="text-sm sm:text-base font-tungsten tracking-widest lowercase transition-opacity">home</span>
-            </a>
-
             <!-- About -->
             <a href="#about" onclick="setActiveNav(this)"
-                class="nav-tab-btn bg-white text-black hover:bg-gray-100 px-6 sm:px-10 flex items-center justify-center min-w-[90px] sm:min-w-[140px] border-l border-gray-300 transition-colors group">
+                class="nav-tab-btn bg-black text-white hover:bg-gray-900 px-6 sm:px-10 flex items-center justify-center min-w-[90px] sm:min-w-[140px] transition-colors group">
                 <span
                     class="text-sm sm:text-base font-tungsten tracking-widest lowercase group-hover:opacity-70 transition-opacity">about</span>
+            </a>
+
+            <!-- Skills -->
+            <a href="#skills" onclick="setActiveNav(this)"
+                class="nav-tab-btn bg-white text-black hover:bg-gray-100 px-6 sm:px-10 flex items-center justify-center min-w-[90px] sm:min-w-[140px] border-l border-gray-300 transition-colors group">
+                <span
+                    class="text-sm sm:text-base font-tungsten tracking-widest lowercase group-hover:opacity-70 transition-opacity">skills</span>
+            </a>
+
+            <!-- Experience -->
+            <a href="#experience" onclick="setActiveNav(this)"
+                class="nav-tab-btn bg-white text-black hover:bg-gray-100 px-6 sm:px-10 flex items-center justify-center min-w-[90px] sm:min-w-[140px] border-l border-gray-300 transition-colors group">
+                <span
+                    class="text-sm sm:text-base font-tungsten tracking-widest lowercase group-hover:opacity-70 transition-opacity">experience</span>
             </a>
 
             <!-- Projects -->
@@ -239,13 +259,6 @@
                 class="nav-tab-btn bg-white text-black hover:bg-gray-100 px-6 sm:px-10 flex items-center justify-center min-w-[90px] sm:min-w-[140px] border-l border-gray-300 transition-colors group">
                 <span
                     class="text-sm sm:text-base font-tungsten tracking-widest lowercase group-hover:opacity-70 transition-opacity">projects</span>
-            </a>
-
-            <!-- Resume -->
-            <a href="#" onclick="setActiveNav(this)"
-                class="nav-tab-btn bg-white text-black hover:bg-gray-100 px-6 sm:px-10 flex items-center justify-center min-w-[90px] sm:min-w-[140px] border-l border-gray-300 transition-colors group">
-                <span
-                    class="text-sm sm:text-base font-tungsten tracking-widest lowercase group-hover:opacity-70 transition-opacity">resume</span>
             </a>
 
         </div>
@@ -272,16 +285,17 @@
                                 ABOUT // 01
                             </span>
                         </div>
-                        <h2
-                            class="text-4xl sm:text-5xl md:text-6xl font-tungsten text-black tracking-wider uppercase mb-3 leading-none">
-                            WHO I AM
+                        <h2 class="text-3xl sm:text-[2.5rem] text-black mb-5 leading-tight"
+                            style="font-family: 'Playfair Display', serif;">
+                            Introduction
                         </h2>
-                        <p class="text-neutral-700 text-sm md:text-sm leading-relaxed font-normal tracking-wide">
-                            I am an <strong class="text-black font-bold">Information Systems Engineering</strong>
-                            student finalizing my academic journey through a comprehensive Final Year Project. My
-                            primary technical focus is full-stack web development, where I have sustained, hands-on
-                            experience building prototyping systems, fixing database integrations, and executing
-                            seamless system migrations.
+                        <p class="text-neutral-700 text-sm md:text-sm leading-relaxed font-normal tracking-wide" style="font-family: 'Playfair Display', serif;">
+                            I’m am fresh graduate in Information Systems Engineering, with a passion for building
+                            functional and user-focused digital solutions.
+                            With experience in front-end and back-end web development, and hands-on experience across
+                            different stages of the Software Development Life Cycle (SDLC).
+                            I enjoy turning ideas into practical applications. I’m currently looking for opportunities
+                            as:
                         </p>
                     </div>
 
@@ -289,22 +303,22 @@
                     <div class="grid grid-cols-3 gap-3 py-3 border-y-2 border-gray-100 bg-neutral-50/50 px-2">
                         <div>
                             <span
-                                class="block text-xl sm:text-2xl font-bold font-tungsten text-black tracking-widest">2024
-                                — 2026</span>
-                            <span class="text-[10px] text-neutral-500 font-bold uppercase tracking-[0.15em]">Degree
-                                Timeline</span>
+                                class="block text-xl sm:text-2xl font-medium font-tungsten text-black tracking-widest">Software
+                                Engineering</span>
+                            <span
+                                class="text-[10px] text-neutral-500 font-bold uppercase tracking-[0.15em]">Junior</span>
                         </div>
                         <div class="border-x border-neutral-200 px-2 sm:px-4">
                             <span
-                                class="block text-xl sm:text-2xl font-bold font-tungsten text-black tracking-widest">UiTM</span>
-                            <span class="text-[10px] text-neutral-500 font-bold uppercase tracking-[0.15em]">Shah Alam &
-                                Segamat</span>
+                                class="block text-xl sm:text-2xl font-medium font-tungsten text-black tracking-widest">Programmer</span>
+                            <span
+                                class="text-[10px] text-neutral-500 font-bold uppercase tracking-[0.15em]">Junior</span>
                         </div>
                         <div class="pl-1 sm:pl-2">
                             <span
-                                class="block text-xl sm:text-2xl font-bold font-tungsten text-black tracking-widest">FULL-STACK</span>
+                                class="block text-xl sm:text-2xl font-medium font-tungsten text-black tracking-widest">Front-End</span>
                             <span
-                                class="text-[10px] text-neutral-500 font-bold uppercase tracking-[0.15em]">Engineering</span>
+                                class="text-[10px] text-neutral-500 font-bold uppercase tracking-[0.15em]">Junior</span>
                         </div>
                     </div>
 
@@ -315,17 +329,14 @@
                                 class="text-xs uppercase tracking-[0.25em] text-neutral-900 font-bold flex items-center gap-2">
                                 <span class="w-1.5 h-3 bg-black inline-block"></span> ACADEMIC BACKGROUND
                             </h3>
-                            <span class="text-[10px] uppercase font-mono tracking-widest text-neutral-400">SYS_VER
-                                2.0</span>
                         </div>
 
-                        <div class="flex flex-col gap-4">
+                        <div id="academic-slider"
+                            class="flex flex-row sm:flex-col overflow-x-auto sm:overflow-visible snap-x snap-mandatory sm:snap-none gap-0 sm:gap-4 pb-2 sm:pb-0 no-scrollbar">
 
                             <!-- Education Card 1 -->
                             <div onclick="toggleWidgetCourses(this)"
-                                class="group bg-white rounded-none p-4 sm:p-5 shadow-sm hover:shadow-xl border-2 border-gray-200 transition-all duration-300 cursor-pointer relative overflow-hidden">
-                                <div class="absolute top-0 left-0 w-1 h-full bg-black group-hover:w-2 transition-all">
-                                </div>
+                                class="group bg-white rounded-none p-4 sm:p-5 shadow-sm hover:shadow-xl hover:shadow-blue-200 hover:border-black border-2 border-gray-200 transition-all duration-300 cursor-pointer relative overflow-hidden w-full min-w-full sm:min-w-0 snap-center shrink-0 sm:shrink flex flex-col justify-between box-border">
                                 <div class="flex items-start gap-4 pl-2">
                                     <div class="p-2 bg-neutral-900 rounded-none border border-black shrink-0">
                                         <img src="assets/uitm.png" alt="UiTM Logo"
@@ -339,12 +350,11 @@
                                                 Bachelor of Information Systems (Hons.) Information Systems Engineering
                                             </h4>
                                             <span
-                                                class="inline-flex items-center px-3 py-0.5 text-[11px] font-bold bg-neutral-200 text-black border border-black uppercase tracking-widest shrink-0 w-fit">
+                                                class="inline-flex items-center px-3 py-0.5 text-[11px] font-bold bg-black text-white uppercase tracking-widest shrink-0 w-fit">
                                                 2024 — 2026
                                             </span>
                                         </div>
-                                        <div
-                                            class="flex items-center justify-between mt-3 pt-2 border-t border-neutral-100">
+                                        <div class="flex items-center justify-between mt-2 md:mt-4">
                                             <span
                                                 class="text-neutral-600 text-xs flex items-center gap-1.5 font-bold uppercase tracking-wider">
                                                 <i class="bi bi-geo-alt-fill text-black"></i> UiTM Campus Shah Alam
@@ -362,17 +372,11 @@
                                             <span
                                                 class="text-[10px] uppercase tracking-widest font-bold text-neutral-400 mr-1">Modules:</span>
                                             <span
-                                                class="inline-flex items-center px-2.5 py-1 text-xs font-bold bg-black text-white hover:bg-neutral-800 transition-colors uppercase tracking-wide">Software
-                                                Engineering</span>
+                                                class="inline-flex items-center px-3 py-1 text-xs font-bold bg-neutral-200 text-black border border-black uppercase tracking-widest shrink-0 w-fit">System Requirements</span>
                                             <span
-                                                class="inline-flex items-center px-2.5 py-1 text-xs font-bold bg-black text-white hover:bg-neutral-800 transition-colors uppercase tracking-wide">System
-                                                Requirements</span>
+                                                class="inline-flex items-center px-3 py-1 text-xs font-bold bg-neutral-200 text-black border border-black uppercase tracking-widest shrink-0 w-fit">System Design</span>
                                             <span
-                                                class="inline-flex items-center px-2.5 py-1 text-xs font-bold bg-black text-white hover:bg-neutral-800 transition-colors uppercase tracking-wide">System
-                                                Design</span>
-                                            <span
-                                                class="inline-flex items-center px-2.5 py-1 text-xs font-bold bg-black text-white hover:bg-neutral-800 transition-colors uppercase tracking-wide">System
-                                                Testing</span>
+                                                class="inline-flex items-center px-3 py-1 text-xs font-bold bg-neutral-200 text-black border border-black uppercase tracking-widest shrink-0 w-fit">System Testing</span>
                                         </div>
                                     </div>
                                 </div>
@@ -380,10 +384,7 @@
 
                             <!-- Education Card 2 -->
                             <div onclick="toggleWidgetCourses(this)"
-                                class="group bg-white rounded-none p-4 sm:p-5 shadow-sm hover:shadow-xl border-2 border-gray-200 transition-all duration-300 cursor-pointer relative overflow-hidden">
-                                <div
-                                    class="absolute top-0 left-0 w-1 h-full bg-neutral-400 group-hover:bg-black group-hover:w-2 transition-all">
-                                </div>
+                                class="group bg-white rounded-none p-4 sm:p-5 shadow-sm hover:shadow-xl hover:shadow-blue-200 hover:border-black border-2 border-gray-200 transition-all duration-300 cursor-pointer relative overflow-hidden w-full min-w-full sm:min-w-0 snap-center shrink-0 sm:shrink flex flex-col justify-between box-border">
                                 <div class="flex items-start gap-4 pl-2">
                                     <div class="p-2 bg-neutral-900 rounded-none border border-black shrink-0">
                                         <img src="assets/uitm.png" alt="UiTM Logo"
@@ -397,12 +398,11 @@
                                                 Diploma in Computer Science
                                             </h4>
                                             <span
-                                                class="inline-flex items-center px-3 py-0.5 text-[11px] font-bold bg-neutral-200 text-black border border-black uppercase tracking-widest shrink-0 w-fit">
-                                                2021 — 2024
+                                                class="inline-flex items-center px-3 py-0.5 text-[11px] font-bold bg-black text-white uppercase tracking-widest shrink-0 w-fit">
+                                                2024 — 2026
                                             </span>
                                         </div>
-                                        <div
-                                            class="flex items-center justify-between mt-3 pt-2 border-t border-neutral-100">
+                                        <div class="flex items-center justify-between mt-2 md:mt-4">
                                             <span
                                                 class="text-neutral-600 text-xs flex items-center gap-1.5 font-bold uppercase tracking-wider">
                                                 <i class="bi bi-geo-alt-fill text-black"></i> UiTM Campus Segamat
@@ -420,14 +420,11 @@
                                             <span
                                                 class="text-[10px] uppercase tracking-widest font-bold text-neutral-400 mr-1">Modules:</span>
                                             <span
-                                                class="inline-flex items-center px-2.5 py-1 text-xs font-bold bg-black text-white hover:bg-neutral-800 transition-colors uppercase tracking-wide">Object-Oriented
-                                                Programming</span>
+                                                class="inline-flex items-center px-3 py-1 text-xs font-bold bg-neutral-200 text-black border border-black uppercase tracking-widest shrink-0 w-fit">Object-Oriented Programming</span>
                                             <span
-                                                class="inline-flex items-center px-2.5 py-1 text-xs font-bold bg-black text-white hover:bg-neutral-800 transition-colors uppercase tracking-wide">Database
-                                                Engineering</span>
+                                                class="inline-flex items-center px-3 py-1 text-xs font-bold bg-neutral-200 text-black border border-black uppercase tracking-widest shrink-0 w-fit">Data Structure</span>
                                             <span
-                                                class="inline-flex items-center px-2.5 py-1 text-xs font-bold bg-black text-white hover:bg-neutral-800 transition-colors uppercase tracking-wide">Front-End
-                                                Web Development</span>
+                                                class="inline-flex items-center px-3 py-1 text-xs font-bold bg-neutral-200 text-black border border-black uppercase tracking-widest shrink-0 w-fit">Web Development</span>
                                         </div>
                                     </div>
                                 </div>
@@ -444,7 +441,7 @@
                 class="w-full lg:w-[30%] relative min-h-[450px] sm:min-h-[500px] lg:min-h-full flex flex-col shrink-0 bg-black overflow-hidden lg:border-l border-gray-900">
 
                 <!-- Top Image Section with Bottom Fade -->
-                <div class="relative flex-1 w-full min-h-[280px]">
+                <div class="relative flex-1 w-full min-h-[240px]">
                     <!-- Profile Photo -->
                     <img src="assets/photo1.png" alt="Khairul Hakimi Profile"
                         class="absolute inset-0 w-full h-full object-cover object-center" />
@@ -460,26 +457,33 @@
 
                 <!-- Bottom Content Section (Solid Black) -->
                 <div class="w-full bg-black px-6 sm:px-8 pb-10 pt-2 flex flex-col justify-end z-10">
+                    <div
+                        class="flex flex-row sm:flex-col items-center sm:items-start justify-between sm:justify-start gap-4">
 
-                    <!-- Headline (Serif font mimicking the reference text) -->
-                    <h3 class="text-3xl sm:text-[2.5rem] text-white mb-2 leading-tight"
-                        style="font-family: 'Playfair Display', serif;">
-                        Khairul Hakimi.
-                    </h3>
+                        <!-- Text Info -->
+                        <div class="flex flex-col">
+                            <!-- Headline -->
+                            <h3 class="text-2xl sm:text-[2.5rem] text-white mb-1 sm:mb-2 leading-tight"
+                                style="font-family: 'Playfair Display', serif;">
+                                Khairul Hakimi.
+                            </h3>
 
-                    <!-- Sub-headline (Sans-serif, bold, clean) -->
-                    <p class="text-white text-sm sm:text-base font-bold mb-8 tracking-wide">
-                        Information Systems Engineering.
-                    </p>
+                            <!-- Sub-headline -->
+                            <p class="text-white text-xs sm:text-base font-bold sm:mb-3 tracking-wide">
+                                Information Systems Engineering.
+                            </p>
+                        </div>
 
-                    <!-- Blue Action Button -->
-                    <div>
-                        <a href="#projects"
-                            class="inline-block bg-[#0078d6] text-white font-bold text-sm sm:text-base px-8 py-3.5 hover:bg-[#005bb5] transition-colors shadow-lg shadow-black/50 text-center">
-                            Learn more
-                        </a>
+                        <!-- Blue Action Button -->
+                        <div class="shrink-0">
+                            <a href="#projects"
+                                class="inline-flex items-center justify-center bg-[#0078d6] text-white font-bold text-sm sm:text-base p-3 sm:px-8 sm:py-3.5 hover:bg-[#005bb5] transition-colors shadow-lg shadow-black/50 text-center">
+                                <i class="bi bi-arrow-right sm:hidden text-lg leading-none"></i>
+                                <span class="hidden sm:inline">Learn more</span>
+                            </a>
+                        </div>
+
                     </div>
-
                 </div>
             </div>
 
@@ -487,52 +491,287 @@
 
     </section>
 
+    <!-- Skills Section (PS5 Technical HUD Style - Monochrome Light) -->
+    <section id="skills" class="w-full py-16 sm:py-24 bg-white text-black relative z-10">
+        <div class="max-w-7xl mx-auto px-6 sm:px-8 w-full">
+
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-4 sm:mb-8 gap-4">
+                <div>
+                    <div class="inline-flex items-center gap-2 px-3 py-1 bg-black text-white border border-black mb-4">
+                        <span class="text-[10px] font-bold tracking-[0.25em] uppercase flex items-center gap-1.5">
+                            SKILLS // 02
+                        </span>
+                    </div>
+                    <h2 class="text-3xl sm:text-[2.5rem] text-black mb-4 leading-tight"
+                        style="font-family: 'Playfair Display', serif;">
+                        Technical Capabilities
+                    </h2>
+                </div>
+            </div>
+
+            <div id="skills-slider"
+                class="flex md:grid flex-row overflow-x-auto md:overflow-visible snap-x snap-mandatory md:snap-none md:grid-cols-2 gap-0 sm:gap-8 pb-3 md:pb-0 no-scrollbar">
+
+                <!-- Skill Category 1: Programming Languages -->
+                <div
+                    class="group bg-white border-2 border-gray-200 p-5 sm:p-6 hover:shadow-xl hover:border-black hover:shadow-blue-200 transition-all duration-300 relative overflow-hidden flex flex-col justify-between w-full min-w-full md:min-w-0 snap-center shrink-0 md:shrink box-border">
+                    <div>
+                        <h3 class="text-xl sm:text-2xl font-tungsten text-black uppercase tracking-wider mb-2">
+                            Languages
+                        </h3>
+                        <!-- Skill Badges -->
+                        <div class="flex flex-wrap gap-2">
+                            <span
+                                class="inline-flex items-center px-3 py-1 text-xs font-bold bg-neutral-200 text-black border border-black uppercase tracking-widest shrink-0 w-fit">PHP</span>
+                            <span
+                                class="inline-flex items-center px-3 py-1 text-xs font-bold bg-neutral-200 text-black border border-black uppercase tracking-widest shrink-0 w-fit">Java</span>
+                            <span
+                                class="inline-flex items-center px-3 py-1 text-xs font-bold bg-neutral-200 text-black border border-black uppercase tracking-widest shrink-0 w-fit">JavaScript</span>
+                            <span
+                                class="inline-flex items-center px-3 py-1 text-xs font-bold bg-neutral-200 text-black border border-black uppercase tracking-widest shrink-0 w-fit">HTML5 / CSS3</span>
+                            <span
+                                class="inline-flex items-center px-3 py-1 text-xs font-bold bg-neutral-200 text-black border border-black uppercase tracking-widest shrink-0 w-fit">C++</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Skill Category 2: Frameworks & Web -->
+                <div
+                    class="group bg-white border-2 border-gray-200 p-5 sm:p-6 hover:shadow-xl hover:shadow-blue-200 hover:border-black transition-all duration-300 relative overflow-hidden flex flex-col justify-between w-full min-w-full md:min-w-0 snap-center shrink-0 md:shrink box-border">
+                    <div>
+                        <h3 class="text-xl sm:text-2xl font-tungsten text-black uppercase tracking-wider mb-2">
+                            Frameworks & Web
+                        </h3>
+                        <!-- Skill Badges -->
+                        <div class="flex flex-wrap gap-2">
+                            <span
+                                class="inline-flex items-center px-3 py-1 text-xs font-bold bg-neutral-200 text-black border border-black uppercase tracking-widest shrink-0 w-fit">Laravel</span>
+                            <span
+                                class="inline-flex items-center px-3 py-1 text-xs font-bold bg-neutral-200 text-black border border-black uppercase tracking-widest shrink-0 w-fit">CodeIgniter</span>
+                            <span
+                                class="inline-flex items-center px-3 py-1 text-xs font-bold bg-neutral-200 text-black border border-black uppercase tracking-widest shrink-0 w-fit">Node.js</span>
+                            <span
+                                class="inline-flex items-center px-3 py-1 text-xs font-bold bg-neutral-200 text-black border border-black uppercase tracking-widest shrink-0 w-fit">Tailwind CSS</span>
+                            <span
+                                class="inline-flex items-center px-3 py-1 text-xs font-bold bg-neutral-200 text-black border border-black uppercase tracking-widest shrink-0 w-fit">Bootstrap</span>
+                            <span
+                                class="inline-flex items-center px-3 py-1 text-xs font-bold bg-neutral-200 text-black border border-black uppercase tracking-widest shrink-0 w-fit">RESTful APIs</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Skill Category 3: Database & SDLC -->
+                <div
+                    class="group bg-white border-2 border-gray-200 p-5 sm:p-6 hover:shadow-xl hover:shadow-blue-200 hover:border-black transition-all duration-300 relative overflow-hidden flex flex-col justify-between w-full min-w-full md:min-w-0 snap-center shrink-0 md:shrink box-border">
+                    <div>
+                        <h3 class="text-xl sm:text-2xl font-tungsten text-black uppercase tracking-wider mb-2">
+                            Database & SDLC
+                        </h3>
+                        <!-- Skill Badges -->
+                        <div class="flex flex-wrap gap-2">
+                            <span
+                                class="inline-flex items-center px-3 py-1 text-xs font-bold bg-neutral-200 text-black border border-black uppercase tracking-widest shrink-0 w-fit">MySQL</span>
+                            <span
+                                class="inline-flex items-center px-3 py-1 text-xs font-bold bg-neutral-200 text-black border border-black uppercase tracking-widest shrink-0 w-fit">Oracle</span>
+                            <span
+                                class="inline-flex items-center px-3 py-1 text-xs font-bold bg-neutral-200 text-black border border-black uppercase tracking-widest shrink-0 w-fit">Firebase</span>
+                            <span
+                                class="inline-flex items-center px-3 py-1 text-xs font-bold bg-neutral-200 text-black border border-black uppercase tracking-widest shrink-0 w-fit">System Requirements</span>
+                            <span
+                                class="inline-flex items-center px-3 py-1 text-xs font-bold bg-neutral-200 text-black border border-black uppercase tracking-widest shrink-0 w-fit">System Design</span>
+                            <span
+                                class="inline-flex items-center px-3 py-1 text-xs font-bold bg-neutral-200 text-black border border-black uppercase tracking-widest shrink-0 w-fit">System Testing</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Skill Category 4: Tools & Workflow -->
+                <div
+                    class="group bg-white border-2 border-gray-200 p-5 sm:p-6 hover:shadow-xl hover:shadow-blue-200 hover:border-black transition-all duration-300 relative overflow-hidden flex flex-col justify-between w-full min-w-full md:min-w-0 snap-center shrink-0 md:shrink box-border">
+                    <div>
+                        <h3 class="text-xl sm:text-2xl font-tungsten text-black uppercase tracking-wider mb-2">
+                            Developer Tools
+                        </h3>
+                        <!-- Skill Badges -->
+                        <div class="flex flex-wrap gap-2">
+                            <span
+                                class="inline-flex items-center px-3 py-1 text-xs font-bold bg-neutral-200 text-black border border-black uppercase tracking-widest shrink-0 w-fit">Git & GitHub</span>
+                            <span
+                                class="inline-flex items-center px-3 py-1 text-xs font-bold bg-neutral-200 text-black border border-black uppercase tracking-widest shrink-0 w-fit">VS Code</span>
+                            <span
+                                class="inline-flex items-center px-3 py-1 text-xs font-bold bg-neutral-200 text-black border border-black uppercase tracking-widest shrink-0 w-fit">Laragon / XAMPP</span>
+                            <span
+                                class="inline-flex items-center px-3 py-1 text-xs font-bold bg-neutral-200 text-black border border-black uppercase tracking-widest shrink-0 w-fit">cPanel</span>
+                            <span
+                                class="inline-flex items-center px-3 py-1 text-xs font-bold bg-neutral-200 text-black border border-black uppercase tracking-widest shrink-0 w-fit">Wordpress</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Skills Mobile Slider Dots -->
+            <div id="skills-dots" class="flex md:hidden items-center justify-center gap-2 mt-4">
+                <span class="w-2.5 h-2.5 rounded-full bg-black transition-all"></span>
+                <span class="w-2 h-2 rounded-full bg-gray-300 transition-all"></span>
+                <span class="w-2 h-2 rounded-full bg-gray-300 transition-all"></span>
+                <span class="w-2 h-2 rounded-full bg-gray-300 transition-all"></span>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Experience Section (PS5 Technical HUD Style - Monochrome Light) -->
+    <section id="experience" class="w-full py-16 sm:py-24 bg-white text-black relative z-10">
+        <div class="max-w-7xl mx-auto px-6 sm:px-8 w-full">
+
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+                <div>
+                    <div class="inline-flex items-center gap-2 px-3 py-1 bg-black text-white border border-black mb-4">
+                        <span class="text-[10px] font-bold tracking-[0.25em] uppercase flex items-center gap-1.5">
+                            EXPERIENCE // 03
+                        </span>
+                    </div>
+                    <h2 class="text-3xl sm:text-[2.5rem] text-black mb-4 leading-tight"
+                        style="font-family: 'Playfair Display', serif;">
+                        Work Experiences
+                    </h2>
+                </div>
+            </div>
+
+            <!-- Experience Cards Container -->
+            <div id="experience-slider" class="relative w-full sm:p-6 rounded-lg bg-white" style="font-family: 'Times New Roman', Times, serif;">
+
+                <!-- Timeline Container -->
+                <div class="relative border-l border-black ml-2 md:ml-4 py-2 space-y-12">
+
+                    <!-- Experience Card 1: Programmer Intern -->
+                    <div class="relative pl-8 md:pl-10">
+                        <!-- Timeline Dot -->
+                        <span class="absolute -left-[6.5px] top-2 w-3.5 h-3.5 rounded-full bg-black"></span>
+
+                        <!-- Date -->
+                        <p class="text-black text-sm sm:text-base font-bold tracking-wide mb-1"
+                            style="font-family: 'Playfair Display', serif;">
+                            Mar 2026 – Jul 2026 <span class="text-black font-semibold">(5 Months)</span>
+                        </p>
+
+                        <!-- Title -->
+                        <h3 class="text-lg sm:text-xl font-bold text-black leading-snug"
+                            style="font-family: 'Playfair Display', serif;">
+                            Programmer Intern
+                        </h3>
+
+                        <!-- Company -->
+                        <p class="text-black text-sm sm:text-base font-semibold tracking-wide mb-4"
+                            style="font-family: 'Playfair Display', serif;">
+                            JustSimple (M) Sdn Bhd, Petaling Jaya, Selangor
+                        </p>
+
+                        <!-- Description (Bullet Points) -->
+                        <div class="text-black text-sm sm:text-sm leading-relaxed mb-4 flex flex-col gap-3 font-normal"
+                            style="font-family: 'Playfair Display', serif;">
+                            <p class="flex items-start gap-3">
+                                <span class="w-2 h-2 bg-black rounded-full mt-2.5 shrink-0"></span>
+                                <span>Built and shipped an Influencer Management admin dashboard (CodeIgniter, PHP, MySQL, Tailwind CSS) that integrated the TikTok API to auto-pull creator profile data, removing a fully manual data-collection process for team.</span>
+                            </p>
+                            <p class="flex items-start gap-3">
+                                <span class="w-2 h-2 bg-black rounded-full mt-2.5 shrink-0"></span>
+                                <span>Developed a Property Management System (CodeIgniter, PHP, HTML5, CSS3, MySQL, cPanel) used to list and manage real-estate sales, translating UI/UX mockups into functional, responsive pages.</span>
+                            </p>
+                            <p class="flex items-start gap-3">
+                                <span class="w-2 h-2 bg-black rounded-full mt-2.5 shrink-0"></span>
+                                <span>Maintained and extended 5+ live company and client websites, shipping new features and fixing responsive-layout, routing, and email-delivery defects across several weeks with zero rollback incidents.</span>
+                            </p>
+                            <p class="flex items-start gap-3">
+                                <span class="w-2 h-2 bg-black rounded-full mt-2.5 shrink-0"></span>
+                                <span>Triaged and resolved 10+ production bugs for email delivery, URL routing, responsive layout, and workflow logic.</span>
+                            </p>
+                            <p class="flex items-start gap-3">
+                                <span class="w-2 h-2 bg-black rounded-full mt-2.5 shrink-0"></span>
+                                <span>Customized and deployed responsive WordPress themes for client sites.</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Experience Card 2: Graphic Design Intern -->
+                    <div class="relative pl-8 md:pl-10">
+                        <!-- Timeline Dot -->
+                        <span class="absolute -left-[6.5px] top-2 w-3.5 h-3.5 rounded-full bg-black"></span>
+
+                        <!-- Date -->
+                        <p class="text-black text-sm sm:text-base font-bold tracking-wide mb-1"
+                            style="font-family: 'Playfair Display', serif;">
+                            Sept 2023 – Feb 2024 <span class="text-black font-semibold">(6 Months)</span>
+                        </p>
+
+                        <!-- Title -->
+                        <h3 class="text-xl sm:text-2xl font-bold text-black leading-snug"
+                            style="font-family: 'Playfair Display', serif;">
+                            Graphic Design Intern
+                        </h3>
+
+                        <!-- Company -->
+                        <p class="text-black text-sm sm:text-base font-bold tracking-wide mb-4"
+                            style="font-family: 'Playfair Display', serif;">
+                            Bits and Bytes Technology Sdn Bhd, Johor Bahru, Johor
+                        </p>
+
+                        <!-- Description (Bullet Points) -->
+                        <div class="text-black text-sm sm:text-sm leading-relaxed mb-4 flex flex-col gap-3 font-normal"
+                            style="font-family: 'Playfair Display', serif;">
+                            <p class="flex items-start gap-3">
+                                <span class="w-2 h-2 bg-black rounded-full mt-2.5 shrink-0"></span>
+                                <span>Designed marketing posters and social media graphics (Adobe Photoshop) used across 4 campaigns/channels.</span>
+                            </p>
+                            <p class="flex items-start gap-3">
+                                <span class="w-2 h-2 bg-black rounded-full mt-2.5 shrink-0"></span>
+                                <span>Produced and edited promotional videos (Adobe Premiere Pro) supporting company ads and social media output.</span>
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
     <!-- Projects Section (PS5 Console Library Style - Monochrome) -->
     <section id="projects" class="w-full py-16 sm:py-24 bg-white text-black relative z-10">
         <div class="max-w-7xl mx-auto px-6 sm:px-8 w-full">
 
             <!-- Section Header (PS5 Library HUD) -->
-            <div
-                class="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-12 gap-4 pb-6 border-b-2 border-black">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-4 sm:mb-6 gap-4">
                 <div>
                     <div class="inline-flex items-center gap-2 px-3 py-1 bg-black text-white border border-black mb-3">
                         <span class="text-[10px] font-bold tracking-[0.25em] uppercase flex items-center gap-1.5">
-                            MEDIA LIBRARY // 02
+                            PROJECTS // 04
                         </span>
                     </div>
-                    <h2
-                        class="text-4xl sm:text-5xl md:text-6xl font-tungsten tracking-wider text-black uppercase leading-none">
-                        FEATURED PROJECTS
+                    <h2 class="text-3xl sm:text-[2.5rem] text-black mb-4 leading-tight"
+                        style="font-family: 'Playfair Display', serif;">
+                        Featured Projects
                     </h2>
-                    <p class="text-neutral-600 text-xs sm:text-sm max-w-xl mt-3 font-normal tracking-wide">
-                        A showcase of full-stack web applications, system integration tools, and prototyping projects
-                        I've engineered.
-                    </p>
-                </div>
-                <div class="hidden sm:block">
-                    <span
-                        class="text-xs font-mono uppercase tracking-[0.2em] text-black font-bold border-2 border-black px-3 py-1.5 bg-neutral-50">
-                        SELECTED WORKS // 2024 — 2026
-                    </span>
                 </div>
             </div>
 
             <!-- Project Category Filter Buttons (PS5 Tab Menu) -->
-            <div class="flex flex-wrap items-center gap-2 mb-10 pb-4 border-b border-neutral-200">
+            <div class="flex flex-wrap items-center gap-2 mb-10 pb-4">
                 <button onclick="filterProjects('all', this)"
-                    class="project-filter-btn px-5 py-2 rounded-none text-xs font-bold uppercase tracking-widest bg-slate-900 text-white border-2 border-black transition-all duration-300 hover:scale-105">
+                    class="project-filter-btn px-5 py-3.5 rounded-none text-xs font-bold uppercase tracking-widest bg-[#0078d6] text-white border-2border-transparent hover:border-[#0078d6] transition-all duration-300 hover:scale-105">
                     ALL PROJECTS
                 </button>
                 <button onclick="filterProjects('fyp', this)"
-                    class="project-filter-btn px-5 py-2 rounded-none text-xs font-bold uppercase tracking-widest bg-slate-100 text-slate-600 border-2 border-transparent hover:border-black transition-all duration-300 hover:scale-105">
+                    class="project-filter-btn px-5 py-3.5 rounded-none text-xs font-bold uppercase tracking-widest bg-slate-100 text-slate-600 border-2 border-transparent hover:border-[#0078d6] transition-all duration-300 hover:scale-105">
                     FEATURED FYP
                 </button>
                 <button onclick="filterProjects('integration', this)"
-                    class="project-filter-btn px-5 py-2 rounded-none text-xs font-bold uppercase tracking-widest bg-slate-100 text-slate-600 border-2 border-transparent hover:border-black transition-all duration-300 hover:scale-105">
+                    class="project-filter-btn px-5 py-3.5 rounded-none text-xs font-bold uppercase tracking-widest bg-slate-100 text-slate-600 border-2 border-transparent hover:border-[#0078d6] transition-all duration-300 hover:scale-105">
                     SYSTEM INTEGRATION
                 </button>
                 <button onclick="filterProjects('webapp', this)"
-                    class="project-filter-btn px-5 py-2 rounded-none text-xs font-bold uppercase tracking-widest bg-slate-100 text-slate-600 border-2 border-transparent hover:border-black transition-all duration-300 hover:scale-105">
+                    class="project-filter-btn px-5 py-3.5 rounded-none text-xs font-bold uppercase tracking-widest bg-slate-100 text-slate-600 border-2 border-transparent hover:border-[#0078d6] transition-all duration-300 hover:scale-105">
                     WEB APPLICATIONS
                 </button>
             </div>
@@ -548,10 +787,6 @@
                         <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80"
                             alt="Final Year Project System"
                             class="w-full h-full object-cover filter grayscale contrast-125 group-hover:scale-105 transition-transform duration-500" />
-                        <div
-                            class="absolute top-3 right-3 bg-black text-white border border-white/30 text-[10px] font-mono font-bold tracking-widest uppercase px-3 py-1">
-                            FEATURED FYP
-                        </div>
                     </div>
                     <div class="p-5 sm:p-6 flex flex-col flex-1 justify-between gap-5">
                         <div>
@@ -598,10 +833,6 @@
                         <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80"
                             alt="Database Integration Tool"
                             class="w-full h-full object-cover filter grayscale contrast-125 group-hover:scale-105 transition-transform duration-500" />
-                        <div
-                            class="absolute top-3 right-3 bg-black text-white border border-white/30 text-[10px] font-mono font-bold tracking-widest uppercase px-3 py-1">
-                            SYSTEM INTEGRATION
-                        </div>
                     </div>
                     <div class="p-5 sm:p-6 flex flex-col flex-1 justify-between gap-5">
                         <div>
@@ -646,10 +877,6 @@
                         <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=800&q=80"
                             alt="Portfolio Web Application"
                             class="w-full h-full object-cover filter grayscale contrast-125 group-hover:scale-105 transition-transform duration-500" />
-                        <div
-                            class="absolute top-3 right-3 bg-black text-white border border-white/30 text-[10px] font-mono font-bold tracking-widest uppercase px-3 py-1">
-                            WEB APPLICATION
-                        </div>
                     </div>
                     <div class="p-5 sm:p-6 flex flex-col flex-1 justify-between gap-5">
                         <div>
@@ -728,11 +955,11 @@
         function filterProjects(category, button) {
             const buttons = document.querySelectorAll('.project-filter-btn');
             buttons.forEach(btn => {
-                btn.classList.remove('bg-slate-900', 'text-white', 'shadow-sm');
+                btn.classList.remove('bg-[#0078d6]', 'text-white', 'shadow-sm');
                 btn.classList.add('bg-slate-100', 'text-slate-600');
             });
             button.classList.remove('bg-slate-100', 'text-slate-600');
-            button.classList.add('bg-slate-900', 'text-white', 'shadow-sm');
+            button.classList.add('bg-[#0078d6]', 'text-white', 'shadow-sm');
 
             const cards = document.querySelectorAll('.project-card');
             cards.forEach(card => {
@@ -797,6 +1024,32 @@
                 { threshold: 0 }
             );
             observer.observe(sentinel);
+        })();
+
+        /* ===== Mobile Slider Dots Sync ===== */
+        (function () {
+            function bindSliderDots(sliderId, dotsId) {
+                const slider = document.getElementById(sliderId);
+                const dotsContainer = document.getElementById(dotsId);
+                if (!slider || !dotsContainer) return;
+                const dots = dotsContainer.querySelectorAll('span');
+
+                slider.addEventListener('scroll', () => {
+                    const width = slider.clientWidth;
+                    if (!width) return;
+                    const activeIndex = Math.min(dots.length - 1, Math.max(0, Math.round(slider.scrollLeft / width)));
+                    dots.forEach((dot, i) => {
+                        if (i === activeIndex) {
+                            dot.className = 'w-2.5 h-2.5 rounded-full bg-black transition-all';
+                        } else {
+                            dot.className = 'w-2 h-2 rounded-full bg-gray-300 transition-all';
+                        }
+                    });
+                }, { passive: true });
+            }
+
+            bindSliderDots('academic-slider', 'academic-dots');
+            bindSliderDots('skills-slider', 'skills-dots');
         })();
     </script>
 </body>

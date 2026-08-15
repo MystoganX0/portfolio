@@ -1204,7 +1204,11 @@
             }
         }
 
+        let isManualNavClick = false;
+        const trackedSectionIds = ['about', 'skills', 'experience', 'projects'];
+
         function setActiveNav(element) {
+            isManualNavClick = true;
             const allBtns = document.querySelectorAll('.nav-tab-btn');
             allBtns.forEach(btn => {
                 btn.classList.remove('bg-black', 'text-white', 'hover:bg-gray-900');
@@ -1212,7 +1216,54 @@
             });
             element.classList.remove('bg-white', 'text-black', 'hover:bg-gray-100');
             element.classList.add('bg-black', 'text-white', 'hover:bg-gray-900');
+
+            setTimeout(() => {
+                isManualNavClick = false;
+            }, 800);
         }
+
+        function updateActiveNavOnScroll() {
+            if (isManualNavClick) return;
+
+            const scrollPos = window.scrollY;
+            const windowHeight = window.innerHeight;
+            const docHeight = document.documentElement.scrollHeight;
+
+            let activeId = 'about';
+
+            // If scrolled near page bottom, activate projects
+            if (scrollPos + windowHeight >= docHeight - 80) {
+                activeId = 'projects';
+            } else {
+                for (let i = trackedSectionIds.length - 1; i >= 0; i--) {
+                    const id = trackedSectionIds[i];
+                    const section = document.getElementById(id);
+                    if (section) {
+                        const rect = section.getBoundingClientRect();
+                        if (rect.top <= windowHeight * 0.45) {
+                            activeId = id;
+                            break;
+                        }
+                    }
+                }
+            }
+
+            const allBtns = document.querySelectorAll('.nav-tab-btn');
+            allBtns.forEach(btn => {
+                const target = btn.getAttribute('href');
+                if (target === '#' + activeId) {
+                    btn.classList.remove('bg-white', 'text-black', 'hover:bg-gray-100');
+                    btn.classList.add('bg-black', 'text-white', 'hover:bg-gray-900');
+                } else {
+                    btn.classList.remove('bg-black', 'text-white', 'hover:bg-gray-900');
+                    btn.classList.add('bg-white', 'text-black', 'hover:bg-gray-100');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', updateActiveNavOnScroll, { passive: true });
+        window.addEventListener('resize', updateActiveNavOnScroll, { passive: true });
+        window.addEventListener('load', updateActiveNavOnScroll);
 
         function filterProjects(category, button) {
             const buttons = document.querySelectorAll('.project-filter-btn');

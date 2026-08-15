@@ -197,7 +197,7 @@
                 </div>
 
                 <!-- 3D Cube (Appears at top on mobile, beside on desktop) -->
-                <div
+                <!-- <div
                     class="md:col-span-5 lg:col-span-4 flex justify-center md:justify-end items-center order-1 md:order-2">
                     <div class="lottie-replacement-container">
                         <div class="cube-scene">
@@ -209,7 +209,7 @@
                             <div class="face bottom"></div>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </main>
@@ -723,19 +723,15 @@
             <!-- Project Category Filter Buttons (PS5 Tab Menu) -->
             <div class="flex flex-wrap items-center gap-2 mb-10 pb-4">
                 <button onclick="filterProjects('all', this)"
-                    class="project-filter-btn px-5 py-5 rounded-none text-xs font-bold uppercase tracking-widest bg-[#0078d6] text-white border-2border-transparent hover:border-[#0078d6] transition-all duration-300 hover:scale-105">
+                    class="project-filter-btn px-5 py-3 md:py-5 rounded-none text-xs font-bold uppercase tracking-widest bg-[#0078d6] text-white border-2 border-transparent hover:border-[#0078d6] transition-all duration-300 hover:scale-105">
                     ALL PROJECTS
                 </button>
-                <button onclick="filterProjects('fyp', this)"
-                    class="project-filter-btn px-5 py-5 rounded-none text-xs font-bold uppercase tracking-widest bg-slate-100 text-slate-600 border-2 border-transparent hover:border-[#0078d6] transition-all duration-300 hover:scale-105">
+                <button onclick="filterProjects('webapp', this)"
+                    class="project-filter-btn px-5 py-3 md:py-5 rounded-none text-xs font-bold uppercase tracking-widest bg-slate-100 text-slate-600 border-2 border-transparent hover:border-[#0078d6] transition-all duration-300 hover:scale-105">
                     WEB APPLICATIONS
                 </button>
-                <button onclick="filterProjects('integration', this)"
-                    class="project-filter-btn px-5 py-5 rounded-none text-xs font-bold uppercase tracking-widest bg-slate-100 text-slate-600 border-2 border-transparent hover:border-[#0078d6] transition-all duration-300 hover:scale-105">
-                    FINAL YEAR PROJECT
-                </button>
-                <button onclick="filterProjects('webapp', this)"
-                    class="project-filter-btn px-5 py-5 rounded-none text-xs font-bold uppercase tracking-widest bg-slate-100 text-slate-600 border-2 border-transparent hover:border-[#0078d6] transition-all duration-300 hover:scale-105">
+                <button onclick="filterProjects('mobile', this)"
+                    class="project-filter-btn px-5 py-3 md:py-5 rounded-none text-xs font-bold uppercase tracking-widest bg-slate-100 text-slate-600 border-2 border-transparent hover:border-[#0078d6] transition-all duration-300 hover:scale-105">
                     MOBILE APPLICATIONS
                 </button>
             </div>
@@ -744,11 +740,15 @@
             <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
 
                 <!-- Project Card 1 -->
-                <div data-category="fyp webapp"
+                <div data-category="webapp"
                     class="project-card group bg-white rounded-none border-2 border-black transition-all duration-300 flex flex-col overflow-hidden hover:shadow-2xl hover:shadow-blue-200">
                     <!-- Banner Frame -->
                     <div class="relative h-48 sm:h-52 overflow-hidden bg-neutral-900 border-b-2 border-black">
-                        <img src="assets/system1.png" alt="Final Year Project System"
+                        <!-- Project Badge -->
+                        <div class="absolute top-3 right-3 z-10 inline-flex items-center gap-1.5 px-3 py-1 bg-blue-700 text-white text-[10px] font-bold uppercase tracking-widest shadow-lg">
+                            INTERNSHIP PROJECT
+                        </div>
+                        <img src="assets/system1.png" alt="Property Management System"
                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                     </div>
                     <div class="p-5 sm:p-6 flex flex-col flex-1 justify-between gap-5">
@@ -801,11 +801,20 @@
                 </div>
 
                 <!-- Project Card 2 -->
-                <div data-category="integration"
+                <div data-category="webapp"
                     class="project-card group bg-white rounded-none border-2 border-black transition-all duration-300 flex flex-col overflow-hidden hover:shadow-2xl hover:shadow-blue-200">
                     <!-- Banner Frame -->
                     <div class="relative h-48 sm:h-52 overflow-hidden bg-neutral-900 border-b-2 border-black">
-                        <img src="assets/system2.png" alt="Final Year Project System"
+                        <!-- Project Badges -->
+                        <div class="absolute top-3 right-3 z-10 flex flex-col items-end gap-1.5">
+                            <div class="inline-flex items-center px-3 py-1 bg-pink-600 text-white text-[10px] font-bold uppercase tracking-widest shadow-lg">
+                                INTERNSHIP PROJECT
+                            </div>
+                            <div class="inline-flex items-center px-3 py-1 bg-pink-600 text-white text-[10px] font-bold uppercase tracking-widest shadow-lg">
+                                MY PROJECT
+                            </div>
+                        </div>
+                        <img src="assets/system2.png" alt="Influencer Management System"
                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                     </div>
                     <div class="p-5 sm:p-6 flex flex-col flex-1 justify-between gap-5">
@@ -849,7 +858,7 @@
                                     LIVE <i class="bi bi-arrow-right text-xs"></i>
                                 </a>
 
-                                <a href="#"
+                                <a href=""
                                     class="text-black font-bold uppercase tracking-widest flex items-center gap-1.5 hover:underline transition-all"
                                     title="Source Code">
                                     SOURCE CODE <i class="bi bi-github text-base"></i>
@@ -864,6 +873,10 @@
                     class="project-card group bg-white rounded-none border-2 border-black transition-all duration-300 flex flex-col overflow-hidden hover:shadow-2xl hover:shadow-blue-200">
                     <!-- Banner Frame -->
                     <div class="relative h-48 sm:h-52 overflow-hidden bg-neutral-900 border-b-2 border-black">
+                        <!-- FYP Badge -->
+                        <div class="absolute top-3 right-3 z-10 inline-flex items-center gap-1.5 px-3 py-1 bg-red-600 text-white text-[10px] font-bold  uppercase tracking-widest shadow-lg">
+                            FINAL YEAR PROJECT
+                        </div>
                         <img src="assets/system3.png" alt="Final Year Project System"
                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                     </div>
@@ -930,7 +943,11 @@
                     class="project-card group bg-white rounded-none border-2 border-black transition-all duration-300 flex flex-col overflow-hidden hover:shadow-2xl hover:shadow-blue-200">
                     <!-- Banner Frame -->
                     <div class="relative h-48 sm:h-52 overflow-hidden bg-neutral-900 border-b-2 border-black">
-                        <img src="assets/system4.png" alt="Final Year Project System"
+                        <!-- Project Badge -->
+                        <div class="absolute top-3 right-3 z-10 inline-flex items-center gap-1.5 px-3 py-1 bg-green-500 text-white text-[10px] font-bold uppercase tracking-widest shadow-lg">
+                            UNIVERSITY PROJECT
+                        </div>
+                        <img src="assets/system4.png" alt="Qurban Management System"
                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                     </div>
                     <div class="p-5 sm:p-6 flex flex-col flex-1 justify-between gap-5">
@@ -978,11 +995,15 @@
                 </div>
 
                 <!-- Project Card 5 -->
-                <div data-category="webapp"
+                <div data-category="mobile"
                     class="project-card group bg-white rounded-none border-2 border-black transition-all duration-300 flex flex-col overflow-hidden hover:shadow-2xl hover:shadow-blue-200">
                     <!-- Banner Frame -->
                     <div class="relative h-48 sm:h-52 overflow-hidden bg-neutral-900 border-b-2 border-black">
-                        <img src="assets/system5.png" alt="Final Year Project System"
+                        <!-- Project Badge -->
+                        <div class="absolute top-3 right-3 z-10 inline-flex items-center gap-1.5 px-3 py-1 bg-indigo-500 text-white text-[10px] font-bold uppercase tracking-widest shadow-lg">
+                            MY PROJECT
+                        </div>
+                        <img src="assets/system5.png" alt="E-Commerce Hardware Mobile Apps"
                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                     </div>
                     <div class="p-5 sm:p-6 flex flex-col flex-1 justify-between gap-5">

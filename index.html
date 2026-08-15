@@ -262,7 +262,7 @@
 
             <!-- Left Panel: Text Content (PS5 / Sony Monochrome Style) -->
             <div
-                class="w-full lg:w-[70%] bg-white rounded-tr-[4rem] px-6 py-10 sm:px-10 lg:py-16 lg:pl-[max(2rem,calc((100vw-80rem)/2+2rem))] lg:pr-14 flex flex-col justify-center -mt-5 sm:-mt-12 lg:mt-0 rounded-tr-[4rem] lg:rounded-none relative z-20">
+                class="w-full lg:w-[70%] bg-white rounded-tr-[4rem] px-6 py-10 sm:px-10 lg:py-16 lg:pl-[max(2rem,calc((100vw-80rem)/2+2rem))] lg:pr-14 flex flex-col justify-between -mt-5 sm:-mt-12 lg:mt-0 rounded-tr-[4rem] lg:rounded-none relative z-20">
                 <div class="max-w-3xl flex flex-col gap-6 sm:gap-8">
 
                     <!-- Section Heading & PlayStation Style Badge -->
@@ -291,128 +291,87 @@
                     <!-- PS5 Style Monochrome Spec Sheet Grid -->
                     <div class="grid grid-cols-3 gap-3 py-3 border-y-2 border-gray-100 bg-neutral-50/50 px-2">
                         <div>
-                            <span class="text-[14px] text-neutral-500 font-bold tracking-[0.15em]">Junior</span>
-                            <span class="block text-xl sm:text-2xl text-black tracking-wide">Software
+                            <span class="text-sm text-neutral-500 font-bold tracking-[0.15em]">Junior</span>
+                            <span class="block text-md sm:text-lg text-black tracking-wide">Software
                                 Engineering</span>
                         </div>
                         <div class="border-x border-neutral-200 px-2 sm:px-4">
                             <span class="text-[14px] text-neutral-500 font-bold tracking-[0.15em]">Junior</span>
-                            <span class="block text-xl sm:text-2xl text-black tracking-wide">Programmer</span>
+                            <span class="block text-md sm:text-md text-black tracking-wide">Programmer</span>
                         </div>
                         <div class="pl-1 sm:pl-2">
                             <span class="text-[14px] text-neutral-500 font-bold tracking-[0.15em]">Junior</span>
-                            <span class="block text-xl sm:text-2xl text-black tracking-wide">Front-End</span>
+                            <span class="block text-md sm:text-md text-black tracking-wide">Front-End</span>
                         </div>
                     </div>
 
                     <!-- Education Cards (PS5 Monochrome UI) -->
                     <div>
-                        <div class="flex items-center justify-between mb-4">
-                            <h3 class="text-sm tracking-[0.15em] text-neutral-900 font-bold flex items-center gap-2">
+                        <div class="flex items-center justify-between mb-3">
+                            <h3
+                                class="text-xs sm:text-sm tracking-[0.15em] text-neutral-900 font-bold flex items-center gap-2">
                                 <span class="w-1.5 h-3 bg-black inline-block"></span> Academic Background
                             </h3>
                         </div>
 
                         <div id="academic-slider"
-                            class="flex flex-row sm:flex-col overflow-x-auto sm:overflow-visible snap-x snap-mandatory sm:snap-none gap-0 sm:gap-4 pb-2 sm:pb-0 no-scrollbar">
+                            class="flex flex-row sm:flex-col overflow-x-auto sm:overflow-visible snap-x snap-mandatory sm:snap-none gap-0 sm:gap-3 pb-2 sm:pb-0 no-scrollbar">
 
                             <!-- Education Card 1 -->
-                            <div onclick="toggleWidgetCourses(this)"
-                                class="group bg-white rounded-none p-4 sm:p-5 shadow-sm hover:shadow-xl hover:shadow-blue-200 hover:border-black border-2 border-gray-200 transition-all duration-300 cursor-pointer relative overflow-hidden w-full min-w-full sm:min-w-0 snap-center shrink-0 sm:shrink flex flex-col justify-between box-border">
-                                <div class="flex items-start gap-4 pl-2">
-                                    <div class="p-2 bg-neutral-900 rounded-none border border-black shrink-0">
+                            <div
+                                class="group bg-white rounded-none p-3.5 sm:p-4 shadow-sm hover:shadow-xl hover:shadow-blue-200 hover:border-black border-2 border-gray-200 transition-all duration-300 relative overflow-hidden w-full min-w-full sm:min-w-0 snap-center shrink-0 sm:shrink flex flex-col justify-between box-border">
+                                <div class="flex items-start gap-3 pl-1">
+                                    <div class="p-1.5 bg-neutral-900 rounded-none border border-black shrink-0">
                                         <img src="assets/uitm.png" alt="UiTM Logo"
-                                            class="w-8 h-8 sm:w-10 sm:h-10 object-contain">
+                                            class="w-7 h-7 sm:w-8 sm:h-8 object-contain">
                                     </div>
                                     <div class="flex flex-col flex-1 min-w-0">
                                         <div
                                             class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 sm:gap-2">
                                             <h4
-                                                class="text-black text-sm sm:text-base font-bold leading-snug tracking-wide">
+                                                class="text-black text-xs sm:text-sm font-bold leading-snug tracking-wide">
                                                 Bachelor of Information Systems (Hons.) Information Systems Engineering
                                             </h4>
                                             <span
-                                                class="inline-flex items-center px-3 py-0.5 text-[11px] font-bold bg-black text-white uppercase tracking-widest shrink-0 w-fit">
+                                                class="inline-flex items-center px-2 py-0.5 text-[10px] font-bold bg-black text-white uppercase tracking-widest shrink-0 w-fit">
                                                 2024 — 2026
                                             </span>
                                         </div>
-                                        <div class="flex items-center justify-between mt-2 md:mt-4">
+                                        <div class="flex items-center justify-between mt-1.5 md:mt-2.5">
                                             <span
-                                                class="text-neutral-600 text-xs flex items-center gap-1.5 font-bold tracking-wider">
+                                                class="text-neutral-600 text-[11px] flex items-center gap-1.5 font-bold tracking-wider">
                                                 <i class="bi bi-geo-alt-fill text-black"></i> UiTM Campus Shah Alam
                                             </span>
-                                            <span
-                                                class="text-xs text-black font-bold flex items-center gap-1 tracking-widest">
-                                                Courses <i
-                                                    class="bi bi-chevron-down text-xs transition-transform duration-300 chevron-icon"></i>
-                                            </span>
-                                        </div>
-
-                                        <!-- Course Related Tags -->
-                                        <div
-                                            class="courses-content hidden flex-wrap items-center gap-1.5 mt-3 pt-3 border-t-2 border-black transition-all">
-                                            <span
-                                                class="text-[12px] tracking-widest font-bold text-neutral-400 mr-1">Modules:</span>
-                                            <span
-                                                class="inline-flex items-center px-3 py-1 text-xs font-bold bg-neutral-200 text-black border border-black tracking-widest shrink-0 w-fit">System
-                                                Requirements</span>
-                                            <span
-                                                class="inline-flex items-center px-3 py-1 text-xs font-bold bg-neutral-200 text-black border border-black tracking-widest shrink-0 w-fit">System
-                                                Design</span>
-                                            <span
-                                                class="inline-flex items-center px-3 py-1 text-xs font-bold bg-neutral-200 text-black border border-black tracking-widest shrink-0 w-fit">System
-                                                Testing</span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
                             <!-- Education Card 2 -->
-                            <div onclick="toggleWidgetCourses(this)"
-                                class="group bg-white rounded-none p-4 sm:p-5 shadow-sm hover:shadow-xl hover:shadow-blue-200 hover:border-black border-2 border-gray-200 transition-all duration-300 cursor-pointer relative overflow-hidden w-full min-w-full sm:min-w-0 snap-center shrink-0 sm:shrink flex flex-col justify-between box-border">
-                                <div class="flex items-start gap-4 pl-2">
-                                    <div class="p-2 bg-neutral-900 rounded-none border border-black shrink-0">
+                            <div
+                                class="group bg-white rounded-none p-3.5 sm:p-4 shadow-sm hover:shadow-xl hover:shadow-blue-200 hover:border-black border-2 border-gray-200 transition-all duration-300 relative overflow-hidden w-full min-w-full sm:min-w-0 snap-center shrink-0 sm:shrink flex flex-col justify-between box-border">
+                                <div class="flex items-start gap-3 pl-1">
+                                    <div class="p-1.5 bg-neutral-900 rounded-none border border-black shrink-0">
                                         <img src="assets/uitm.png" alt="UiTM Logo"
-                                            class="w-8 h-8 sm:w-10 sm:h-10 object-contain ">
+                                            class="w-7 h-7 sm:w-8 sm:h-8 object-contain">
                                     </div>
                                     <div class="flex flex-col flex-1 min-w-0">
                                         <div
                                             class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 sm:gap-2">
                                             <h4
-                                                class="text-black text-sm sm:text-base font-bold leading-snug tracking-wide">
+                                                class="text-black text-xs sm:text-sm font-bold leading-snug tracking-wide">
                                                 Diploma in Computer Science
                                             </h4>
                                             <span
-                                                class="inline-flex items-center px-3 py-0.5 text-[11px] font-bold bg-black text-white uppercase tracking-widest shrink-0 w-fit">
+                                                class="inline-flex items-center px-2 py-0.5 text-[10px] font-bold bg-black text-white uppercase tracking-widest shrink-0 w-fit">
                                                 2024 — 2026
                                             </span>
                                         </div>
-                                        <div class="flex items-center justify-between mt-2 md:mt-4">
+                                        <div class="flex items-center justify-between mt-1.5 md:mt-2.5">
                                             <span
-                                                class="text-neutral-600 text-xs flex items-center gap-1.5 font-bold tracking-wider">
+                                                class="text-neutral-600 text-[11px] flex items-center gap-1.5 font-bold tracking-wider">
                                                 <i class="bi bi-geo-alt-fill text-black"></i> UiTM Campus Segamat
                                             </span>
-                                            <span
-                                                class="text-xs text-black font-bold flex items-center gap-1 tracking-widest">
-                                                Courses <i
-                                                    class="bi bi-chevron-down text-xs transition-transform duration-300 chevron-icon"></i>
-                                            </span>
-                                        </div>
-
-                                        <!-- Course Related Tags -->
-                                        <div
-                                            class="courses-content hidden flex-wrap items-center gap-1.5 mt-3 pt-3 border-t-2 border-black transition-all">
-                                            <span
-                                                class="text-[12px] tracking-widest font-bold text-neutral-400 mr-1">Modules:</span>
-                                            <span
-                                                class="inline-flex items-center px-3 py-1 text-xs font-bold bg-neutral-200 text-black border border-black tracking-widest shrink-0 w-fit">Object-Oriented
-                                                Programming</span>
-                                            <span
-                                                class="inline-flex items-center px-3 py-1 text-xs font-bold bg-neutral-200 text-black border border-black tracking-widest shrink-0 w-fit">Data
-                                                Structure</span>
-                                            <span
-                                                class="inline-flex items-center px-3 py-1 text-xs font-bold bg-neutral-200 text-black border border-black tracking-widest shrink-0 w-fit">Web
-                                                Development</span>
                                         </div>
                                     </div>
                                 </div>
@@ -426,7 +385,7 @@
 
             <!-- Right Panel: PS5 Player Profile Card -->
             <div
-                class="w-full lg:w-[30%] relative min-h-[450px] sm:min-h-[500px] lg:min-h-full flex flex-col shrink-0 bg-black overflow-hidden lg:border-l border-gray-900">
+                class="w-full lg:w-[30%] relative min-h-[450px] sm:min-h-[500px] lg:min-h-full flex flex-col justify-between shrink-0 bg-black overflow-hidden lg:border-l border-gray-900">
 
                 <!-- Top Image Section with Bottom Fade -->
                 <div class="relative flex-1 w-full min-h-[240px]">
@@ -444,7 +403,7 @@
                 </div>
 
                 <!-- Bottom Content Section (Solid Black) -->
-                <div class="w-full bg-black px-6 sm:px-8 pb-10 pt-2 flex flex-col justify-end z-10">
+                <div class="w-full bg-black px-6 sm:px-8 pb-10 lg:pb-16 pt-2 flex flex-col justify-end z-10">
                     <div
                         class="flex flex-row sm:flex-col items-center sm:items-start justify-between sm:justify-start gap-4">
 
@@ -525,7 +484,7 @@
                 <div
                     class="group bg-white border-2 border-gray-200 p-5 sm:p-6 hover:shadow-xl hover:shadow-blue-200 hover:border-black transition-all duration-300 relative overflow-hidden flex flex-col justify-between w-full min-w-full md:min-w-0 snap-center shrink-0 md:shrink box-border">
                     <div>
-                        <h3 class="text-xl sm:text-2xl font-tungsten text-black uppercase tracking-wider mb-2">
+                        <h3 class="text-xl sm:text-2xl text-black tracking-wider mb-2">
                             Frameworks & Web
                         </h3>
                         <!-- Skill Badges -->
@@ -557,7 +516,7 @@
                 <div
                     class="group bg-white border-2 border-gray-200 p-5 sm:p-6 hover:shadow-xl hover:shadow-blue-200 hover:border-black transition-all duration-300 relative overflow-hidden flex flex-col justify-between w-full min-w-full md:min-w-0 snap-center shrink-0 md:shrink box-border">
                     <div>
-                        <h3 class="text-xl sm:text-2xl font-tungsten text-black uppercase tracking-wider mb-2">
+                        <h3 class="text-xl sm:text-2xl text-black tracking-wider mb-2">
                             Database
                         </h3>
                         <!-- Skill Badges -->
@@ -576,7 +535,7 @@
                 <div
                     class="group bg-white border-2 border-gray-200 p-5 sm:p-6 hover:shadow-xl hover:shadow-blue-200 hover:border-black transition-all duration-300 relative overflow-hidden flex flex-col justify-between w-full min-w-full md:min-w-0 snap-center shrink-0 md:shrink box-border">
                     <div>
-                        <h3 class="text-xl sm:text-2xl font-tungsten text-black uppercase tracking-wider mb-2">
+                        <h3 class="text-xl sm:text-2xl text-black tracking-wider mb-2">
                             Tools & Practices
                         </h3>
                         <!-- Skill Badges -->
@@ -585,11 +544,11 @@
                                 class="inline-flex items-center px-3 py-1 text-xs font-bold bg-neutral-200 text-black border border-black tracking-widest shrink-0 w-fit">Git
                                 & GitHub</span>
                             <span
-                                class="inline-flex items-center px-3 py-1 text-xs font-bold bg-neutral-200 text-black border border-black tracking-widest shrink-0 w-fit">VS
-                                Code</span>
-                            <span
                                 class="inline-flex items-center px-3 py-1 text-xs font-bold bg-neutral-200 text-black border border-black tracking-widest shrink-0 w-fit">Laragon
                                 / XAMPP</span>
+                            <span
+                                class="inline-flex items-center px-3 py-1 text-xs font-bold bg-neutral-200 text-black border border-black tracking-widest shrink-0 w-fit">Android
+                                Studio</span>
                             <span
                                 class="inline-flex items-center px-3 py-1 text-xs font-bold bg-neutral-200 text-black border border-black tracking-widest shrink-0 w-fit">Figma</span>
                             <span
@@ -599,9 +558,6 @@
                             <span
                                 class="inline-flex items-center px-3 py-1 text-xs font-bold bg-neutral-200 text-black border border-black tracking-widest shrink-0 w-fit">RAD
                                 / Agile Methodology</span>
-                            <span
-                                class="inline-flex items-center px-3 py-1 text-xs font-bold bg-neutral-200 text-black border border-black tracking-widest shrink-0 w-fit">Android
-                                Studio</span>
                         </div>
                     </div>
                 </div>
@@ -638,7 +594,7 @@
             </div>
 
             <!-- Experience Cards Container -->
-            <div id="experience-slider" class="relative w-full sm:p-6 rounded-lg bg-white"
+            <div id="experience-slider" class="relative w-full px-2 md:px-8 rounded-lg bg-white"
                 style="font-family: 'Times New Roman', Times, serif;">
 
                 <!-- Timeline Container -->
@@ -668,7 +624,7 @@
                         </p>
 
                         <!-- Description (Bullet Points) -->
-                        <div class="text-black text-sm sm:text-sm leading-relaxed mb-4 flex flex-col gap-3 font-normal"
+                        <div class="text-black text-sm sm:text-sm leading-relaxed mb-4 flex flex-col gap-3 font-normal max-w-3xl"
                             style="font-family: 'Playfair Display', serif;">
                             <p class="flex items-start gap-3">
                                 <span class="w-2 h-2 bg-black rounded-full mt-2.5 shrink-0"></span>
@@ -724,7 +680,7 @@
                         </p>
 
                         <!-- Description (Bullet Points) -->
-                        <div class="text-black text-sm sm:text-sm leading-relaxed mb-4 flex flex-col gap-3 font-normal"
+                        <div class="text-black text-sm sm:text-sm leading-relaxed mb-4 flex flex-col gap-3 font-normal max-w-3xl"
                             style="font-family: 'Playfair Display', serif;">
                             <p class="flex items-start gap-3">
                                 <span class="w-2 h-2 bg-black rounded-full mt-2.5 shrink-0"></span>
@@ -802,27 +758,39 @@
                                 Property Management System
                             </h3>
                             <p class="text-black text-sm font-fairplay leading-relaxed mt-2 font-normal">
-                                Comprehensive web platform designed to streamline system prototyping, database migration
-                                tracking, and data flow modeling.
+                                A web-based property management system designed to manage property
+                                listings, while providing agents with dashboards for
+                                managing system operations.
                             </p>
                         </div>
                         <div>
                             <div class="flex flex-wrap gap-1.5 mb-4">
                                 <span
-                                    class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">PHP
-                                    / CodeIgniter</span>
+                                    class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">
+                                    CODEIGNITER
+                                </span>
                                 <span
-                                    class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">MYSQL</span>
+                                    class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">
+                                    PHP
+                                </span>
                                 <span
-                                    class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">TAILWINDCSS</span>
+                                    class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">
+                                    TAILWIND CSS
+                                </span>
+                                <span
+                                    class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">
+                                    MYSQL
+                                </span>
                                 <span
                                     class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">JAVASCRIPT</span>
                             </div>
+
                             <div class="flex items-center justify-between pt-3 border-t-2 border-black text-xs">
-                                <a href="#"
+                                <a href="https://www.storenode.com/"
                                     class="text-black font-bold uppercase tracking-widest flex items-center gap-1.5 hover:underline transition-all">
-                                    VIEW PROJECT <i class="bi bi-arrow-right text-xs"></i>
+                                    LIVE DEMO <i class="bi bi-arrow-right text-xs"></i>
                                 </a>
+
                                 <a href="#" class="text-black hover:text-neutral-600 transition-colors"
                                     title="Source Code">
                                     <i class="bi bi-github text-base"></i>
@@ -846,46 +814,48 @@
                                 Influencer Management System
                             </h3>
                             <p class="text-black text-sm font-fairplay mt-2 font-normal">
-                                Automated database integration tool resolving schema sync conflicts and legacy table
-                                migrations with live logging.
+                                An admin management system that centralizes influencer data
                             </p>
                         </div>
                         <div>
-                <div class="flex flex-wrap gap-1.5 mb-4">
-                    <span
-                        class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">
-                        CODEIGNITER
-                    </span>
-                    <span
-                        class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">
-                        PHP
-                    </span>
-                    <span
-                        class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">
-                        MYSQL
-                    </span>
-                    <span
-                        class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">
-                        TIKTOK API
-                    </span>
-                    <span
-                        class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">
-                        TAILWIND CSS
-                    </span>
-                </div>
+                            <div class="flex flex-wrap gap-1.5 mb-4">
+                                <span
+                                    class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">
+                                    CODEIGNITER
+                                </span>
+                                <span
+                                    class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">
+                                    PHP
+                                </span>
+                                <span
+                                    class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">
+                                    TAILWIND CSS
+                                </span>
+                                <span
+                                    class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">
+                                    MYSQL
+                                </span>
+                                <span
+                                    class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">JAVASCRIPT</span>
+                                <span
+                                    class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">
+                                    RESTful API
+                                </span>
+                            </div>
 
-                <div class="flex items-center justify-between pt-3 border-t-2 border-black text-xs">
-                    <a href="#"
-                        class="text-black font-bold uppercase tracking-widest flex items-center gap-1.5 hover:underline transition-all">
-                        VIEW PROJECT <i class="bi bi-arrow-right text-xs"></i>
-                    </a>
+                            <div class="flex items-center justify-between pt-3 border-t-2 border-black text-xs">
+                                <a href="https://webmin.influenow.com/login.php"
+                                    class="text-black font-bold uppercase tracking-widest flex items-center gap-1.5 hover:underline transition-all">
+                                    LIVE <i class="bi bi-arrow-right text-xs"></i>
+                                </a>
 
-                    <a href="#" class="text-black hover:text-neutral-600 transition-colors"
-                        title="Source Code">
-                        <i class="bi bi-github text-base"></i>
-                    </a>
-                </div>
-            </div>
+                                <a href="#"
+                                    class="text-black font-bold uppercase tracking-widest flex items-center gap-1.5 hover:underline transition-all"
+                                    title="Source Code">
+                                    SOURCE CODE <i class="bi bi-github text-base"></i>
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -910,45 +880,48 @@
                             </p>
                         </div>
                         <div>
-                <div class="flex flex-wrap gap-1.5 mb-4">
-                    <span
-                        class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">
-                        LARAVEL
-                    </span>
-                    <span
-                        class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">
-                        PHP
-                    </span>
-                    <span
-                        class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">
-                        TAILWIND CSS
-                    </span>
-                    <span
-                        class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">
-                        MYSQL
-                    </span>
-                    <span
-                        class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">
-                        OCR
-                    </span>
-                    <span
-                        class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">
-                        RAD Methodology
-                    </span>
-                </div>
+                            <div class="flex flex-wrap gap-1.5 mb-4">
+                                <span
+                                    class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">
+                                    LARAVEL
+                                </span>
+                                <span
+                                    class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">
+                                    PHP
+                                </span>
+                                <span
+                                    class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">
+                                    TAILWIND CSS
+                                </span>
+                                <span
+                                    class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">
+                                    MYSQL
+                                </span>
+                                <span
+                                    class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">JAVASCRIPT</span>
+                                <span
+                                    class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">
+                                    OCR
+                                </span>
+                                <span
+                                    class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">
+                                    RAD Methodology
+                                </span>
+                            </div>
 
-                <div class="flex items-center justify-between pt-3 border-t-2 border-black text-xs">
-                    <a href="#"
-                        class="text-black font-bold uppercase tracking-widest flex items-center gap-1.5 hover:underline transition-all">
-                        VIEW PROJECT <i class="bi bi-arrow-right text-xs"></i>
-                    </a>
+                            <div class="flex items-center justify-between pt-3 border-t-2 border-black text-xs">
+                                <a href="https://mda.amirul-hub.com/"
+                                    class="text-black font-bold uppercase tracking-widest flex items-center gap-1.5 hover:underline transition-all">
+                                    LIVE DEMO <i class="bi bi-arrow-right text-xs"></i>
+                                </a>
 
-                    <a href="#" class="text-black hover:text-neutral-600 transition-colors"
-                        title="Source Code">
-                        <i class="bi bi-github text-base"></i>
-                    </a>
-                </div>
-            </div>
+                                <a href="https://github.com/MystoganX0/FYP-Project"
+                                    class="text-black font-bold uppercase tracking-widest flex items-center gap-1.5 hover:underline transition-all"
+                                    title="Source Code">Source Code
+                                    <i class="bi bi-github text-base"></i>
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -966,35 +939,45 @@
                                 Qurban Management System
                             </h3>
                             <p class="text-black text-sm font-fairplay leading-relaxed mt-2 font-normal">
-                                Modern portfolio website featuring interactive binary rain ambient visualizer, split
-                                screen design, and fluid responsiveness.
+                                A web-based Qurban management system that enables users to place online orders and
+                                track their Qurban orders from submission to completion.
                             </p>
                         </div>
                         <div>
                             <div class="flex flex-wrap gap-1.5 mb-4">
                                 <span
+                                    class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">LARAVEL</span>
+                                <span
+                                    class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">PHP</span>
+                                <span
                                     class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">HTML5
                                     / CSS3</span>
                                 <span
-                                    class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">TAILWINDCSS</span>
-                                <span
                                     class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">JAVASCRIPT</span>
+                                <span
+                                    class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">MYSQL</span>
+                                <span
+                                    class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">RAD
+                                    METHODOLOGY</span>
+                                <span
+                                    class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">SDLC</span>
                             </div>
                             <div class="flex items-center justify-between pt-3 border-t-2 border-black text-xs">
                                 <a href="#"
                                     class="text-black font-bold uppercase tracking-widest flex items-center gap-1.5 hover:underline transition-all">
-                                    LIVE DEMO <i class="bi bi-arrow-right text-xs"></i>
+                                    VIEW PROJECT <i class="bi bi-arrow-right text-xs"></i>
                                 </a>
-                                <a href="#" class="text-black hover:text-neutral-600 transition-colors"
+                                <a href="#"
+                                    class="text-black font-bold uppercase tracking-widest flex items-center gap-1.5 hover:underline transition-all"
                                     title="Source Code">
-                                    <i class="bi bi-github text-base"></i>
+                                    SOURCE CODE <i class="bi bi-github text-base"></i>
                                 </a>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Project Card 4 -->
+                <!-- Project Card 5 -->
                 <div data-category="webapp"
                     class="project-card group bg-white rounded-none border-2 border-black transition-all duration-300 flex flex-col overflow-hidden hover:shadow-2xl hover:shadow-blue-200">
                     <!-- Banner Frame -->
@@ -1008,28 +991,31 @@
                                 E-Commerce Hardware Mobile Apps
                             </h3>
                             <p class="text-black text-sm font-fairplay leading-relaxed mt-2 font-normal">
-                                Modern portfolio website featuring interactive binary rain ambient visualizer, split
-                                screen design, and fluid responsiveness.
+                                An Android-based e-commerce application for selling hardware product developed with a
+                                product-focused interface.
                             </p>
                         </div>
                         <div>
                             <div class="flex flex-wrap gap-1.5 mb-4">
                                 <span
-                                    class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">HTML5
-                                    / CSS3</span>
+                                    class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">JAVA</span>
                                 <span
-                                    class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">TAILWINDCSS</span>
+                                    class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">BOOTSTRAP</span>
                                 <span
                                     class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">JAVASCRIPT</span>
+                                <span
+                                    class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">ANDROID
+                                    STUDIO</span>
                             </div>
                             <div class="flex items-center justify-between pt-3 border-t-2 border-black text-xs">
                                 <a href="#"
                                     class="text-black font-bold uppercase tracking-widest flex items-center gap-1.5 hover:underline transition-all">
-                                    LIVE DEMO <i class="bi bi-arrow-right text-xs"></i>
+                                    VIEW PROJECT <i class="bi bi-arrow-right text-xs"></i>
                                 </a>
-                                <a href="#" class="text-black hover:text-neutral-600 transition-colors"
+                                <a href="#"
+                                    class="text-black font-bold uppercase tracking-widest flex items-center gap-1.5 hover:underline transition-all"
                                     title="Source Code">
-                                    <i class="bi bi-github text-base"></i>
+                                    SOURCE CODE <i class="bi bi-github text-base"></i>
                                 </a>
                             </div>
                         </div>
@@ -1042,8 +1028,8 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="w-full py-16 sm:py-24 bg-white text-black relative z-10">
-        <div class="max-w-7xl mx-auto px-6 sm:px-8 w-full">
+    <section id="contact" class="w-full py-12 sm:py-18 bg-white text-black relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-4 w-full">
 
             <!-- Section Header -->
             <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
@@ -1060,92 +1046,109 @@
                 </div>
             </div>
 
-            <!-- Personal Contact Card (Black HUD Theme) -->
-            <div class="max-w-2xl w-full">
-                <div class="bg-black text-white border-2 border-black p-6 sm:p-8 relative overflow-hidden shadow-2xl">
+            <!-- Personal Contact Card (White HUD Theme) -->
+            <div class="max-w-[820px] w-full">
+                <div
+                    class="bg-white mb-10 text-black border-2 border-gray-200 p-6 sm:p-8 relative overflow-hidden hover:border-black hover:shadow-2xl hover:shadow-blue-200 transition-all duration-300">
 
                     <!-- Top HUD / Header Bar -->
-                    <div class="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-neutral-800">
+                    <div class="flex flex-wrap items-center justify-between gap-4 pb-6 border-b-2 border-black">
                         <div class="flex items-center gap-3">
-                            <div class="w-12 h-12 bg-neutral-900 border border-neutral-700 flex items-center justify-center font-bold text-lg text-[#60a5fa]">
+                            <div
+                                class="w-10 h-10 bg-black text-white border border-black flex items-center justify-center font-bold text-lg">
                                 <i class="bi bi-person-fill text-2xl"></i>
                             </div>
                             <div>
-                                <h3 class="text-xl sm:text-2xl font-bold tracking-wide text-white uppercase" style="font-family: 'Playfair Display', serif;">
-                                    Khairul
+                                <h3 class="text-lg sm:text-xl font-semibold tracking-wider text-black "
+                                    style="font-family: 'Playfair Display', serif;">
+                                    Khairul Hakimi bin Rosli
                                 </h3>
-                                <p class="text-xs font-mono uppercase tracking-widest text-[#60a5fa]">
-                                    Software Engineering // Information Systems Engineer
+                                <p class="text-xs tracking-widest text-gray-800">
+                                    Fresh graduate in Information System Engineering
                                 </p>
                             </div>
                         </div>
 
                         <!-- Live Status Badge -->
-                        <div class="inline-flex items-center gap-2 px-3 py-1.5 bg-neutral-900 border border-neutral-700">
+                        <div class="inline-flex items-center gap-2 px-7 py-1.5 bg-emerald-500">
                             <span class="relative flex h-2.5 w-2.5">
-                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                                <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+                                <span
+                                    class="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+                                <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-white"></span>
                             </span>
-                            <span class="text-[10px] font-mono uppercase tracking-wider text-emerald-400 font-semibold">Available for hire</span>
+                            <span class="text-[11px] uppercase tracking-widest text-white font-bold">Open to Work</span>
                         </div>
                     </div>
 
                     <!-- Direct Channels Details -->
-                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 py-6 border-b border-neutral-800">
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 py-6">
 
                         <!-- Email -->
-                        <div class="flex items-start gap-4">
-                            <div class="w-10 h-10 bg-neutral-900 border border-neutral-700 flex items-center justify-center text-[#60a5fa] shrink-0">
+                        <div class="flex items-start gap-3">
+                            <div
+                                class="w-10 h-10 bg-neutral-100 border border-black flex items-center justify-center text-black shrink-0">
                                 <i class="bi bi-envelope-fill text-base"></i>
                             </div>
                             <div>
-                                <span class="text-[10px] font-mono uppercase tracking-wider text-neutral-500 block mb-1">Email Address</span>
-                                <a href="mailto:khairul@example.com" class="text-sm font-medium text-white hover:text-[#60a5fa] transition-colors break-all">
-                                    khairul@example.com
+                                <span class="text-[11px] tracking-widest text-neutral-500 block">Email Address</span>
+                                <a href="mailto:khairulhakimi0612@gmail.com"
+                                    class="text-[12px] font-semibold tracking-widest text-black hover:text-[#0078d6] transition-colors break-all">
+                                    khairulhakimi0612@gmail.com
                                 </a>
                             </div>
                         </div>
 
                         <!-- Phone -->
-                        <div class="flex items-start gap-4">
-                            <div class="w-10 h-10 bg-neutral-900 border border-neutral-700 flex items-center justify-center text-[#60a5fa] shrink-0">
+                        <div class="flex items-start gap-3">
+                            <div
+                                class="w-10 h-10 bg-neutral-100 border border-black flex items-center justify-center text-black shrink-0">
                                 <i class="bi bi-telephone-fill text-base"></i>
                             </div>
                             <div>
-                                <span class="text-[10px] font-mono uppercase tracking-wider text-neutral-500 block mb-1">Phone / WhatsApp</span>
-                                <a href="tel:+60123456789" class="text-sm font-medium text-white hover:text-[#60a5fa] transition-colors">
-                                    +60 12-345 6789
+                                <span class="text-[11px] tracking-widest text-neutral-500 block">Phone / WhatsApp</span>
+                                <a href="tel:+6018-7858049"
+                                    class="text-[12px] font-semibold tracking-widest text-black hover:text-[#0078d6] transition-colors break-all">
+                                    +60 18-785 8049
                                 </a>
                             </div>
                         </div>
 
                         <!-- Location -->
-                        <div class="flex items-start gap-4">
-                            <div class="w-10 h-10 bg-neutral-900 border border-neutral-700 flex items-center justify-center text-[#60a5fa] shrink-0">
+                        <div class="flex items-start gap-3">
+                            <div
+                                class="w-10 h-10 bg-neutral-100 border border-black flex items-center justify-center text-black shrink-0">
                                 <i class="bi bi-geo-alt-fill text-base"></i>
                             </div>
                             <div>
-                                <span class="text-[10px] font-mono uppercase tracking-wider text-neutral-500 block mb-1">Location</span>
-                                <span class="text-sm font-medium text-white">Malaysia (Remote / On-site)</span>
+                                <span class="text-[11px] tracking-widest text-neutral-500 block">Location</span>
+                                <span
+                                    class="text-[12px] font-semibold tracking-widest text-black hover:text-[#0078d6] transition-colors break-all">Petaling
+                                    Jaya, Selangor</span>
                             </div>
                         </div>
 
                     </div>
 
                     <!-- Card Footer: Socials & Quick Action -->
-                    <div class="flex flex-wrap items-center justify-between gap-4 pt-6">
-                        <div class="flex items-center gap-3">
-                            <span class="text-[10px] font-mono uppercase tracking-wider text-neutral-500">Socials:</span>
-                            <a href="#" class="w-9 h-9 bg-neutral-900 border border-neutral-700 flex items-center justify-center text-white hover:bg-[#0078d6] hover:border-[#0078d6] transition-all" title="GitHub">
-                                <i class="bi bi-github text-base"></i>
+                    <div class="flex items-center justify-between gap-2 sm:gap-4 md:pt-6">
+                        <div class="flex items-center gap-2 sm:gap-3">
+                            <span class="text-[10px] sm:text-[11px] tracking-widest text-neutral-500">Socials:</span>
+                            <a href="https://www.linkedin.com/in/khairul-hakimi-421b80360/" target="_blank"
+                                rel="noopener noreferrer"
+                                class="w-9 h-9 sm:w-10 sm:h-10 bg-neutral-100 border border-black flex items-center justify-center text-black hover:bg-black hover:text-white transition-all shrink-0"
+                                title="LinkedIn">
+                                <i class="bi bi-linkedin text-sm sm:text-base"></i>
                             </a>
-                            <a href="#" class="w-9 h-9 bg-neutral-900 border border-neutral-700 flex items-center justify-center text-white hover:bg-[#0078d6] hover:border-[#0078d6] transition-all" title="LinkedIn">
-                                <i class="bi bi-linkedin text-base"></i>
+                            <a href="https://github.com/MystoganX0" target="_blank" rel="noopener noreferrer"
+                                class="w-9 h-9 sm:w-10 sm:h-10 bg-neutral-100 border border-black flex items-center justify-center text-black hover:bg-black hover:text-white transition-all shrink-0"
+                                title="GitHub">
+                                <i class="bi bi-github text-sm sm:text-base"></i>
                             </a>
                         </div>
 
-                        <a href="mailto:khairul@example.com"
-                            class="inline-flex items-center gap-2 bg-[#0078d6] text-white text-xs font-bold uppercase tracking-widest px-6 py-3 hover:bg-[#005bb5] transition-colors shadow-lg">
+                        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=khairulhakimi0612@gmail.com"
+                            target="_blank" rel="noopener noreferrer"
+                            class="inline-flex items-center justify-center gap-1.5 sm:gap-2 bg-[#0078d6] text-white text-[11px] sm:text-xs font-bold uppercase tracking-wider sm:tracking-widest px-4 sm:px-8 py-2.5 sm:py-3.5 hover:bg-[#005bb5] transition-colors shadow-lg shrink-0">
                             Send Email <i class="bi bi-arrow-right text-xs"></i>
                         </a>
                     </div>

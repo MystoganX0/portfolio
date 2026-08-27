@@ -85,6 +85,120 @@
             -ms-overflow-style: none;
             scrollbar-width: none;
         }
+
+        /* ===== PS5 Style Smooth Transitions ===== */
+        :root {
+            --ps5-ease: cubic-bezier(0.16, 1, 0.3, 1);
+            --ps5-ease-bounce: cubic-bezier(0.34, 1.4, 0.64, 1);
+        }
+
+        /* === Carousel Track Container: use CSS contain to scope layout recalcs ===
+           This prevents width/height transitions on cards from triggering full-page
+           layout — reflow is now isolated to only this element and its children. */
+        .system-carousel-track {
+            contain: layout style;
+        }
+
+        .system-page-card {
+            flex-shrink: 0;
+            /* Inactive base size */
+            width: 7.5rem;
+            height: 4.85rem;
+            border-radius: 4px;
+            opacity: 0.55;
+            border: 2px solid #d4d4d8;
+            background: #18181b;
+            overflow: hidden;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            transform: translateZ(0);
+            transform-origin: center center;
+            cursor: pointer;
+            will-change: width, height, opacity, box-shadow, filter, border-color;
+            transition:
+                width 0.42s var(--ps5-ease),
+                height 0.42s var(--ps5-ease),
+                opacity 0.32s ease,
+                box-shadow 0.32s var(--ps5-ease),
+                filter 0.32s ease,
+                border-color 0.28s ease;
+        }
+
+        @media (min-width: 640px) {
+            .system-page-card {
+                width: 8.5rem;
+                height: 5.35rem;
+            }
+        }
+
+        .system-page-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transform: scale(1) translateZ(0);
+            will-change: transform;
+            transition: transform 0.5s var(--ps5-ease);
+        }
+
+        /* PS5 Inactive Card Hover */
+        .system-page-card:hover:not(.is-active) {
+            opacity: 0.95;
+            filter: brightness(1.02);
+            border-color: #52525b;
+            box-shadow: 0 10px 25px -4px rgba(191, 219, 254, 0.75);
+            z-index: 5;
+        }
+
+        .system-page-card:hover:not(.is-active) img {
+            transform: scale(1.08) translateZ(0);
+        }
+
+        /* PS5 Active Card — width/height expand (affects flex layout correctly) */
+        .system-page-card.is-active {
+            width: 11.25rem;
+            height: 7.25rem;
+            opacity: 1;
+            filter: brightness(1.06) contrast(1.02);
+            border-color: #000000;
+            border-width: 2.5px;
+            box-shadow: 0 12px 28px -4px rgba(191, 219, 254, 0.85);
+            z-index: 10;
+        }
+
+        .system-page-card.is-active:hover {
+            box-shadow: 0 16px 32px -4px rgba(191, 219, 254, 0.95);
+        }
+
+        @media (min-width: 640px) {
+            .system-page-card.is-active {
+                width: 12.75rem;
+                height: 8.15rem;
+            }
+        }
+
+        .system-page-card.is-active img {
+            transform: scale(1.08) translateZ(0);
+        }
+
+        /* PS5 Hero Screen Transition */
+        .ps5-hero-screen {
+            will-change: opacity, filter;
+            backface-visibility: hidden;
+            transition:
+                opacity 0.28s var(--ps5-ease),
+                filter 0.28s var(--ps5-ease);
+        }
+
+        .ps5-hero-screen.switching-out {
+            opacity: 0.2;
+            filter: blur(1px);
+        }
+
+        .ps5-hero-screen.switching-in {
+            opacity: 1;
+            filter: blur(0px);
+        }
     </style>
 </head>
 
@@ -307,12 +421,10 @@
 
                     <!-- Education Cards (PS5 Monochrome UI) -->
                     <div>
-                        <div class="flex items-center justify-between mb-3">
-                            <h3
-                                class="text-xs sm:text-sm tracking-[0.15em] text-neutral-900 font-bold flex items-center gap-2">
-                                <span class="w-1.5 h-3 bg-black inline-block"></span> Academic Background
-                            </h3>
-                        </div>
+                        <h3 class="text-xl sm:text-[1.3rem] text-black mb-2 md:mb-4 leading-tight"
+                            style="font-family: 'Playfair Display', serif;">
+                            Education Background
+                        </h3>
 
                         <div id="academic-slider"
                             class="flex flex-row sm:flex-col overflow-x-auto sm:overflow-visible snap-x snap-mandatory sm:snap-none gap-0 sm:gap-3 pb-2 sm:pb-0 no-scrollbar">
@@ -438,7 +550,7 @@
 
     </section>
 
-    <!-- Skills Section (PS5 Technical HUD Style - Monochrome Light) -->
+    <!-- Skills Section -->
     <section id="skills" class="w-full py-16 sm:py-24 bg-white text-black relative z-10">
         <div class="max-w-7xl mx-auto px-6 sm:px-8 w-full">
 
@@ -575,7 +687,7 @@
         </div>
     </section>
 
-    <!-- Experience Section (PS5 Technical HUD Style - Monochrome Light) -->
+    <!-- Experience Section -->
     <section id="experience" class="w-full py-16 sm:py-24 bg-white text-black relative z-10">
         <div class="max-w-7xl mx-auto px-6 sm:px-8 w-full">
 
@@ -628,19 +740,27 @@
                             style="font-family: 'Playfair Display', serif;">
                             <p class="flex items-start gap-3">
                                 <span class="w-2 h-2 bg-black rounded-full mt-2.5 shrink-0"></span>
-                                <span>Translated UI/UX mockups into responsive Tailwind CSS frontend while collaborating with a cross-functional team on backend development (CodeIgniter, PHP), delivering 3 integrated web portals for user, agent and dashboard.</span>
+                                <span>Translated UI/UX mockups into responsive Tailwind CSS frontend while collaborating
+                                    with a cross-functional team on backend development (CodeIgniter, PHP), delivering 3
+                                    integrated web portals for user, agent and dashboard.</span>
                             </p>
                             <p class="flex items-start gap-3">
                                 <span class="w-2 h-2 bg-black rounded-full mt-2.5 shrink-0"></span>
-                                <span>Developed and integrated a RESTful TikTok API to automatically retrieve creator profile data, replacing manual data collection and streamlining creator management for campaign activities.</span>
+                                <span>Developed and integrated a RESTful TikTok API to automatically retrieve creator
+                                    profile data, replacing manual data collection and streamlining creator management
+                                    for campaign activities.</span>
                             </p>
                             <p class="flex items-start gap-3">
                                 <span class="w-2 h-2 bg-black rounded-full mt-2.5 shrink-0"></span>
-                                <span>Fixed 20+ production bugs across email delivery, URL routing, UI rendering, and broken workflow functionality, restoring full functionality within 1 day of each report.</span>
+                                <span>Fixed 20+ production bugs across email delivery, URL routing, UI rendering, and
+                                    broken workflow functionality, restoring full functionality within 1 day of each
+                                    report.</span>
                             </p>
                             <p class="flex items-start gap-3">
                                 <span class="w-2 h-2 bg-black rounded-full mt-2.5 shrink-0"></span>
-                                <span>Maintained 10+ live production websites for company and client accounts, shipping new features and resolving responsive-layout, routing, and email-delivery defects to ensure uninterrupted site performance.</span>
+                                <span>Maintained 10+ live production websites for company and client accounts, shipping
+                                    new features and resolving responsive-layout, routing, and email-delivery defects to
+                                    ensure uninterrupted site performance.</span>
                             </p>
                             <p class="flex items-start gap-3">
                                 <span class="w-2 h-2 bg-black rounded-full mt-2.5 shrink-0"></span>
@@ -694,11 +814,11 @@
         </div>
     </section>
 
-    <!-- Projects Section (PS5 Console Library Style - Monochrome) -->
+    <!-- Projects Section -->
     <section id="projects" class="w-full py-16 sm:py-24 bg-white text-black relative z-10">
         <div class="max-w-7xl mx-auto px-6 sm:px-8 w-full">
 
-            <!-- Section Header (PS5 Library HUD) -->
+            <!-- Section Header -->
             <div class="flex flex-col md:flex-row md:items-end justify-between mb-4 sm:mb-6 gap-4">
                 <div>
                     <div class="inline-flex items-center gap-2 px-3 py-1 bg-black text-white border border-black mb-3">
@@ -713,330 +833,969 @@
                 </div>
             </div>
 
-            <!-- Project Category Filter Buttons (PS5 Tab Menu) -->
+            <!-- Project Filter Buttons -->
             <div class="flex flex-wrap items-center gap-2 mb-10 pb-4">
-                <button onclick="filterProjects('all', this)"
-                    class="project-filter-btn px-5 py-3 md:py-5 rounded-none text-xs font-bold uppercase tracking-widest bg-[#0078d6] text-white border-2 border-transparent hover:border-[#0078d6] transition-all duration-300 hover:scale-105">
-                    ALL PROJECTS
+                <button type="button" onclick="filterProjects('sys-property', this)"
+                    class="project-filter-btn px-5 py-3 md:py-4 rounded-none text-xs font-bold uppercase tracking-widest bg-[#0078d6] text-white border-2 border-[#0078d6] transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer">
+                    PROPERTY SYSTEM
                 </button>
-                <button onclick="filterProjects('webapp', this)"
-                    class="project-filter-btn px-5 py-3 md:py-5 rounded-none text-xs font-bold uppercase tracking-widest bg-slate-100 text-slate-600 border-2 border-transparent hover:border-[#0078d6] transition-all duration-300 hover:scale-105">
-                    WEB APPLICATIONS
+                <button type="button" onclick="filterProjects('sys-influencer', this)"
+                    class="project-filter-btn px-5 py-3 md:py-4 rounded-none text-xs font-bold uppercase tracking-widest bg-slate-100 text-slate-600 border-2 border-transparent hover:border-[#0078d6] transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer">
+                    INFLUENCER SYSTEM
                 </button>
-                <button onclick="filterProjects('mobile', this)"
-                    class="project-filter-btn px-5 py-3 md:py-5 rounded-none text-xs font-bold uppercase tracking-widest bg-slate-100 text-slate-600 border-2 border-transparent hover:border-[#0078d6] transition-all duration-300 hover:scale-105">
-                    MOBILE APPLICATIONS
+                <button type="button" onclick="filterProjects('sys-driving', this)"
+                    class="project-filter-btn px-5 py-3 md:py-4 rounded-none text-xs font-bold uppercase tracking-widest bg-slate-100 text-slate-600 border-2 border-transparent hover:border-[#0078d6] transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer">
+                    DRIVING LICENSE
+                </button>
+                <button type="button" onclick="filterProjects('sys-qurban', this)"
+                    class="project-filter-btn px-5 py-3 md:py-4 rounded-none text-xs font-bold uppercase tracking-widest bg-slate-100 text-slate-600 border-2 border-transparent hover:border-[#0078d6] transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer">
+                    QURBAN SYSTEM
+                </button>
+                <button type="button" onclick="filterProjects('sys-ecommerce', this)"
+                    class="project-filter-btn px-5 py-3 md:py-4 rounded-none text-xs font-bold uppercase tracking-widest bg-slate-100 text-slate-600 border-2 border-transparent hover:border-[#0078d6] transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer">
+                    E-COMMERCE APP
                 </button>
             </div>
 
-            <!-- Projects Grid (PS5 Game Tile Grid) -->
-            <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            <!-- Projects Showcase List (Each System with 5-Page Preview Carousel) -->
+            <div id="projects-container" class="w-full">
 
-                <!-- Project Card 1 -->
-                <div data-category="webapp"
-                    class="project-card group bg-white rounded-none border-2 border-black transition-all duration-300 flex flex-col overflow-hidden hover:shadow-2xl hover:shadow-blue-200">
-                    <!-- Banner Frame -->
-                    <div class="relative h-48 sm:h-52 overflow-hidden bg-neutral-900 border-b-2 border-black">
-                        <!-- Project Badge -->
-                        <div class="absolute top-3 right-3 z-10 inline-flex items-center gap-1.5 px-3 py-1 bg-blue-700 text-white text-[10px] font-bold uppercase tracking-widest shadow-lg">
-                            INTERNSHIP PROJECT
-                        </div>
-                        <img src="assets/system1.png" alt="Property Management System"
-                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                    </div>
-                    <div class="p-5 sm:p-6 flex flex-col flex-1 justify-between gap-5">
-                        <div>
-                            <h3
-                                class="text-lg sm:text-xl font-semibold  tracking-wide text-black leading-tight group-hover:text-neutral-600 transition-colors">
-                                Property Management System
-                            </h3>
-                            <p class="text-black text-sm font-fairplay leading-relaxed mt-2 font-normal">
-                                A web-based property management system designed to manage property
-                                listings, while providing agents with dashboards for
-                                managing system operations.
-                            </p>
-                        </div>
-                        <div>
-                            <div class="flex flex-wrap gap-1.5 mb-4">
-                                <span
-                                    class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">
-                                    CODEIGNITER
-                                </span>
-                                <span
-                                    class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">
-                                    PHP
-                                </span>
-                                <span
-                                    class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">
-                                    Tailwind CSS
-                                </span>
-                                <span
-                                    class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">
-                                    MYSQL
-                                </span>
-                                <span
-                                    class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">JAVASCRIPT</span>
+                <!-- System 1: Property Management System -->
+                <div class="project-system-item w-full bg-white transition-all" data-id="sys-property">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+
+                        <!-- Left Column: Screen Image (6 cols) -->
+                        <div class="lg:col-span-6 flex flex-col items-start justify-start w-full">
+                            <div
+                                class="relative w-full aspect-[16/10] overflow-hidden border-2 border-gray-300 bg-neutral-900 hover:border-black hover:shadow-2xl hover:shadow-blue-200 transition-all duration-300">
+                                <img id="system-screen-0" src="assets/system1.png"
+                                    alt="Property Management System Preview"
+                                    class="ps5-hero-screen w-full h-full object-cover object-top" />
                             </div>
 
-                            <div class="flex items-center justify-between pt-3 border-t-2 border-black text-xs">
-                                <a href="https://www.storenode.com/"
+                            <div class="w-full flex items-center justify-between pt-4 text-xs">
+                                <a href="https://www.storenode.com/" target="_blank" rel="noopener noreferrer"
                                     class="text-black font-bold uppercase tracking-widest flex items-center gap-1.5 hover:underline transition-all">
-                                    LIVE DEMO <i class="bi bi-arrow-right text-xs"></i>
+                                    <span>LIVE DEMO</span>
+                                    <i class="bi bi-arrow-right text-xs"></i>
                                 </a>
 
-                                <a href="#" class="text-black hover:text-neutral-600 transition-colors"
+                                <a href="#" target="_blank" rel="noopener noreferrer"
+                                    class="text-black font-bold uppercase tracking-widest flex items-center gap-1.5 hover:underline transition-all"
                                     title="Source Code">
+                                    <span>SOURCE CODE</span>
                                     <i class="bi bi-github text-base"></i>
                                 </a>
                             </div>
                         </div>
+
+                        <!-- Right Column: System Pages Carousel + Info (6 cols) -->
+                        <div class="lg:col-span-6 flex flex-col justify-start space-y-4 text-left">
+
+                            <!-- Top: Horizontal Carousel of System Pages -->
+                            <div class="relative w-full h-[135px] sm:h-[150px] flex items-center">
+
+                                <!-- Carousel Cards Track -->
+                                <div id="system-carousel-track-0"
+                                    class="system-carousel-track flex gap-3 items-center h-full w-full overflow-x-auto no-scrollbar select-none cursor-grab active:cursor-grabbing"
+                                    style="scrollbar-width: none; -ms-overflow-style: none;">
+
+                                    <button type="button" onclick="selectSystemPage(0, 0, 'assets/system1.png')"
+                                        class="system-page-card system-page-card-0 is-active overflow-hidden relative group focus:outline-none shrink-0">
+                                        <img src="assets/system1.png" alt="Dashboard"
+                                            class="w-full h-full object-cover" />
+                                    </button>
+
+                                    <button type="button"
+                                        onclick="selectSystemPage(0, 1, 'assets/property/propertyresult.png')"
+                                        class="system-page-card system-page-card-0 overflow-hidden relative group focus:outline-none shrink-0">
+                                        <img src="assets/property/propertyresult.png" alt="Property Result"
+                                            class="w-full h-full object-cover" />
+                                    </button>
+
+                                    <button type="button"
+                                        onclick="selectSystemPage(0, 2, 'assets/property/propertyinfo.png')"
+                                        class="system-page-card system-page-card-0 overflow-hidden relative group focus:outline-none shrink-0">
+                                        <img src="assets/property/propertyinfo.png" alt="Property Info"
+                                            class="w-full h-full object-cover" />
+                                    </button>
+
+                                    <button type="button" onclick="selectSystemPage(0, 3, 'assets/property/login.png')"
+                                        class="system-page-card system-page-card-0 overflow-hidden relative group focus:outline-none shrink-0">
+                                        <img src="assets/property/login.png" alt="Login"
+                                            class="w-full h-full object-cover" />
+                                    </button>
+
+                                    <button type="button"
+                                        onclick="selectSystemPage(0, 4, 'assets/property/register.png')"
+                                        class="system-page-card system-page-card-0 overflow-hidden relative group focus:outline-none shrink-0">
+                                        <img src="assets/property/register.png" alt="Register"
+                                            class="w-full h-full object-cover" />
+                                    </button>
+
+                                    <button type="button"
+                                        onclick="selectSystemPage(0, 5, 'assets/property/loginadmin.png')"
+                                        class="system-page-card system-page-card-0 overflow-hidden relative group focus:outline-none shrink-0">
+                                        <img src="assets/property/loginadmin.png" alt="Login Admin"
+                                            class="w-full h-full object-cover" />
+                                    </button>
+
+                                    <button type="button"
+                                        onclick="selectSystemPage(0, 6, 'assets/property/propertyresultadmin.png')"
+                                        class="system-page-card system-page-card-0 overflow-hidden relative group focus:outline-none shrink-0">
+                                        <img src="assets/property/propertyresultadmin.png" alt="Property Result Admin"
+                                            class="w-full h-full object-cover" />
+                                    </button>
+
+                                    <button type="button"
+                                        onclick="selectSystemPage(0, 7, 'assets/property/propertydetailadmin.png')"
+                                        class="system-page-card system-page-card-0 overflow-hidden relative group focus:outline-none shrink-0">
+                                        <img src="assets/property/propertydetailadmin.png" alt="Property Detail Admin"
+                                            class="w-full h-full object-cover" />
+                                    </button>
+
+                                    <button type="button"
+                                        onclick="selectSystemPage(0, 8, 'assets/property/helpadmin.png')"
+                                        class="system-page-card system-page-card-0 overflow-hidden relative group focus:outline-none shrink-0">
+                                        <img src="assets/property/helpadmin.png" alt="Help Admin"
+                                            class="w-full h-full object-cover" />
+                                    </button>
+
+                                </div>
+                            </div>
+
+                            <!-- Info Container -->
+                            <div class="space-y-4">
+
+                                <h3 class="text-black font-bold uppercase tracking-widest flex items-center gap-1.5">
+                                    Property Management System
+                                </h3>
+
+                                <p class="text-black text-sm font-fairplay leading-relaxed font-normal">
+                                    A web-based property management system designed to manage property listings, while
+                                    providing agents with dashboards for managing system operations.
+                                </p>
+
+                                <div class="space-y-1.5 pt-1">
+                                    <p
+                                        class="text-[16px] text-black font-bold uppercase tracking-widest flex items-center gap-1.5">
+                                        Key Tasks:
+                                    </p>
+                                    <div
+                                        class="flex items-start gap-2.5 text-black text-xs sm:text-sm font-fairplay leading-relaxed font-normal">
+                                        <span class="w-1.5 h-1.5 bg-black rounded-full mt-2 shrink-0"></span>
+                                        <span>Translated UI/UX mockups into responsive Tailwind CSS frontend while
+                                            collaborating with a cross-functional team on backend development
+                                            (CodeIgniter, PHP), delivering 3 integrated web portals for user, agent and
+                                            dashboard.</span>
+                                    </div>
+                                </div>
+
+                                <div class="flex flex-wrap gap-1.5 pt-1">
+                                    <span
+                                        class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">CODEIGNITER</span>
+                                    <span
+                                        class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">PHP</span>
+                                    <span
+                                        class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">TAILWIND
+                                        CSS</span>
+                                    <span
+                                        class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">MYSQL</span>
+                                    <span
+                                        class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">JAVASCRIPT</span>
+                                </div>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
 
-                <!-- Project Card 2 -->
-                <div data-category="webapp"
-                    class="project-card group bg-white rounded-none border-2 border-black transition-all duration-300 flex flex-col overflow-hidden hover:shadow-2xl hover:shadow-blue-200">
-                    <!-- Banner Frame -->
-                    <div class="relative h-48 sm:h-52 overflow-hidden bg-neutral-900 border-b-2 border-black">
-                        <!-- Project Badges -->
-                        <div class="absolute top-3 right-3 z-10 flex flex-col items-end gap-1.5">
-                            <div class="inline-flex items-center px-3 py-1 bg-pink-600 text-white text-[10px] font-bold uppercase tracking-widest shadow-lg">
-                                INTERNSHIP PROJECT
-                            </div>
-                            <div class="inline-flex items-center px-3 py-1 bg-pink-600 text-white text-[10px] font-bold uppercase tracking-widest shadow-lg">
-                                MY PROJECT
-                            </div>
-                        </div>
-                        <img src="assets/system2.png" alt="Influencer Management System"
-                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                    </div>
-                    <div class="p-5 sm:p-6 flex flex-col flex-1 justify-between gap-5">
-                        <div>
-                            <h3 class="text-lg sm:text-xl font-semibold tracking-wide text-black leading-tight">
-                                Influencer Management System
-                            </h3>
-                            <p class="text-black text-sm font-fairplay mt-2 font-normal">
-                                An admin management system that centralizes influencer data
-                            </p>
-                        </div>
-                        <div>
-                            <div class="flex flex-wrap gap-1.5 mb-4">
-                                <span
-                                    class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">
-                                    CODEIGNITER
-                                </span>
-                                <span
-                                    class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">
-                                    PHP
-                                </span>
-                                <span
-                                    class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">
-                                    TAILWIND CSS
-                                </span>
-                                <span
-                                    class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">
-                                    MYSQL
-                                </span>
-                                <span
-                                    class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">JAVASCRIPT</span>
-                                <span
-                                    class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">
-                                    RESTful API
-                                </span>
+                <!-- System 2: Influencer Management System -->
+                <div class="project-system-item w-full bg-white transition-all" data-id="sys-influencer"
+                    style="display: none;">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+
+                        <!-- Left Column: Screen Image (6 cols) -->
+                        <div class="lg:col-span-6 flex flex-col items-start justify-start w-full">
+                            <div
+                                class="relative w-full aspect-[16/10] overflow-hidden border-2 border-gray-300 bg-neutral-900 hover:border-black hover:shadow-2xl hover:shadow-blue-200 transition-all duration-300">
+                                <img id="system-screen-1" src="assets/influencer/1.png"
+                                    alt="Influencer Management System Preview"
+                                    class="ps5-hero-screen w-full h-full object-cover object-top" />
                             </div>
 
-                            <div class="flex items-center justify-between pt-3 border-t-2 border-black text-xs">
-                                <a href=""
+                            <div class="w-full flex items-center justify-between pt-4 text-xs">
+                                <a href="#"
                                     class="text-black font-bold uppercase tracking-widest flex items-center gap-1.5 hover:underline transition-all">
-                                    LIVE <i class="bi bi-arrow-right text-xs"></i>
+                                    <span>LIVE DEMO</span>
+                                    <i class="bi bi-arrow-right text-xs"></i>
                                 </a>
 
-                                <a href=""
+                                <a href="#" target="_blank" rel="noopener noreferrer"
                                     class="text-black font-bold uppercase tracking-widest flex items-center gap-1.5 hover:underline transition-all"
                                     title="Source Code">
-                                    SOURCE CODE <i class="bi bi-github text-base"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project Card 3 -->
-                <div data-category="webapp"
-                    class="project-card group bg-white rounded-none border-2 border-black transition-all duration-300 flex flex-col overflow-hidden hover:shadow-2xl hover:shadow-blue-200">
-                    <!-- Banner Frame -->
-                    <div class="relative h-48 sm:h-52 overflow-hidden bg-neutral-900 border-b-2 border-black">
-                        <!-- FYP Badge -->
-                        <div class="absolute top-3 right-3 z-10 inline-flex items-center gap-1.5 px-3 py-1 bg-red-600 text-white text-[10px] font-bold  uppercase tracking-widest shadow-lg">
-                            FINAL YEAR PROJECT
-                        </div>
-                        <img src="assets/system3.png" alt="Final Year Project System"
-                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                    </div>
-                    <div class="p-5 sm:p-6 flex flex-col flex-1 justify-between gap-5">
-                        <div>
-                            <h3
-                                class="text-lg sm:text-xl font-semibold tracking-wide text-black leading-tight group-hover:text-neutral-600 transition-colors">
-                                Driving License Application System
-                            </h3>
-
-                            <p class="text-black text-sm font-fairplay mt-2 font-normal">
-                                A web-based system to streamline driving license applications and training
-                                processes by converting manual workflows into a structured digital process.
-                            </p>
-                        </div>
-                        <div>
-                            <div class="flex flex-wrap gap-1.5 mb-4">
-                                <span
-                                    class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">
-                                    LARAVEL
-                                </span>
-                                <span
-                                    class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">
-                                    PHP
-                                </span>
-                                <span
-                                    class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">
-                                    TAILWIND CSS
-                                </span>
-                                <span
-                                    class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">
-                                    MYSQL
-                                </span>
-                                <span
-                                    class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">JAVASCRIPT</span>
-                                <span
-                                    class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">
-                                    OCR
-                                </span>
-                                <span
-                                    class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">
-                                    RAD Methodology
-                                </span>
-                            </div>
-
-                            <div class="flex items-center justify-between pt-3 border-t-2 border-black text-xs">
-                                <a href="https://mda.amirul-hub.com/"
-                                    class="text-black font-bold uppercase tracking-widest flex items-center gap-1.5 hover:underline transition-all">
-                                    LIVE DEMO <i class="bi bi-arrow-right text-xs"></i>
-                                </a>
-
-                                <a href="https://github.com/MystoganX0/FYP-Project"
-                                    class="text-black font-bold uppercase tracking-widest flex items-center gap-1.5 hover:underline transition-all"
-                                    title="Source Code">Source Code
+                                    <span>SOURCE CODE</span>
                                     <i class="bi bi-github text-base"></i>
                                 </a>
                             </div>
                         </div>
+
+                        <!-- Right Column: System Pages Carousel + Info (6 cols) -->
+                        <div class="lg:col-span-6 flex flex-col justify-start space-y-4 text-left">
+
+                            <!-- Top: Horizontal Carousel of System Pages -->
+                            <div class="relative w-full h-[135px] sm:h-[150px] flex items-center">
+
+                                <!-- Carousel Cards Track -->
+                                <div id="system-carousel-track-1"
+                                    class="system-carousel-track flex gap-3 items-center h-full w-full overflow-x-auto py-2 no-scrollbar select-none cursor-grab active:cursor-grabbing"
+                                    style="scrollbar-width: none; -ms-overflow-style: none;">
+
+                                    <!-- Page 1 -->
+                                    <button type="button" onclick="selectSystemPage(1, 0, 'assets/influencer/1.png')"
+                                        class="system-page-card system-page-card-1 is-active overflow-hidden relative group focus:outline-none shrink-0">
+                                        <img src="assets/influencer/1.png" alt="Admin Dashboard"
+                                            class="w-full h-full object-cover" />
+                                    </button>
+
+                                    <button type="button" onclick="selectSystemPage(1, 1, 'assets/influencer/3.png')"
+                                        class="system-page-card system-page-card-1 is-active overflow-hidden relative group focus:outline-none shrink-0">
+                                        <img src="assets/influencer/3.png" alt="Admin Dashboard"
+                                            class="w-full h-full object-cover" />
+                                    </button>
+
+                                </div>
+                            </div>
+
+                            <!-- Info Container -->
+                            <div class="space-y-4">
+
+                                <h3 class="text-black font-bold uppercase tracking-widest flex items-center gap-1.5">
+                                    Influencer Management System
+                                </h3>
+
+                                <p class="text-black text-sm font-fairplay leading-relaxed font-normal">
+                                    An admin management system that centralizes influencer data, streamlining campaign
+                                    tracking, relationship management, and performance metrics.
+                                </p>
+
+                                <div class="space-y-1.5 pt-1">
+                                    <p
+                                        class="text-[16px] text-black font-bold uppercase tracking-widest flex items-center gap-1.5">
+                                        Key Tasks:
+                                    </p>
+                                    <div
+                                        class="flex items-start gap-2.5 text-black text-xs sm:text-sm font-fairplay leading-relaxed font-normal">
+                                        <span class="w-1.5 h-1.5 bg-black rounded-full mt-2 shrink-0"></span>
+                                        <span>Developed and integrated RESTful APIs (TikTok API) to automate creator
+                                            profile retrieval, built responsive admin dashboards with CodeIgniter &amp;
+                                            Tailwind CSS, and streamlined creator management for campaign
+                                            activities.</span>
+                                    </div>
+                                </div>
+
+                                <div class="flex flex-wrap gap-1.5 pt-1">
+                                    <span
+                                        class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">CODEIGNITER</span>
+                                    <span
+                                        class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">PHP</span>
+                                    <span
+                                        class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">TAILWIND
+                                        CSS</span>
+                                    <span
+                                        class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">MYSQL</span>
+                                    <span
+                                        class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">JAVASCRIPT</span>
+                                    <span
+                                        class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">RESTFUL
+                                        API</span>
+                                </div>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
 
-                <!-- Project Card 4 -->
-                <div data-category="webapp"
-                    class="project-card group bg-white rounded-none border-2 border-black transition-all duration-300 flex flex-col overflow-hidden hover:shadow-2xl hover:shadow-blue-200">
-                    <!-- Banner Frame -->
-                    <div class="relative h-48 sm:h-52 overflow-hidden bg-neutral-900 border-b-2 border-black">
-                        <!-- Project Badge -->
-                        <div class="absolute top-3 right-3 z-10 inline-flex items-center gap-1.5 px-3 py-1 bg-green-500 text-white text-[10px] font-bold uppercase tracking-widest shadow-lg">
-                            UNIVERSITY PROJECT
-                        </div>
-                        <img src="assets/system4.png" alt="Qurban Management System"
-                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                    </div>
-                    <div class="p-5 sm:p-6 flex flex-col flex-1 justify-between gap-5">
-                        <div>
-                            <h3 class="text-lg sm:text-xl font-semibold tracking-wide text-black leading-tight">
-                                Qurban Management System
-                            </h3>
-                            <p class="text-black text-sm font-fairplay leading-relaxed mt-2 font-normal">
-                                A web-based Qurban management system that enables users to place online orders and
-                                track their Qurban orders from submission to completion.
-                            </p>
-                        </div>
-                        <div>
-                            <div class="flex flex-wrap gap-1.5 mb-4">
-                                <span
-                                    class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">LARAVEL</span>
-                                <span
-                                    class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">PHP</span>
-                                <span
-                                    class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">HTML5
-                                    / CSS3</span>
-                                <span
-                                    class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">JAVASCRIPT</span>
-                                <span
-                                    class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">MYSQL</span>
-                                <span
-                                    class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">RAD
-                                    METHODOLOGY</span>
-                                <span
-                                    class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">SDLC</span>
+                <!-- System 3: Driving License Application System -->
+                <div class="project-system-item w-full bg-white transition-all" data-id="sys-driving"
+                    style="display: none;">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+
+                        <!-- Left Column: Screen Image (6 cols) -->
+                        <div class="lg:col-span-6 flex flex-col items-start justify-start w-full">
+                            <div
+                                class="relative w-full aspect-[16/10] overflow-hidden border-2 border-gray-300 bg-neutral-900 hover:border-black hover:shadow-2xl hover:shadow-blue-200 transition-all duration-300">
+                                <img id="system-screen-2" src="assets/license/home.png"
+                                    alt="Driving License Application System Preview"
+                                    class="ps5-hero-screen w-full h-full object-cover object-top" />
                             </div>
-                            <div class="flex items-center justify-between pt-3 border-t-2 border-black text-xs">
-                                <a href="#"
+
+                            <div class="w-full flex items-center justify-between pt-4 text-xs">
+                                <a href="https://mda.amirul-hub.com/" target="_blank" rel="noopener noreferrer"
                                     class="text-black font-bold uppercase tracking-widest flex items-center gap-1.5 hover:underline transition-all">
-                                    VIEW PROJECT <i class="bi bi-arrow-right text-xs"></i>
+                                    <span>LIVE DEMO</span>
+                                    <i class="bi bi-arrow-right text-xs"></i>
                                 </a>
-                                <a href="https://github.com/MystoganX0/Qurban-Management-System"
+
+                                <a href="https://github.com/MystoganX0/FYP-Project" target="_blank"
+                                    rel="noopener noreferrer"
                                     class="text-black font-bold uppercase tracking-widest flex items-center gap-1.5 hover:underline transition-all"
                                     title="Source Code">
-                                    SOURCE CODE <i class="bi bi-github text-base"></i>
+                                    <span>SOURCE CODE</span>
+                                    <i class="bi bi-github text-base"></i>
                                 </a>
                             </div>
+                        </div>
+
+                        <!-- Right Column: System Pages Carousel + Info (6 cols) -->
+                        <div class="lg:col-span-6 flex flex-col justify-start space-y-4 text-left">
+
+                            <!-- Top: Horizontal Carousel of System Pages -->
+                            <div class="relative w-full h-[135px] sm:h-[150px] flex items-center">
+
+                                <!-- Carousel Cards Track -->
+                                <div id="system-carousel-track-2"
+                                    class="system-carousel-track flex gap-3 items-center h-full w-full overflow-x-auto py-2 no-scrollbar select-none cursor-grab active:cursor-grabbing"
+                                    style="scrollbar-width: none; -ms-overflow-style: none;">
+
+                                    <!-- Page 1 -->
+                                    <button type="button" onclick="selectSystemPage(2, 0, 'assets/license/home.png')"
+                                        class="system-page-card system-page-card-2 is-active overflow-hidden relative group focus:outline-none shrink-0">
+                                        <img src="assets/license/home.png" alt="Home & Registration"
+                                            class="w-full h-full object-cover" />
+                                    </button>
+
+                                    <button type="button" onclick="selectSystemPage(2, 1, 'assets/license/menu.png')"
+                                        class="system-page-card system-page-card-2 overflow-hidden relative group focus:outline-none shrink-0">
+                                        <img src="assets/license/menu.png" alt="Training Menu"
+                                            class="w-full h-full object-cover" />
+                                    </button>
+
+                                    <!-- Page 2 -->
+                                    <button type="button" onclick="selectSystemPage(2, 2, 'assets/license/package.png')"
+                                        class="system-page-card system-page-card-2 overflow-hidden relative group focus:outline-none shrink-0">
+                                        <img src="assets/license/package.png" alt="License Package"
+                                            class="w-full h-full object-cover" />
+                                    </button>
+
+                                    <!-- Page 3 -->
+                                    <button type="button" onclick="selectSystemPage(2, 3, 'assets/license/apply.png')"
+                                        class="system-page-card system-page-card-2 overflow-hidden relative group focus:outline-none shrink-0">
+                                        <img src="assets/license/apply.png" alt="Application Form"
+                                            class="w-full h-full object-cover" />
+                                    </button>
+
+                                    <button type="button" onclick="selectSystemPage(2, 4, 'assets/license/login.png')"
+                                        class="system-page-card system-page-card-2 overflow-hidden relative group focus:outline-none shrink-0">
+                                        <img src="assets/license/login.png" alt="Login Page"
+                                            class="w-full h-full object-cover" />
+                                    </button>
+
+                                    <button type="button" onclick="selectSystemPage(2, 5, 'assets/license/register.png')"
+                                        class="system-page-card system-page-card-2 overflow-hidden relative group focus:outline-none shrink-0">
+                                        <img src="assets/license/register.png" alt="Register Page"
+                                            class="w-full h-full object-cover" />
+                                    </button>
+
+                                </div>
+                            </div>
+
+                            <!-- Info Container -->
+                            <div class="space-y-4">
+                                <h3 class="text-black font-bold uppercase tracking-widest flex items-center gap-1.5">
+                                    Driving License Application System
+                                </h3>
+
+                                <p class="text-black text-sm font-fairplay leading-relaxed font-normal">
+                                    A web-based system to streamline driving license applications and training processes
+                                    by converting manual workflows into a structured digital process.
+                                </p>
+
+                                <div class="space-y-1.5 pt-1">
+                                    <p
+                                        class="text-[16px] text-black font-bold uppercase tracking-widest flex items-center gap-1.5">
+                                        Key Tasks:
+                                    </p>
+                                    <div
+                                        class="flex items-start gap-2.5 text-black text-xs sm:text-sm font-fairplay leading-relaxed font-normal">
+                                        <span class="w-1.5 h-1.5 bg-black rounded-full mt-2 shrink-0"></span>
+                                        <span>Conducted stakeholder interviews to collect requirements and used BPMN to
+                                            identify key problems and solution.</span>
+                                    </div>
+                                    <div
+                                        class="flex items-start gap-2.5 text-black text-xs sm:text-sm font-fairplay leading-relaxed font-normal">
+                                        <span class="w-1.5 h-1.5 bg-black rounded-full mt-2 shrink-0"></span>
+                                        <span>Applied RAD methodology to produce SRS and SDD documentation, design
+                                            database schema, and create UI/UX
+                                            wireframes using Figma to define clear technical and design specifications
+                                            for iterative development.</span>
+                                    </div>
+                                    <div
+                                        class="flex items-start gap-2.5 text-black text-xs sm:text-sm font-fairplay leading-relaxed font-normal">
+                                        <span class="w-1.5 h-1.5 bg-black rounded-full mt-2 shrink-0"></span>
+                                        <span>Developed a full-stack web application using Laravel, PHP, and MySQL with
+                                            Tailwind CSS, integrating Optical
+                                            Character Recognition to automatically extract applicant document data,
+                                            improving approval turnaround speed.</span>
+                                    </div>
+                                </div>
+
+                                <div class="flex flex-wrap gap-1.5 pt-1">
+                                    <span
+                                        class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">LARAVEL</span>
+                                    <span
+                                        class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">PHP</span>
+                                    <span
+                                        class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">TAILWIND
+                                        CSS</span>
+                                    <span
+                                        class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">MYSQL</span>
+                                    <span
+                                        class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">JAVASCRIPT</span>
+                                    <span
+                                        class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">OCR</span>
+                                    <span
+                                        class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">RAD
+                                        METHODOLOGY</span>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </div>
 
-                <!-- Project Card 5 -->
-                <div data-category="mobile"
-                    class="project-card group bg-white rounded-none border-2 border-black transition-all duration-300 flex flex-col overflow-hidden hover:shadow-2xl hover:shadow-blue-200">
-                    <!-- Banner Frame -->
-                    <div class="relative h-48 sm:h-52 overflow-hidden bg-neutral-900 border-b-2 border-black">
-                        <!-- Project Badge -->
-                        <div class="absolute top-3 right-3 z-10 inline-flex items-center gap-1.5 px-3 py-1 bg-indigo-500 text-white text-[10px] font-bold uppercase tracking-widest shadow-lg">
-                            MY PROJECT
-                        </div>
-                        <img src="assets/system5.png" alt="E-Commerce Hardware Mobile Apps"
-                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                    </div>
-                    <div class="p-5 sm:p-6 flex flex-col flex-1 justify-between gap-5">
-                        <div>
-                            <h3 class="text-lg sm:text-xl font-semibold tracking-wide text-black leading-tight">
-                                E-Commerce Hardware Mobile Apps
-                            </h3>
-                            <p class="text-black text-sm font-fairplay leading-relaxed mt-2 font-normal">
-                                An Android-based e-commerce application for selling hardware product developed with a
-                                product-focused interface.
-                            </p>
-                        </div>
-                        <div>
-                            <div class="flex flex-wrap gap-1.5 mb-4">
-                                <span
-                                    class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">JAVA</span>
-                                <span
-                                    class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">BOOTSTRAP</span>
-                                <span
-                                    class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">JAVASCRIPT</span>
-                                <span
-                                    class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">ANDROID
-                                    STUDIO</span>
+                <!-- System 4: Qurban Management System -->
+                <div class="project-system-item w-full bg-white transition-all" data-id="sys-qurban"
+                    style="display: none;">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+
+                        <!-- Left Column: Screen Image (6 cols) -->
+                        <div class="lg:col-span-6 flex flex-col items-start justify-start w-full">
+                            <div
+                                class="relative w-full aspect-[16/10] overflow-hidden border-2 border-gray-300 bg-neutral-900 hover:border-black hover:shadow-2xl hover:shadow-blue-200 transition-all duration-300">
+                                <img id="system-screen-3" src="assets/qurban/3.png"
+                                    alt="Qurban Management System Preview"
+                                    class="ps5-hero-screen w-full h-full object-cover object-top" />
                             </div>
-                            <div class="flex items-center justify-between pt-3 border-t-2 border-black text-xs">
+
+                            <div class="w-full flex items-center justify-between pt-4 text-xs">
                                 <a href="#"
                                     class="text-black font-bold uppercase tracking-widest flex items-center gap-1.5 hover:underline transition-all">
-                                    VIEW PROJECT <i class="bi bi-arrow-right text-xs"></i>
+                                    <span>VIEW PROJECT</span>
+                                    <i class="bi bi-arrow-right text-xs"></i>
                                 </a>
+
+                                <a href="https://github.com/MystoganX0/Qurban-Management-System" target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="text-black font-bold uppercase tracking-widest flex items-center gap-1.5 hover:underline transition-all"
+                                    title="Source Code">
+                                    <span>SOURCE CODE</span>
+                                    <i class="bi bi-github text-base"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Right Column: System Pages Carousel + Info (6 cols) -->
+                        <div class="lg:col-span-6 flex flex-col justify-start space-y-4 text-left">
+
+                            <!-- Top: Horizontal Carousel of System Pages -->
+                            <div class="relative w-full h-[135px] sm:h-[150px] flex items-center">
+
+                                <!-- Carousel Cards Track -->
+                                <div id="system-carousel-track-3"
+                                    class="system-carousel-track flex gap-3 items-center h-full w-full overflow-x-auto py-2 no-scrollbar select-none cursor-grab active:cursor-grabbing"
+                                    style="scrollbar-width: none; -ms-overflow-style: none;">
+
+                                    <button type="button" onclick="selectSystemPage(3, 0, 'assets/qurban/1.png')"
+                                        class="system-page-card system-page-card-3 is-active overflow-hidden relative group focus:outline-none shrink-0">
+                                        <img src="assets/qurban/1.png" alt="Qurban System Page 1"
+                                            class="w-full h-full object-cover" />
+                                    </button>
+
+                                    <button type="button" onclick="selectSystemPage(3, 1, 'assets/qurban/2.png')"
+                                        class="system-page-card system-page-card-3 overflow-hidden relative group focus:outline-none shrink-0">
+                                        <img src="assets/qurban/2.png" alt="Qurban System Page 2"
+                                            class="w-full h-full object-cover" />
+                                    </button>
+
+                                    <button type="button" onclick="selectSystemPage(3, 2, 'assets/qurban/3.png')"
+                                        class="system-page-card system-page-card-3 overflow-hidden relative group focus:outline-none shrink-0">
+                                        <img src="assets/qurban/3.png" alt="Qurban System Page 3"
+                                            class="w-full h-full object-cover" />
+                                    </button>
+
+                                    <button type="button" onclick="selectSystemPage(3, 3, 'assets/qurban/4.png')"
+                                        class="system-page-card system-page-card-3 overflow-hidden relative group focus:outline-none shrink-0">
+                                        <img src="assets/qurban/4.png" alt="Qurban System Page 4"
+                                            class="w-full h-full object-cover" />
+                                    </button>
+
+                                    <button type="button" onclick="selectSystemPage(3, 4, 'assets/qurban/5.png')"
+                                        class="system-page-card system-page-card-3 overflow-hidden relative group focus:outline-none shrink-0">
+                                        <img src="assets/qurban/5.png" alt="Qurban System Page 5"
+                                            class="w-full h-full object-cover" />
+                                    </button>
+
+                                    <button type="button" onclick="selectSystemPage(3, 5, 'assets/qurban/6.png')"
+                                        class="system-page-card system-page-card-3 overflow-hidden relative group focus:outline-none shrink-0">
+                                        <img src="assets/qurban/6.png" alt="Qurban System Page 6"
+                                            class="w-full h-full object-cover" />
+                                    </button>
+
+                                    <button type="button" onclick="selectSystemPage(3, 6, 'assets/qurban/7.png')"
+                                        class="system-page-card system-page-card-3 overflow-hidden relative group focus:outline-none shrink-0">
+                                        <img src="assets/qurban/7.png" alt="Qurban System Page 7"
+                                            class="w-full h-full object-cover" />
+                                    </button>
+
+                                    <button type="button" onclick="selectSystemPage(3, 7, 'assets/qurban/8.png')"
+                                        class="system-page-card system-page-card-3 overflow-hidden relative group focus:outline-none shrink-0">
+                                        <img src="assets/qurban/8.png" alt="Qurban System Page 8"
+                                            class="w-full h-full object-cover" />
+                                    </button>
+
+                                    <button type="button" onclick="selectSystemPage(3, 8, 'assets/qurban/9.png')"
+                                        class="system-page-card system-page-card-3 overflow-hidden relative group focus:outline-none shrink-0">
+                                        <img src="assets/qurban/9.png" alt="Qurban System Page 9"
+                                            class="w-full h-full object-cover" />
+                                    </button>
+
+                                    <button type="button" onclick="selectSystemPage(3, 9, 'assets/qurban/10.png')"
+                                        class="system-page-card system-page-card-3 overflow-hidden relative group focus:outline-none shrink-0">
+                                        <img src="assets/qurban/10.png" alt="Qurban System Page 10"
+                                            class="w-full h-full object-cover" />
+                                    </button>
+
+                                    <button type="button" onclick="selectSystemPage(3, 10, 'assets/qurban/11.png')"
+                                        class="system-page-card system-page-card-3 overflow-hidden relative group focus:outline-none shrink-0">
+                                        <img src="assets/qurban/11.png" alt="Qurban System Page 11"
+                                            class="w-full h-full object-cover" />
+                                    </button>
+
+                                    <button type="button" onclick="selectSystemPage(3, 11, 'assets/qurban/12.png')"
+                                        class="system-page-card system-page-card-3 overflow-hidden relative group focus:outline-none shrink-0">
+                                        <img src="assets/qurban/12.png" alt="Qurban System Page 12"
+                                            class="w-full h-full object-cover" />
+                                    </button>
+
+                                    <button type="button" onclick="selectSystemPage(3, 12, 'assets/qurban/13.png')"
+                                        class="system-page-card system-page-card-3 overflow-hidden relative group focus:outline-none shrink-0">
+                                        <img src="assets/qurban/13.png" alt="Qurban System Page 13"
+                                            class="w-full h-full object-cover" />
+                                    </button>
+
+                                    <button type="button" onclick="selectSystemPage(3, 13, 'assets/qurban/14.png')"
+                                        class="system-page-card system-page-card-3 overflow-hidden relative group focus:outline-none shrink-0">
+                                        <img src="assets/qurban/14.png" alt="Qurban System Page 14"
+                                            class="w-full h-full object-cover" />
+                                    </button>
+
+                                    <button type="button" onclick="selectSystemPage(3, 14, 'assets/qurban/15.png')"
+                                        class="system-page-card system-page-card-3 overflow-hidden relative group focus:outline-none shrink-0">
+                                        <img src="assets/qurban/15.png" alt="Qurban System Page 15"
+                                            class="w-full h-full object-cover" />
+                                    </button>
+
+                                    <button type="button" onclick="selectSystemPage(3, 15, 'assets/qurban/16.png')"
+                                        class="system-page-card system-page-card-3 overflow-hidden relative group focus:outline-none shrink-0">
+                                        <img src="assets/qurban/16.png" alt="Qurban System Page 16"
+                                            class="w-full h-full object-cover" />
+                                    </button>
+
+                                    <button type="button" onclick="selectSystemPage(3, 16, 'assets/qurban/17.png')"
+                                        class="system-page-card system-page-card-3 overflow-hidden relative group focus:outline-none shrink-0">
+                                        <img src="assets/qurban/17.png" alt="Qurban System Page 17"
+                                            class="w-full h-full object-cover" />
+                                    </button>
+
+                                    <button type="button" onclick="selectSystemPage(3, 17, 'assets/qurban/18.png')"
+                                        class="system-page-card system-page-card-3 overflow-hidden relative group focus:outline-none shrink-0">
+                                        <img src="assets/qurban/18.png" alt="Qurban System Page 18"
+                                            class="w-full h-full object-cover" />
+                                    </button>
+
+                                    <button type="button" onclick="selectSystemPage(3, 18, 'assets/qurban/19.png')"
+                                        class="system-page-card system-page-card-3 overflow-hidden relative group focus:outline-none shrink-0">
+                                        <img src="assets/qurban/19.png" alt="Qurban System Page 19"
+                                            class="w-full h-full object-cover" />
+                                    </button>
+
+                                    <button type="button" onclick="selectSystemPage(3, 19, 'assets/qurban/20.png')"
+                                        class="system-page-card system-page-card-3 overflow-hidden relative group focus:outline-none shrink-0">
+                                        <img src="assets/qurban/20.png" alt="Qurban System Page 20"
+                                            class="w-full h-full object-cover" />
+                                    </button>
+
+                                </div>
+                            </div>
+
+                            <!-- Info Container -->
+                            <div class="space-y-4">
+                                <div class="flex items-center gap-2">
+                                </div>
+
+                                <h3 class="text-black font-bold uppercase tracking-widest flex items-center gap-1.5">
+                                    Qurban Management System
+                                </h3>
+
+                                <p class="text-black text-sm font-fairplay leading-relaxed font-normal">
+                                    A web-based Qurban management system that enables users to place online orders and
+                                    track their Qurban orders from submission to completion.
+                                </p>
+
+                                <div class="space-y-1.5 pt-1">
+                                    <p
+                                        class="text-[16px] text-black font-bold uppercase tracking-widest flex items-center gap-1.5">
+                                        Key Tasks:
+                                    </p>
+                                    <div
+                                        class="flex items-start gap-2.5 text-black text-xs sm:text-sm font-fairplay leading-relaxed font-normal">
+                                        <span class="w-1.5 h-1.5 bg-black rounded-full mt-2 shrink-0"></span>
+                                        <span>Conducted requirements gathering and analysis to identify system gaps and
+                                            define clear scope for development.</span>
+                                    </div>
+                                    <div
+                                        class="flex items-start gap-2.5 text-black text-xs sm:text-sm font-fairplay leading-relaxed font-normal">
+                                        <span class="w-1.5 h-1.5 bg-black rounded-full mt-2 shrink-0"></span>
+                                        <span>Designed system architecture and database schema to support scalable and
+                                            role-based functionality management.</span>
+                                    </div>
+                                    <div
+                                        class="flex items-start gap-2.5 text-black text-xs sm:text-sm font-fairplay leading-relaxed font-normal">
+                                        <span class="w-1.5 h-1.5 bg-black rounded-full mt-2 shrink-0"></span>
+                                        <span>Built the application using Laravel, HTML, CSS and MySQL, implementing
+                                            online ordering functionality and end
+                                            to-end order tracking for local and international Qurban orders.</span>
+                                    </div>
+                                    <div
+                                        class="flex items-start gap-2.5 text-black text-xs sm:text-sm font-fairplay leading-relaxed font-normal">
+                                        <span class="w-1.5 h-1.5 bg-black rounded-full mt-2 shrink-0"></span>
+                                        <span>Built a dynamic Android e-commerce application using Java with a
+                                            product-focused UI, integrating Firebase for
+                                            real-time database functionality and backend data management.</span>
+                                    </div>
+                                </div>
+
+                                <div class="flex flex-wrap gap-1.5 pt-1">
+                                    <span
+                                        class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">LARAVEL</span>
+                                    <span
+                                        class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">PHP</span>
+                                    <span
+                                        class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">HTML5
+                                        / CSS3</span>
+                                    <span
+                                        class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">JAVASCRIPT</span>
+                                    <span
+                                        class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">MYSQL</span>
+                                    <span
+                                        class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">RAD
+                                        METHODOLOGY</span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- System 5: E-Commerce Hardware Mobile Apps -->
+                <div class="project-system-item w-full bg-white transition-all" data-id="sys-ecommerce"
+                    style="display: none;">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+
+                        <!-- Left Column: Screen Image (6 cols) -->
+                        <div class="lg:col-span-6 flex flex-col items-start justify-start w-full">
+                            <div
+                                class="relative w-full aspect-[16/10] overflow-hidden border-2 border-gray-300 bg-neutral-900 hover:border-black hover:shadow-2xl hover:shadow-blue-200 transition-all duration-300">
+                                <img id="system-screen-4" src="assets/ecommerce/1.png"
+                                    alt="E-Commerce Mobile App Preview"
+                                    class="ps5-hero-screen w-full h-full object-cover object-top" />
+                            </div>
+
+                            <div class="w-full flex items-center justify-between pt-4 text-xs">
+                                <a href="#"
+                                    class="text-black font-bold uppercase tracking-widest flex items-center gap-1.5 hover:underline transition-all">
+                                    <span>VIEW PROJECT</span>
+                                    <i class="bi bi-arrow-right text-xs"></i>
+                                </a>
+
                                 <a href="#"
                                     class="text-black font-bold uppercase tracking-widest flex items-center gap-1.5 hover:underline transition-all"
                                     title="Source Code">
-                                    SOURCE CODE <i class="bi bi-github text-base"></i>
+                                    <span>SOURCE CODE</span>
+                                    <i class="bi bi-github text-base"></i>
                                 </a>
                             </div>
+                        </div>
+
+                        <!-- Right Column: System Pages Carousel + Info (6 cols) -->
+                        <div class="lg:col-span-6 flex flex-col justify-start space-y-4 text-left">
+
+                            <!-- Top: Horizontal Carousel of System Pages -->
+                            <div class="relative w-full h-[135px] sm:h-[150px] flex items-center">
+
+                                <!-- Carousel Cards Track -->
+                                <div id="system-carousel-track-4"
+                                    class="system-carousel-track flex gap-3 items-center h-full w-full overflow-x-auto py-2 no-scrollbar select-none cursor-grab active:cursor-grabbing"
+                                    style="scrollbar-width: none; -ms-overflow-style: none;">
+
+                                    <button type="button" onclick="selectSystemPage(4, 0, 'assets/ecommerce/1.png')"
+                                        class="system-page-card system-page-card-4 is-active overflow-hidden relative group focus:outline-none shrink-0">
+                                        <img src="assets/ecommerce/1.png" alt="E-Commerce Page 1"
+                                            class="w-full h-full object-cover" />
+                                    </button>
+
+                                    <button type="button" onclick="selectSystemPage(4, 1, 'assets/ecommerce/2.png')"
+                                        class="system-page-card system-page-card-4 overflow-hidden relative group focus:outline-none shrink-0">
+                                        <img src="assets/ecommerce/2.png" alt="E-Commerce Page 2"
+                                            class="w-full h-full object-cover" />
+                                    </button>
+
+                                    <button type="button" onclick="selectSystemPage(4, 2, 'assets/ecommerce/3.png')"
+                                        class="system-page-card system-page-card-4 overflow-hidden relative group focus:outline-none shrink-0">
+                                        <img src="assets/ecommerce/3.png" alt="E-Commerce Page 3"
+                                            class="w-full h-full object-cover" />
+                                    </button>
+
+                                    <button type="button" onclick="selectSystemPage(4, 3, 'assets/ecommerce/4.png')"
+                                        class="system-page-card system-page-card-4 overflow-hidden relative group focus:outline-none shrink-0">
+                                        <img src="assets/ecommerce/4.png" alt="E-Commerce Page 4"
+                                            class="w-full h-full object-cover" />
+                                    </button>
+
+                                    <!-- <button type="button" onclick="selectSystemPage(4, 4, 'assets/ecommerce/5.png')"
+                                        class="system-page-card system-page-card-4 overflow-hidden relative group focus:outline-none shrink-0">
+                                        <img src="assets/ecommerce/5.png" alt="E-Commerce Page 5"
+                                            class="w-full h-full object-cover" />
+                                    </button> -->
+
+                                </div>
+                            </div>
+
+                            <!-- Info Container -->
+                            <div class="space-y-4">
+
+                                <h3 class="text-black font-bold uppercase tracking-widest flex items-center gap-1.5">
+                                    E-Commerce Hardware Mobile Apps
+                                </h3>
+
+                                <p class="text-black text-sm font-fairplay leading-relaxed font-normal">
+                                    An Android-based e-commerce application for selling hardware products developed with
+                                    a product-focused interface and smooth checkout experience.
+                                </p>
+
+                                <div class="space-y-1.5 pt-1">
+                                    <p
+                                        class="text-[16px] text-black font-bold uppercase tracking-widest flex items-center gap-1.5">
+                                        Key Tasks:
+                                    </p>
+                                    <div
+                                        class="flex items-start gap-2.5 text-black text-xs sm:text-sm font-fairplay leading-relaxed font-normal">
+                                        <span class="w-1.5 h-1.5 bg-black rounded-full mt-2 shrink-0"></span>
+                                        <span>Built a dynamic Android e-commerce application using Java with a
+                                            product-focused UI, integrating Firebase for
+                                            real-time database functionality and backend data management.</span>
+                                    </div>
+                                </div>
+
+                                <div class="flex flex-wrap gap-1.5 pt-1">
+                                    <span
+                                        class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">JAVA</span>
+                                    <span
+                                        class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">BOOTSTRAP</span>
+                                    <span
+                                        class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">JAVASCRIPT</span>
+                                    <span
+                                        class="px-2.5 py-1 text-[10px] font-bold font-mono bg-black text-white border border-black uppercase tracking-wider">ANDROID
+                                        STUDIO</span>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </div>
 
             </div>
+
+            <!-- Project Systems JavaScript -->
+            <script>
+                function selectSystemPage(systemIndex, pageIndex, imageSrc) {
+                    const screenImg = document.getElementById(`system-screen-${systemIndex}`);
+                    if (screenImg && imageSrc) {
+                        // Fast PS5 opacity/blur dissolve (no scale on hero to avoid reflow)
+                        screenImg.classList.remove('switching-in');
+                        screenImg.classList.add('switching-out');
+
+                        setTimeout(() => {
+                            screenImg.src = imageSrc;
+                            // Use rAF to ensure the src swap & class removal land in the same paint frame
+                            requestAnimationFrame(() => {
+                                screenImg.classList.remove('switching-out');
+                                screenImg.classList.add('switching-in');
+                            });
+                        }, 120);
+                    }
+
+                    // Update active card
+                    const cards = document.querySelectorAll(`.system-page-card-${systemIndex}`);
+                    cards.forEach((card, idx) => {
+                        if (idx === pageIndex) {
+                            card.classList.add('is-active');
+
+                            // Center card using RAF-deferred scrollTo so the scale
+                            // transform has committed before we read getBoundingClientRect
+                            requestAnimationFrame(() => {
+                                const track = document.getElementById(`system-carousel-track-${systemIndex}`);
+                                if (!track) return;
+                                const cardRect = card.getBoundingClientRect();
+                                const trackRect = track.getBoundingClientRect();
+                                const targetLeft = track.scrollLeft
+                                    + (cardRect.left - trackRect.left)
+                                    - (trackRect.width / 2)
+                                    + (cardRect.width / 2);
+                                // Use our own lerp-based smooth scroll instead of native
+                                // behavior:'smooth' which can conflict with the momentum loop
+                                lerpScrollTo(track, targetLeft, 400);
+                            });
+                        } else {
+                            card.classList.remove('is-active');
+                        }
+                    });
+                }
+
+                // Lerp-based smooth scroll — avoids native 'scroll-smooth' jank
+                function lerpScrollTo(el, targetLeft, durationMs) {
+                    const startLeft = el.scrollLeft;
+                    const startTime = performance.now();
+                    const ease = (t) => t < 0.5
+                        ? 4 * t * t * t
+                        : 1 - Math.pow(-2 * t + 2, 3) / 2; // ease-in-out-cubic
+
+                    function step(now) {
+                        const elapsed = now - startTime;
+                        const t = Math.min(elapsed / durationMs, 1);
+                        el.scrollLeft = startLeft + (targetLeft - startLeft) * ease(t);
+                        if (t < 1) requestAnimationFrame(step);
+                    }
+                    requestAnimationFrame(step);
+                }
+
+                function scrollSystemCarousel(systemIndex, direction) {
+                    const track = document.getElementById(`system-carousel-track-${systemIndex}`);
+                    if (!track) return;
+                    const scrollAmount = 220 * direction;
+                    track.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+                }
+
+                // PS5 Fluid Lerp Momentum Auto-Scroll & Smooth Drag for all tracks
+                (function initSystemCarousels() {
+                    for (let i = 0; i < 5; i++) {
+                        const track = document.getElementById(`system-carousel-track-${i}`);
+                        if (!track) continue;
+
+                        let targetSpeed = 0;
+                        let currentSpeed = 0;
+                        let animationFrameId = null;
+                        let isDragging = false;
+                        let startX = 0;
+                        let scrollLeft = 0;
+
+                        function updateScroll() {
+                            // PS5 continuous inertia/momentum lerp
+                            currentSpeed += (targetSpeed - currentSpeed) * 0.12;
+
+                            if (Math.abs(currentSpeed) > 0.05) {
+                                track.scrollLeft += currentSpeed;
+                                animationFrameId = requestAnimationFrame(updateScroll);
+                            } else {
+                                currentSpeed = 0;
+                                animationFrameId = null;
+                            }
+                        }
+
+                        // Auto scroll on mouse move towards left/right sides
+                        track.addEventListener('mousemove', (e) => {
+                            if (isDragging) {
+                                e.preventDefault();
+                                const x = e.pageX - track.offsetLeft;
+                                const walk = (x - startX) * 1.5;
+                                track.scrollLeft = scrollLeft - walk;
+                                return;
+                            }
+
+                            const rect = track.getBoundingClientRect();
+                            const mouseX = e.clientX - rect.left;
+                            const width = rect.width;
+
+                            // Left 22% zone -> auto scroll left
+                            const leftZone = width * 0.22;
+                            // Right 22% zone -> auto scroll right
+                            const rightZone = width * 0.78;
+
+                            if (mouseX < leftZone) {
+                                const factor = (leftZone - mouseX) / leftZone; // 0 to 1
+                                targetSpeed = - (factor * 9 + 1); // smooth velocity up to -10px/frame
+                                if (!animationFrameId) animationFrameId = requestAnimationFrame(updateScroll);
+                            } else if (mouseX > rightZone) {
+                                const factor = (mouseX - rightZone) / (width - rightZone); // 0 to 1
+                                targetSpeed = factor * 9 + 1; // smooth velocity up to +10px/frame
+                                if (!animationFrameId) animationFrameId = requestAnimationFrame(updateScroll);
+                            } else {
+                                targetSpeed = 0;
+                            }
+                        });
+
+                        track.addEventListener('mouseleave', () => {
+                            isDragging = false;
+                            targetSpeed = 0;
+                        });
+
+                        // Drag to scroll
+                        track.addEventListener('mousedown', (e) => {
+                            isDragging = true;
+                            startX = e.pageX - track.offsetLeft;
+                            scrollLeft = track.scrollLeft;
+                            targetSpeed = 0;
+                            currentSpeed = 0;
+                            if (animationFrameId) {
+                                cancelAnimationFrame(animationFrameId);
+                                animationFrameId = null;
+                            }
+                        });
+
+                        track.addEventListener('mouseup', () => {
+                            isDragging = false;
+                        });
+                    }
+                })();
+
+                // Filter Buttons — dedicated project tabs
+                window.filterProjects = function (filter, btnElement) {
+                    // 1. Reset all filter button styles
+                    const filterButtons = document.querySelectorAll('.project-filter-btn');
+                    filterButtons.forEach(btn => {
+                        btn.className = "project-filter-btn px-5 py-3 md:py-4 rounded-none text-xs font-bold uppercase tracking-widest bg-slate-100 text-slate-600 border-2 border-transparent hover:border-[#0078d6] transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer";
+                    });
+
+                    // 2. Highlight clicked active button
+                    if (btnElement) {
+                        btnElement.className = "project-filter-btn px-5 py-3 md:py-4 rounded-none text-xs font-bold uppercase tracking-widest bg-[#0078d6] text-white border-2 border-[#0078d6] transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer";
+                    }
+
+                    // 3. Show only target project
+                    const systemItems = document.querySelectorAll('.project-system-item');
+                    systemItems.forEach((item) => {
+                        const itemId = item.getAttribute('data-id');
+                        if (itemId === filter) {
+                            item.style.display = 'block';
+                            item.style.opacity = '1';
+                            item.style.transform = 'none';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                };
+            </script>
 
         </div>
     </section>
@@ -1107,7 +1866,7 @@
                                 <span class="text-[11px] tracking-widest text-neutral-500 block">Email Address</span>
                                 <a href="mailto:khairulhakimi0612@gmail.com"
                                     class="text-[12px] font-semibold tracking-widest text-black hover:text-[#0078d6] transition-colors break-all">
-                                    khairulhakimi0612@gmail.com
+                                    khairulhakimi052@gmail.com
                                 </a>
                             </div>
                         </div>
@@ -1257,34 +2016,6 @@
         window.addEventListener('scroll', updateActiveNavOnScroll, { passive: true });
         window.addEventListener('resize', updateActiveNavOnScroll, { passive: true });
         window.addEventListener('load', updateActiveNavOnScroll);
-
-        function filterProjects(category, button) {
-            const buttons = document.querySelectorAll('.project-filter-btn');
-            buttons.forEach(btn => {
-                btn.classList.remove('bg-[#0078d6]', 'text-white', 'shadow-sm');
-                btn.classList.add('bg-slate-100', 'text-slate-600');
-            });
-            button.classList.remove('bg-slate-100', 'text-slate-600');
-            button.classList.add('bg-[#0078d6]', 'text-white', 'shadow-sm');
-
-            const cards = document.querySelectorAll('.project-card');
-            cards.forEach(card => {
-                const categories = card.getAttribute('data-category').split(' ');
-                if (category === 'all' || categories.includes(category)) {
-                    card.style.display = 'flex';
-                    setTimeout(() => {
-                        card.style.opacity = '1';
-                        card.style.transform = 'scale(1)';
-                    }, 20);
-                } else {
-                    card.style.opacity = '0';
-                    card.style.transform = 'scale(0.95)';
-                    setTimeout(() => {
-                        card.style.display = 'none';
-                    }, 250);
-                }
-            });
-        }
 
         function expandTrafficItem(element) {
             const allItems = document.querySelectorAll('.traffic-item');
